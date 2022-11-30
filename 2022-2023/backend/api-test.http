@@ -1,0 +1,30 @@
+@base_url = http://localhost:3000
+{{base_url}}/dishes
+###
+{{base_url}}/dish/random
+###
+POST {{base_url}}/dish
+Content-Type: application/json
+
+{
+    "name": "bigmac",
+    "price": 9
+}
+###
+PUT {{base_url}}/dish
+Content-Type: application/json
+
+{
+    "name": "bigmac",
+    "price": 15
+}
+###
+PUT {{base_url}}/dish
+Content-Type: application/json
+
+{
+    "name": "whooper",
+    "price": 14
+}
+###
+DELETE {{base_url}}/dish/kebab
