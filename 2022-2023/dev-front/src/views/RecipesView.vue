@@ -1,4 +1,6 @@
-<script setup></script>
+<script setup>
+import { appId, appKey } from "../api-infos";
+</script>
 
 <template>
   <main>
@@ -23,8 +25,6 @@ export default {
   },
   methods: {
     async search() {
-      const appKey = "";
-      const appId = "";
       const basrUrl = "https://api.edamam.com/api/recipes/v2";
       const url = `${basrUrl}?type=public&q=${this.query}&app_id=${appId}&app_key=${appKey}`;
       const response = await fetch(url);

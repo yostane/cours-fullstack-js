@@ -1,4 +1,5 @@
 src/firebase.js
+src/api-infos.js
 
 .DS_Store
 node_modules
