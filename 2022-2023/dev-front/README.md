@@ -65,20 +65,14 @@ export const firestore = getFirestore(firebaseApp);
 ```js
 import { VueFire, VueFireAuth } from "vuefire";
 import { firebaseApp } from "./firebase";
+import { getCurrentUser } from "vuefire";
 
 app.use(VueFire, {
-  // imported above but could also just be created here
   firebaseApp,
-  modules: [
-    // we will see other modules later on
-    VueFireAuth(),
-  ],
+  modules: [VueFireAuth()],
 });
-```
 
-- Pour récupérer l'utilisateur actuel, ajouter cet appel dans main.js
-
-```js
+// Pour récupérer l'utilisateur actuel. A mettre avant le app.use(router)
 router.beforeEach(async () => {
   await getCurrentUser();
 });
