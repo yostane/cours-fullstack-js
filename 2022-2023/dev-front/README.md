@@ -40,7 +40,7 @@ npm run lint
   - Vous pouvez désactiver analytics
 - Ensuite dans l'accueil, choisir d'ajouter une application de type web
 - Renseigner le nom de l'application et noter les informations de votre application (apiKey, etc.)
-  - ! Ne jamais partager ces informations
+- Ouvrir une terminal dans le dossier racine du projet (où se situe le fichier package.json) et isntaller les librairies firebase et vuefire. `npm i vuefire firebase`.
 - Dans le dossier src, créer un fichier `firebase.js` et renseigner les informations de votre application (apiKey, etc.)
 
 ```js
