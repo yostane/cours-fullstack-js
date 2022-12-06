@@ -1,5 +1,4 @@
 <script setup>
-import { RouterLink, RouterView } from "vue-router";
 import { getAuth, signOut } from "firebase/auth";
 import { useCurrentUser } from "vuefire";
 const user = useCurrentUser();
@@ -10,6 +9,7 @@ const user = useCurrentUser();
     <div class="wrapper">
       <nav>
         <RouterLink to="/">Home</RouterLink> -
+        <RouterLink to="/recipes">Recipes</RouterLink> -
         <RouterLink to="/about">About</RouterLink> -
         <RouterLink v-if="!user" to="/login">Login - Register</RouterLink>
         <v-btn

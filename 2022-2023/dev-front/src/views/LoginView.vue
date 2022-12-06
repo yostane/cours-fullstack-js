@@ -10,9 +10,7 @@ import {
   <main>
     <v-text-field label="email" v-model="email" />
     <v-text-field type="password" label="password" v-model="password" />
-    <div v-if="failed">
-      <v-alert type="error">Operation failed</v-alert>
-    </div>
+    <v-alert v-if="failed" type="error">Operation failed</v-alert>
     <v-btn v-on:click="login">Login</v-btn>
     <v-btn v-on:click="register">Register</v-btn>
   </main>
@@ -36,28 +34,18 @@ export default {
           this.email,
           this.password
         );
-        console.log("register success");
         this.$router.push("/");
       } catch (error) {
         this.failed = true;
-        console.error(
-          "register failed",
-          error.message,
-          "info",
-          this.email,
-          this.password
-        );
       }
     },
     async login() {
       this.failed = false;
       try {
         await signInWithEmailAndPassword(getAuth(), this.email, this.password);
-        console.log("register success");
         this.$router.push("/");
       } catch (error) {
         this.failed = true;
-        console.error("register failed", error.message);
       }
     },
   },
