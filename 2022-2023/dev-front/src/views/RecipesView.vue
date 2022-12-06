@@ -7,7 +7,7 @@ import { appId, appKey } from "../api-infos";
     <v-text-field label="query" v-model="query" />
     <v-btn v-on:click="search">Search</v-btn>
     <ul>
-      <li v-for="recipe of recipes" :key="recipe.recipe.url">
+      <li v-for="recipe of recipes" :key="recipe.recipe.uri">
         <img :src="recipe.recipe.image" />
         <p>{{ recipe.recipe.label }}</p>
       </li>
