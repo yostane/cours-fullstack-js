@@ -79,3 +79,19 @@ router.beforeEach(async () => {
 ```
 
 - [Authentification avec login et mdp](https://firebase.google.com/docs/auth/web/password-auth)
+
+### Firestore
+
+- Créer une base de données firestore et lui renseigner les règles de sécurité suivantes
+
+```js
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /{document=**} {
+      allow read;
+      allow write: if (request.auth.uid != null);
+    }
+  }
+}
+```

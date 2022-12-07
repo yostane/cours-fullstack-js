@@ -7,6 +7,9 @@ const user = useCurrentUser();
 <template>
   <main>
     <p v-if="user">Hello {{ user.email }}</p>
+
+    <v-pagination length="6"></v-pagination>
+
     <the-welcome />
   </main>
 </template>
