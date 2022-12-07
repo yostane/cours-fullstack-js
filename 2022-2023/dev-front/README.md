@@ -104,7 +104,10 @@ router.beforeEach(async (to) => {
 
 ### Firestore
 
-- Créer une base de données Firestore et remplacer la règle de sécurité existante par celle là:
+- Créer une base de données Firestore
+  - En mode production
+  - Choisir une région Europe pour avoir le meilleur temps de réponse
+- Et remplacer la règle de sécurité existante par celle là:
 
 ```js
 // Allow read on all documents for everyone

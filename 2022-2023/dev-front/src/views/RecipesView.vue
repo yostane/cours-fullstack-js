@@ -73,6 +73,7 @@ export default {
         collection(db, collectionName),
         where("uri", "==", recipe.recipe.uri)
       );
+      // Exécution de la requête
       const querySnapshot = await getDocs(q);
       console.log("is Favorite: ", !querySnapshot.empty);
       return !querySnapshot.empty;
