@@ -34,6 +34,15 @@ npm run build
 npm run lint
 ```
 
+## Affichage des icones
+
+- Lancer cette commande dans un terminal ouvert à la racine du projet:
+  - `npm install @mdi/font -D`
+  - Elle installe icones de type **mdi** (medium density icons)
+- Dans main.js, ajouter cet import: `import '@mdi/font/css/materialdesignicons.css'`
+- Et c'est tout bon !
+  - Pour plus de détails, voici une [doc de référence](https://vuetifyjs.com/en/features/icon-fonts/#material-design-icons)
+
 ## Ajout de firebase
 
 - Créer un projet sur [console.firebase.google.com/](https://console.firebase.google.com/)
@@ -78,13 +87,28 @@ router.beforeEach(async () => {
 });
 ```
 
+### Authentification
+
 - [Authentification avec login et mdp](https://firebase.google.com/docs/auth/web/password-auth)
+
+```js
+// Ne pas permettre l'affichage de la vue login si on est déjà conneté
+// ⚠ Ceci est juste esthétique
+router.beforeEach(async (to) => {
+  const currentUser = await getCurrentUser();
+  if (to.name === "login" && currentUser) {
+    return { name: "home" };
+  }
+});
+```
 
 ### Firestore
 
-- Créer une base de données firestore et lui renseigner les règles de sécurité suivantes
+- Créer une base de données firestore et remplacer la règle de sécurité existante par celle là:
 
 ```js
+// Allow read on all documents for everyone
+// Allow write on all documents only for logged-in users
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
