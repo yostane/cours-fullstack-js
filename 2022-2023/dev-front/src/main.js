@@ -10,7 +10,6 @@ import colors from "vuetify/lib/util/colors";
 
 import { VueFire, VueFireAuth } from "vuefire";
 import { firebaseApp } from "./firebase";
-import { getCurrentUser } from "vuefire";
 
 import "./assets/main.css";
 
@@ -38,9 +37,6 @@ app.use(VueFire, {
   modules: [VueFireAuth()],
 });
 
-router.beforeEach(async () => {
-  await getCurrentUser();
-});
 app.use(router);
 
 app.mount("#app");

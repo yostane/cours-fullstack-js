@@ -3,6 +3,7 @@ import HomeView from "../views/HomeView.vue";
 import AboutView from "../views/AboutView.vue";
 import LoginView from "../views/LoginView.vue";
 import RecipesView from "../views/RecipesView.vue";
+import { getCurrentUser, useCurrentUser } from "vuefire";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -31,6 +32,16 @@ const router = createRouter({
       component: AboutView,
     },
   ],
+});
+
+router.beforeEach(async () => {
+  await getCurrentUser();
+});
+
+router.beforeEach(async (to) => {
+  if (to.name === "login" && useCurrentUser()) {
+    return { name: "home" };
+  }
 });
 
 export default router;
