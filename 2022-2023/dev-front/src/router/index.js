@@ -38,6 +38,8 @@ router.beforeEach(async () => {
   await getCurrentUser();
 });
 
+// Ne pas permettre l'affichage de la vue login si on est déjà conneté
+// ⚠ Ceci est juste esthétique
 router.beforeEach(async (to) => {
   if (to.name === "login" && useCurrentUser()) {
     return { name: "home" };
