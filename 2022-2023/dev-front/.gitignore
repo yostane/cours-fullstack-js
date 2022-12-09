@@ -1,6 +1,9 @@
 src/firebase.js
 src/api-infos.js
 
+.firebaserc
+
+/.firebase
 .DS_Store
 node_modules
 /dist

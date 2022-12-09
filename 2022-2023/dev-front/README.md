@@ -122,3 +122,20 @@ service cloud.firestore {
   }
 }
 ```
+
+## Déployer sur Firebase
+
+- Installer le CLI Firebase: `npm install -g firebase`
+- Se connecter sur le CLI avec `firebase login`
+- Se positionner à la racine du projet et le lier à Firebase avec `firebase init`
+  - Répondre selon votre choix concernant le collecte des usages
+  - _Which Firebase features do you want to set up for this directory? Press Space to select features, then Enter to confirm your choices._
+    - Avec les flèches, naviguer jusque **"Hosting: Configure files for Firebase Hosting and (optionally) set up GitHub Action"**
+    - Appuyer sur la touche _espace_
+    - Appuyer sur _entrée_
+  - _Please select an option_ -> **Use an existing project**
+  - _Select a default Firebase project for this directory_ -> Choisir votre projet firebase
+  - _What do you want to use as your public directory?_ -> taper **dist**
+  - _Set up automatic builds and deploys with GitHub?_ -> Comme vous le souhaitez mais ce n'est pas couvert pas ce cours
+- Générer le site de production `npm run build`
+- Déployer le site `firebase deploy`
