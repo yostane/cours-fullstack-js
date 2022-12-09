@@ -4,6 +4,13 @@ import IconCommunity from "../components/icons/IconCommunity.vue";
 
 <template>
   <div class="about">
+    <img
+      alt="Vue logo"
+      class="logo"
+      src="@/assets/logo.svg"
+      width="125"
+      height="125"
+    />
     <h1><icon-community /> This is an about page</h1>
     <input type="text" v-model="userText" />
     <p>{{ userText }} - {{ userEmail }}</p>
