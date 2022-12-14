@@ -36,6 +36,7 @@ app.get("/dishes", async (req, res) => {
   const conn = await pool.getConnection();
   const dishes = await conn.query("SELECT name, price FROM Dishes");
   res.json(dishes);
+  conn.close();
 });
 
 app.post("/dish", async (req, res) => {
@@ -47,6 +48,7 @@ app.post("/dish", async (req, res) => {
   );
   console.log(queryResult); // { affectedRows: 1, insertId: 1, warningStatus: 0 }
   res.end();
+  conn.close();
 });
 
 // TODO: Ces middleware ne communiquent pas avec la BDD. Ce sera à faire en exercice.
