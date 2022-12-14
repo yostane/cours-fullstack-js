@@ -83,4 +83,4 @@ app.delete("/dish/:name", (req, res) => {
   res.end();
 });
 
-app.listen(3000);
+app.listen(process.env.PORT ?? 3000);
