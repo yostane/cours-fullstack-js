@@ -38,11 +38,6 @@ app.get("/dishes", async (req, res) => {
   res.json(dishes);
 });
 
-app.get("/dish/random", (req, res) => {
-  const index = Math.floor(Math.random() * dishes.length);
-  res.json(dishes[index]);
-});
-
 app.post("/dish", async (req, res) => {
   const dish = req.body;
   const conn = await pool.getConnection();
@@ -54,12 +49,21 @@ app.post("/dish", async (req, res) => {
   res.end();
 });
 
+// TODO: Ces middleware ne communiquent pas avec la BDD. Ce sera à faire en exercice.
+
+const localDishes = [{ name: "Banana", price: 100 }];
+
+app.get("/dish/random", (req, res) => {
+  const index = Math.floor(Math.random() * localDishes.length);
+  res.json(localDishes[index]);
+});
+
 // Modifier le prix d'un plat (le json contient le nom et le nouveau prix)
 app.put("/dish", (req, res) => {
   const dish = req.body;
-  const index = dishes.findIndex((p) => p.name === dish.name);
+  const index = localDishes.findIndex((p) => p.name === dish.name);
   if (index != -1) {
-    dishes[index] = dish;
+    localDishes[index] = dish;
   } else {
     res.status(400);
   }
@@ -68,9 +72,9 @@ app.put("/dish", (req, res) => {
 
 app.delete("/dish/:name", (req, res) => {
   const name = req.params.name;
-  const index = dishes.findIndex((p) => p.name === name);
+  const index = localDishes.findIndex((p) => p.name === name);
   if (index != -1) {
-    dishes.splice(index, 1);
+    localDishes.splice(index, 1);
   } else {
     res.status(400);
   }
