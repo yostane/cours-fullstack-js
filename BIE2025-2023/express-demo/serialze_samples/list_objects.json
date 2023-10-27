@@ -1,0 +1,10 @@
+[
+  {
+    "fps": 60,
+    "engine": "vulkan"
+  },
+  {
+    "fps": 120,
+    "engine": "directx"
+  }
+]

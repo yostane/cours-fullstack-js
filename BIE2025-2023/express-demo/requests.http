@@ -1,0 +1,11 @@
+@base_url=http://localhost:3000/api
+###
+{{base_url}}/hello
+###
+POST {{base_url}}/hello
+Content-Type: application/json
+
+{
+    "message": "api call",
+    "year": 2022
+}
