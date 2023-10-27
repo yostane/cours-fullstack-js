@@ -2,6 +2,7 @@
 import { initializeApp } from 'firebase/app'
 import { getAnalytics } from 'firebase/analytics'
 import { firebaseConfig } from './firebaseconfig'
+
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -9,5 +10,9 @@ import { firebaseConfig } from './firebaseconfig'
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig)
-const analytics = getAnalytics(app)
+// export const app =
+// export const analytics = getAnalytics(app)
+
+export function initializeFirebase() {
+  initializeApp(firebaseConfig)
+}
