@@ -8,10 +8,12 @@ const yugiohCards = [
   {
     name: "Magicien sombre",
     attack: 2500,
+    type: "attack",
   },
   {
     name: "Dragon blanc aux yeux bleus",
     attack: 3000,
+    type: "attack",
   },
 ];
 
@@ -25,6 +27,8 @@ app.get("/cards", (req, res) => {
 
 app.post("/cards", (req, res) => {
   console.log("adding new card");
+  const card = req.body;
+  yugiohCards.push(card);
 });
 
 const PORT = 3000;
