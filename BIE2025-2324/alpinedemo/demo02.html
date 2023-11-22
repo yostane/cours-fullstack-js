@@ -1,23 +1,47 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
   <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script
       defer
       src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
     ></script>
+    <script defer type="module" src="firebase.js"></script>
+    <script>
+      document.addEventListener("alpine:init", () => {
+        Alpine.store("auth", {
+          user: null,
+          async login(login, password) {
+            this.user = await authenticateUserWithFirebase(login, password);
+          },
+        });
+      });
+    </script>
   </head>
   <body>
     <h1 x-data="{ message: 'I ❤️ Alpine' }" x-text="message"></h1>
-    <div x-data="{ isLoggedIn: false }">
-      <div x-show="!isLoggedIn">
-        <label for="">login</label><input type="text" /><label for=""
-          >password</label
-        ><input type="text" />
-        <button @click="isLoggedIn = true">Expand</button>
+    <div>
+      <div
+        x-data="{
+        email: 'test@test.com',
+        password: 'test00'
+      }"
+        x-show="!$store.auth.user"
+      >
+        <div>
+          <label for="email">login</label
+          ><input type="text" id="email" x-model="email" />
+        </div>
+        <div>
+          <label for="password">password</label
+          ><input type="text" id="password" x-model="password" />
+        </div>
+        <button @click="await $store.auth.login(email, password)">Login</button>
       </div>
-      <div x-show="isLoggedIn">
+      <div x-data x-show="$store.auth.user">
         <h2>Hello user</h2>
+        <p x-text="$store.auth.user?.email"></p>
       </div>
     </div>
-    <script type="module" src="firebase.js"></script>
   </body>
 </html>
