@@ -17,15 +17,15 @@ const yugiohCards = [
   },
 ];
 
-app.get("/", (req, res) => {
+app.get("/api/", (req, res) => {
   res.send("Express + TypeScript Server");
 });
 
-app.get("/cards", (req, res) => {
+app.get("/api/cards", (req, res) => {
   res.json(yugiohCards);
 });
 
-app.post("/cards", (req, res) => {
+app.post("/api/cards", (req, res) => {
   console.log("adding new card");
   const card = req.body;
   yugiohCards.push(card);

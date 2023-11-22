@@ -1,0 +1,13 @@
+@base_url=http://localhost:3000/api
+###
+http://localhost:3000/
+###
+{{base_url}}/cards
+###
+POST {{base_url}}/cards
+Content-Type: application/json
+
+{
+    "name": "Raigeki",
+    "type": "magie"
+}
