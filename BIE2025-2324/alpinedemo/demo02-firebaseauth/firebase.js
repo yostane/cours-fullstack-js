@@ -6,7 +6,6 @@ import {
   getAuth,
   signInWithEmailAndPassword,
 } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-auth.js";
-import { getFirestore } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore.js";
 
 import { firebaseConfig } from "./firebase-config.js";
 /* create a firebase-config.js in the same folder with this content (replace with your app information)
@@ -38,5 +37,3 @@ window.authenticateUserWithFirebase = async function (email, password) {
   );
   return userCredential.user;
 };
-
-window.addItem = async function addItem(email, item) {};

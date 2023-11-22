@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+    <script defer type="module" src="firebase.js"></script>
+    <script>
+      document.addEventListener("alpine:init", () => {
+        Alpine.store("auth", {
+          user: null,
+          items: [],
+          async loadItems() {
+            this.items = await getFbItems(this.user.email);
+          },
+          async login(login, password) {
+            this.user = await authenticateUserWithFirebase(login, password);
+            await this.loadItems();
+          },
+          async addItem(title, description) {
+            await addFbItem(this.user.email, { title, description });
+            await this.loadItems();
+          },
+          async deleteItem(id) {
+            await deleteFbItem(this.user.email, id);
+            await this.loadItems();
+          },
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <h1 x-data="{ message: 'I ❤️ Alpine' }" x-text="message"></h1>
+    <div>
+      <div
+        x-data="{
+        email: 'test@test.com',
+        password: 'test00'
+      }"
+        x-show="!$store.auth.user"
+      >
+        <div>
+          <label for="email">login</label
+          ><input type="text" id="email" x-model="email" />
+        </div>
+        <div>
+          <label for="password">password</label
+          ><input type="text" id="password" x-model="password" />
+        </div>
+        <button @click="await $store.auth.login(email, password)">Login</button>
+      </div>
+      <div x-data x-show="$store.auth.user">
+        <h2>Hello user</h2>
+        <p x-text="$store.auth.user?.email"></p>
+        <div
+          x-data="{
+        title: 'Note1',
+        description: 'I love alpine'
+      }"
+        >
+          <div>
+            <label for="title">login</label
+            ><input type="text" id="title" x-model="title" />
+          </div>
+          <div>
+            <label for="description">password</label
+            ><input type="text" id="description" x-model="description" />
+          </div>
+          <button @click="await $store.auth.addItem(title, description)">
+            Ajouter un élément
+          </button>
+        </div>
+        <ul>
+          <template x-data x-for="item in $store.auth.items" :key="item.id">
+            <li>
+              <b>Title: </b><span x-text="item.title"></span>,
+              <b>Description:</b><span x-text="item.description"></span> (<b
+                >id:</b
+              ><span x-text="item.id"></span>)
+              <button @click="await $store.auth.deleteItem(item.id)">
+                Delete Item
+              </button>
+            </li>
+          </template>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>
