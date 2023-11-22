@@ -1,0 +1,22 @@
+<html>
+  <head>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+  </head>
+  <body>
+    <h1 x-data="{ message: 'I ❤️ Alpine' }" x-text="message"></h1>
+    <div x-data="{ isLoggedIn: false }">
+      <div x-show="!isLoggedIn">
+        <label for="">login</label><input type="text" /><label for=""
+          >password</label
+        ><input type="text" />
+        <button @click="isLoggedIn = true">Expand</button>
+      </div>
+      <div x-show="isLoggedIn">
+        <h2>Hello user</h2>
+      </div>
+    </div>
+  </body>
+</html>
