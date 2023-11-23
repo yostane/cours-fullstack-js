@@ -29,6 +29,7 @@ app.post("/api/cards", (req, res) => {
   console.log("adding new card");
   const card = req.body;
   yugiohCards.push(card);
+  res.end();
 });
 
 const PORT = 3000;
