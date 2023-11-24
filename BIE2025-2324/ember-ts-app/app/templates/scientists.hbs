@@ -1,0 +1,12 @@
+{{page-title "Scientists"}}
+{{!-- app/templates/posts.hbs --}}
+<section>
+{{#each model as |post|}}
+<div>
+  <div>{{post.title}}</div>
+  <div>{{post.body}}</div>
+</div>
+{{/each}}
+</section>
+
+{{outlet}}

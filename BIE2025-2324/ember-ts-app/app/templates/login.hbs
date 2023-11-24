@@ -1,0 +1,6 @@
+{{page-title "Login"}}
+{{outlet}}
+<div>
+  {{input type="text" value=firstName disabled=entryNotAllowed size="50"}}
+  <button {{action "authenticate"}}>{{title}}</button>
+</div>
