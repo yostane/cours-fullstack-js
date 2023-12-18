@@ -1,39 +1,38 @@
 import express from "express";
 import bodyParser from "body-parser";
+import mariadb from "mariadb";
+
+const pool = mariadb.createPool({
+  host: "localhost",
+  user: "db_fs_user",
+  password: "db_fs_user",
+  database: "3info2324",
+  connectionLimit: 5,
+});
 
 const app = express();
 app.use(bodyParser.json());
-
-const yugiohCards = [
-  {
-    name: "Magicien sombre",
-    attack: 2500,
-    type: "attack",
-  },
-  {
-    name: "Monster rebord",
-    attack: 0,
-    type: "magick",
-  },
-  {
-    name: "Dragon blanc aux yeux bleus",
-    attack: 3000,
-    type: "attack",
-  },
-];
 
 app.get("/api/", (req, res) => {
   res.send("Express + TypeScript Server");
 });
 
-app.get("/api/cards", (req, res) => {
-  res.json(yugiohCards);
+app.get("/api/cards", async (req, res) => {
+  const connection = await pool.getConnection();
+  const cards = await connection.query("SELECT * from CARDS");
+  connection.end();
+  res.json(cards);
 });
 
-app.post("/api/cards", (req, res) => {
+app.post("/api/cards", async (req, res) => {
   console.log("adding new card");
   const card = req.body;
-  yugiohCards.push(card);
+  const connection = await pool.getConnection();
+  const cards = await connection.query(
+    "INSERT INTO CARDS (name, attack, type) VALUES (?, ?, ?)",
+    [card.name, card.attack, card.type]
+  );
+  connection.end();
   res.end();
 });
 
