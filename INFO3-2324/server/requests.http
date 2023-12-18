@@ -10,3 +10,12 @@ Content-Type: application/json
     "attack": 0,
     "type": "magie"
 }
+###
+POST {{base_url}}/cards
+Content-Type: application/json
+
+{
+    "name": "Monster reborn",
+    "attack": 0,
+    "type": "magie"
+}

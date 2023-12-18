@@ -25,8 +25,8 @@ app.get("/api/cards", async (req, res) => {
 });
 
 app.post("/api/cards", async (req, res) => {
-  console.log("adding new card");
   const card = req.body;
+  console.log("adding new card", card);
   const connection = await pool.getConnection();
   const cards = await connection.query(
     "INSERT INTO CARDS (name, attack, type) VALUES (?, ?, ?)",
