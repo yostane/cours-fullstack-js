@@ -19,3 +19,14 @@ Content-Type: application/json
     "attack": 0,
     "type": "magie"
 }
+###
+POST {{base_url}}/auth/login
+Content-Type: application/json
+
+{
+    "mail": "test@test.com",
+    "password": "test"
+}
+###
+{{base_url}}/cards/favorites
+Authorization: Bearer test@test.com-lqc58kib

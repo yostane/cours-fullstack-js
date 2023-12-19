@@ -28,12 +28,75 @@ app.post("/api/cards", async (req, res) => {
   const card = req.body;
   console.log("adding new card", card);
   const connection = await pool.getConnection();
-  const cards = await connection.query(
+  await connection.query(
     "INSERT INTO CARDS (name, attack, type) VALUES (?, ?, ?)",
     [card.name, card.attack, card.type]
   );
   connection.end();
   res.end();
+});
+
+app.post("/api/auth/login", async (req, res) => {
+  const userInfo = req.body;
+  const connection = await pool.getConnection();
+  const users = await connection.query(
+    "SELECT id FROM USERS WHERE mail = ? AND password = ?",
+    [userInfo.mail, userInfo.password]
+  );
+  console.log("Found users", users);
+  connection.end();
+  if (users.length != 1) {
+    res.status(400).end();
+  } else {
+    // Création d'un token aléatoire
+    const token = `${userInfo.mail}-${Number(new Date()).toString(36)}`;
+    // Ajout du token dans la BDD (pour l'associer au user)
+    await connection.query(
+      "INSERT INTO USERS_TOKENS (id_user, token) VALUES (?, ?)",
+      [users[0].id, token]
+    );
+    res.json({
+      token,
+    });
+  }
+});
+
+app.get("/api/cards/favorites", async (req, res) => {
+  // on récupère le header dans une var
+  const authHeader = req.headers.authorization;
+  console.log("req.headers.authorization", authHeader);
+  // On vérifie que le header existe et que sa valeur commence par bearer
+  if (
+    authHeader == null ||
+    !authHeader.toLocaleLowerCase().startsWith("bearer ")
+  ) {
+    res.sendStatus(403);
+    return;
+  }
+  // On isole le token
+  const token = authHeader.substring("bearer ".length);
+  const connection = await pool.getConnection();
+  // Récupération du token de la BDD
+  const userIds = await connection.query(
+    "SELECT id_user FROM USERS_TOKENS WHERE token = ?",
+    [token]
+  );
+  console.log("Found user ids", userIds);
+  connection.end();
+  if (userIds.length != 1) {
+    console.warn("no unique user id found", userIds);
+    res.status(403).end();
+    return;
+  }
+  const userId = userIds[0].id_user;
+  const favorites = await connection.query(
+    `select CARDS.id, CARDS.name, CARDS.attack, CARDS.type 
+      from CARDS INNER JOIN USERS_CARDS 
+      on USERS_CARDS.id_card = CARDS.id 
+      AND USERS_CARDS.id_user = ?`,
+    [userId]
+  );
+  res.send(favorites);
 });
 
 const PORT = 3000;
