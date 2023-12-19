@@ -29,4 +29,4 @@ Content-Type: application/json
 }
 ###
 {{base_url}}/cards/favorites
-Authorization: Bearer test@test.com-lqc58kib
+Authorization: Bearer test@test.com-lqc676lf

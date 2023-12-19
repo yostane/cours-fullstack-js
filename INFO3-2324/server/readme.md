@@ -48,13 +48,15 @@ Quelques requêtes en vrac
 -- authent
 SELECT id FROM USERS WHERE mail = 'test@test.com' AND password = 'test';
 -- Ajout d'un token
-INSERT INTO USERS_TOEKNS (id_user, token) VALUES (1, 'abcde');
+INSERT INTO USERS_TOKENS (id_user, token) VALUES (1, 'abcde');
+-- Récupération de l'ID à partir du token
+SELECT id_user FROM USERS_TOKENS WHERE token = 'abcde';
 -- cartes favorties du user 1
 select * from CARDS INNER JOIN USERS_CARDS on USERS_CARDS.id_card = CARDS.id AND USERS_CARDS.id_user = 1;
 -- la même en enlevant les colonnes inutiles
 select CARDS.id, CARDS.name, CARDS.attack, CARDS.type  from CARDS INNER JOIN USERS_CARDS on USERS_CARDS.id_card = CARDS.id AND USERS_CARDS.id_user = 1;
 ```
 
-## Lines
+## Liens
 
 - [installer mariadb avec homebrew (macOS, Linux)](https://mariadb.com/kb/en/installing-mariadb-on-macos-using-homebrew/)

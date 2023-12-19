@@ -20,7 +20,7 @@ app.get("/api/", (req, res) => {
 app.get("/api/cards", async (req, res) => {
   const connection = await pool.getConnection();
   const cards = await connection.query("SELECT * from CARDS");
-  connection.end();
+  await connection.end();
   res.json(cards);
 });
 
@@ -32,29 +32,31 @@ app.post("/api/cards", async (req, res) => {
     "INSERT INTO CARDS (name, attack, type) VALUES (?, ?, ?)",
     [card.name, card.attack, card.type]
   );
-  connection.end();
+  await connection.end();
   res.end();
 });
 
 app.post("/api/auth/login", async (req, res) => {
   const userInfo = req.body;
-  const connection = await pool.getConnection();
+  let connection = await pool.getConnection();
   const users = await connection.query(
     "SELECT id FROM USERS WHERE mail = ? AND password = ?",
     [userInfo.mail, userInfo.password]
   );
   console.log("Found users", users);
-  connection.end();
+  await connection.end();
   if (users.length != 1) {
     res.status(400).end();
   } else {
     // Création d'un token aléatoire
     const token = `${userInfo.mail}-${Number(new Date()).toString(36)}`;
     // Ajout du token dans la BDD (pour l'associer au user)
+    connection = await pool.getConnection();
     await connection.query(
       "INSERT INTO USERS_TOKENS (id_user, token) VALUES (?, ?)",
       [users[0].id, token]
     );
+    await connection.end();
     res.json({
       token,
     });
