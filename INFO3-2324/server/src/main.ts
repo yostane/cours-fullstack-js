@@ -10,6 +10,9 @@ const pool = mariadb.createPool({
   connectionLimit: 5,
 });
 
+console.log("ENV vars", process.env);
+console.log("database pool", pool);
+
 const app = express();
 app.use(bodyParser.json());
 app.use(express.static("public"));
