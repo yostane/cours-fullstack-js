@@ -3,15 +3,16 @@ import bodyParser from "body-parser";
 import mariadb from "mariadb";
 
 const pool = mariadb.createPool({
-  host: "localhost",
-  user: "db_fs_user",
-  password: "db_fs_user",
-  database: "3info2324",
+  host: process.env.DB_HOST ?? "localhost",
+  user: process.env.DB_USER ?? "db_fs_user",
+  password: process.env.DB_PASSWORD ?? "db_fs_user",
+  database: process.env.DB_DATABASE ?? "3info2324",
   connectionLimit: 5,
 });
 
 const app = express();
 app.use(bodyParser.json());
+app.use(express.static("public"));
 
 app.get("/api/", (req, res) => {
   res.send("Express + TypeScript Server");
