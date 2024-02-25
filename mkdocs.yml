@@ -1,0 +1,63 @@
+site_name: Techniques de programmation
+site_url: https://yostane.github.io/cours-fullstack-js/
+repo_url: https://github.com/yostane/cours-fullstack-js
+repo_name: yostane/cours-fullstack-js
+edit_uri: ""
+
+extra:
+  social:
+    - icon: fontawesome/brands/github-alt
+      link: https://github.com/yostane
+
+nav:
+  - index.md
+
+plugins:
+  - search
+  - glightbox
+
+theme:
+  custom_dir: overrides
+  logo: img/logo.jpg
+  favicon: img/logo.jpg
+  name: material
+  features:
+    - navigation.top
+    - navigation.indexes
+    - content.tabs.link
+  icon:
+    repo: fontawesome/brands/github
+  palette:
+    - scheme: default
+      media: "(prefers-color-scheme: light)"
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+      primary: lime
+      accent: green
+    - scheme: slate
+      media: "(prefers-color-scheme: dark)"
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+      primary: lime
+      accent: green
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - def_list
+  - pymdownx.inlinehilite
+  - attr_list
+  - md_in_html
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.snippets:
+      base_path:
+        ["material/poo", "material/functional", "material/generalities"]
