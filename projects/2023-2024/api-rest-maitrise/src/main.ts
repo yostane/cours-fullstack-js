@@ -5,23 +5,7 @@ export const app = express();
 
 app.use(bodyParser.json());
 
-const yugiohCards = [
-  {
-    name: "Magicien sombre",
-    attack: 2500,
-    type: "attack",
-  },
-  {
-    name: "Monster rebord",
-    attack: 0,
-    type: "magick",
-  },
-  {
-    name: "Dragon blanc aux yeux bleus",
-    attack: 3000,
-    type: "attack",
-  },
-];
+const yugiohCards = new Array();
 
 function getMessage(): string {
   return "Express + TypeScript Server";
