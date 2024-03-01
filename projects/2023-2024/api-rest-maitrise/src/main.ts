@@ -23,8 +23,12 @@ const yugiohCards = [
   },
 ];
 
+function getMessage(): string {
+  return "Express + TypeScript Server";
+}
+
 app.get("/api/", (req, res) => {
-  res.send("Express + TypeScript Server");
+  res.send({ message: getMessage() });
 });
 
 app.get("/api/cards", (req, res) => {
