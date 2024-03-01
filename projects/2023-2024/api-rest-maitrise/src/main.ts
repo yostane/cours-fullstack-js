@@ -1,11 +1,10 @@
 import express from "express";
 import bodyParser from "body-parser";
+import { Card } from "./model/Card";
 
 export const app = express();
 
 app.use(bodyParser.json());
-
-const yugiohCards = new Array();
 
 function getMessage(): string {
   return "Express + TypeScript Server";
@@ -15,14 +14,14 @@ app.get("/api/", (req, res) => {
   res.send({ message: getMessage() });
 });
 
-app.get("/api/cards", (req, res) => {
-  res.json(yugiohCards);
+app.get("/api/cards", async (req, res) => {
+  res.json(await Card.findAll());
 });
 
-app.post("/api/cards", (req, res) => {
+app.post("/api/cards", async (req, res) => {
   console.log("adding new card");
   const card = req.body;
-  yugiohCards.push(card);
+  await Card.create(card);
   res.end();
 });
 

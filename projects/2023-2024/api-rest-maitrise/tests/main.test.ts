@@ -1,8 +1,13 @@
 import request from "supertest";
 
 import { app, server } from "../src/main";
+import { sequelize } from "../src/database";
 
 describe("Test main.ts", () => {
+  beforeEach(async () => {
+    await sequelize.sync({ force: true });
+  });
+
   test("get message", async () => {
     const res = await request(app).get("/api/");
     expect(res.body).toEqual({ message: "Express + TypeScript Server" });
