@@ -5,6 +5,7 @@
   "main": "src/main.ts",
   "scripts": {
     "start": "ts-node src/main.ts",
+    "watch": "nodemon src/main.ts",
     "test": "jest --coverage"
   },
   "keywords": [],

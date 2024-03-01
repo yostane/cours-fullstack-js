@@ -44,6 +44,6 @@ app.post("/api/cards", (req, res) => {
 
 const PORT = 3000;
 
-app.listen(PORT, () => {
+export const server = app.listen(PORT, () => {
   console.log(`⚡️[server]: Server is running at http://localhost:${PORT}`);
 });

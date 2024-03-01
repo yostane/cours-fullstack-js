@@ -1,6 +1,6 @@
 import request from "supertest";
 
-import { app } from "../src/main";
+import { app, server } from "../src/main";
 
 describe("Test main.ts", () => {
   test("get message", async () => {
@@ -8,5 +8,7 @@ describe("Test main.ts", () => {
     expect(res.body).toEqual({ message: "Express + TypeScript Server" });
   });
 
-  // other tests
+  afterAll(() => {
+    server.close();
+  });
 });
