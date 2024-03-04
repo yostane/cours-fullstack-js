@@ -4,14 +4,17 @@
   "description": "",
   "main": "src/main.ts",
   "scripts": {
-    "start": "ts-node src/main.ts",
-    "watch": "nodemon src/main.ts",
-    "test": "jest --coverage"
+    "install:podman:windows": "scoop install podman && pip install -r requirements.txt",
+    "start:db:dev": "podman machine start && podman-compose up -d",
+    "start": "dotenvx run --env-file=.env.dev -- ts-node src/main.ts",
+    "watch": "dotenvx run --env-file=.env.dev -- nodemon src/main.ts",
+    "test": "dotenvx run --env-file=.env.test -- jest --coverage"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@dotenvx/dotenvx": "^0.24.0",
     "express": "^4.18.3",
     "pg": "^8.11.3",
     "pg-hstore": "^2.3.4",

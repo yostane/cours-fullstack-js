@@ -2,3 +2,5 @@ node_modules/
 coverage/
 .vscode/
 db.sqlite
+.env.dev
+pglocal.session.sql

@@ -1,6 +1,7 @@
 import express from "express";
 import bodyParser from "body-parser";
 import { Card } from "./model/Card";
+import { sequelize } from "./database";
 
 export const app = express();
 
@@ -27,6 +28,8 @@ app.post("/api/cards", async (req, res) => {
 
 const PORT = 3000;
 
-export const server = app.listen(PORT, () => {
+export const server = app.listen(PORT, async () => {
+  // TODO: do only in development and test modes
+  await sequelize.sync();
   console.log(`⚡️[server]: Server is running at http://localhost:${PORT}`);
 });
