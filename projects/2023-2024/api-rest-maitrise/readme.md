@@ -19,3 +19,7 @@ DB_DATABASE=
 - Base de données locale [postgres via un container](https://www.docker.com/blog/how-to-use-the-postgres-docker-official-image/)
   - Installer docker et docker-composer ou podman et podman-compose
   - `scoop install podman` puis `pip3 install podman-compose` ou `pip install -r requirements.txt`
+
+- tsoa (json open api) + Swagger UI. [tuto1](https://medium.com/ms-club-of-sliit/building-rest-api-with-express-js-typescript-and-swagger-387a9c731717)
+
+- Logging avec Morgan

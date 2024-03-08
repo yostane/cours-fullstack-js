@@ -6,7 +6,8 @@
   "scripts": {
     "install:podman:windows": "scoop install podman && pip install -r requirements.txt",
     "start:db:dev": "podman machine start && podman-compose up -d",
-    "start": "dotenvx run --env-file=.env.dev -- ts-node src/main.ts",
+    "start:dev": "dotenvx run --env-file=.env.dev -- ts-node src/main.ts",
+    "start:prod": "dotenvx run --env-file=.env.prod -- ts-node src/main.ts",
     "watch": "dotenvx run --env-file=.env.dev -- nodemon src/main.ts",
     "test": "dotenvx run --env-file=.env.test -- jest --coverage"
   },
@@ -16,17 +17,23 @@
   "dependencies": {
     "@dotenvx/dotenvx": "^0.24.0",
     "express": "^4.18.3",
+    "morgan": "^1.10.0",
     "pg": "^8.11.3",
     "pg-hstore": "^2.3.4",
     "sequelize": "^6.37.1",
     "sqlite3": "^5.1.7",
-    "ts-node": "^10.9.2"
+    "swagger-ui-express": "^5.0.0",
+    "ts-node": "^10.9.2",
+    "tsoa": "^6.0.1"
   },
   "devDependencies": {
     "@types/express": "^4.17.21",
     "@types/jest": "^29.5.12",
+    "@types/morgan": "^1.9.9",
     "@types/node": "^20.11.24",
     "@types/supertest": "^6.0.2",
+    "@types/swagger-ui-express": "^4.1.6",
+    "concurrently": "^8.2.2",
     "nodemon": "^3.1.0",
     "supertest": "^6.3.4",
     "ts-jest": "^29.1.2"

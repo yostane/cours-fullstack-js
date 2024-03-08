@@ -2,9 +2,11 @@ import express from "express";
 import bodyParser from "body-parser";
 import { Card } from "./model/Card";
 import { sequelize } from "./database";
+import morgan from "morgan";
 
 export const app = express();
 
+app.use(morgan("tiny"));
 app.use(bodyParser.json());
 
 function getMessage(): string {
