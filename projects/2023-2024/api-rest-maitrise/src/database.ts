@@ -24,3 +24,4 @@ function getDatabase(): Sequelize {
 }
 
 export const sequelize = getDatabase();
+console.log("using database with dialect", sequelize.getDialect());
