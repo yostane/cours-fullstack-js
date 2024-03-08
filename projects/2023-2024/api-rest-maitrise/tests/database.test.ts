@@ -1,7 +1,7 @@
 import { sequelize } from "../src/database";
 import { Card } from "../src/model/Card";
 
-describe("Test main.ts", () => {
+describe("Testing the database", () => {
   beforeEach(async () => {
     await sequelize.sync({ force: true });
   });
@@ -18,6 +18,6 @@ describe("Test main.ts", () => {
     await Card.create(cardToAdd);
 
     const cards = await Card.findAll();
-    expect(cards).toMatchObject([cardToAdd]);
+    expect(cards[0]).toMatchObject(cardToAdd);
   });
 });
