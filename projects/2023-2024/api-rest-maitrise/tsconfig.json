@@ -1,5 +1,5 @@
 {
-  "exclude": ["./coverage", "./dist", "tests", "jest.config.js"],
+  "exclude": ["./coverage", "./dist", "tests", "jest.config.ts"],
   "ts-node": {
     "transpileOnly": true,
     "files": true
