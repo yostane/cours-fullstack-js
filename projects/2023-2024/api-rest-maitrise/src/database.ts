@@ -14,8 +14,8 @@ function getDatabase(): Sequelize {
       process.env.DB_USER ?? "",
       process.env.DB_PASSWORD ?? "",
       {
-        host: "localhost",
-        port: 5432,
+        host: process.env.DB_HOST ?? "",
+        port: +(process.env.DB_PORT ?? "0"),
         dialect: dialect,
       }
     );
