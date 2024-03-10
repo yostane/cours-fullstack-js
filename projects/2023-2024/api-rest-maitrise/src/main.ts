@@ -3,11 +3,14 @@ import bodyParser from "body-parser";
 import { Card } from "./model/Card";
 import { sequelize } from "./database";
 import morgan from "morgan";
+import { CardsController as CardController } from "./controller/CardController";
 
 export const app = express();
 
 app.use(morgan("tiny"));
 app.use(bodyParser.json());
+
+const cardController = new CardController();
 
 function getMessage(): string {
   return "Express + TypeScript Server";
@@ -18,7 +21,7 @@ app.get("/api/", (req, res) => {
 });
 
 app.get("/api/cards", async (req, res) => {
-  res.json(await Card.findAll());
+  res.json();
 });
 
 app.post("/api/cards", async (req, res) => {

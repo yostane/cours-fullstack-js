@@ -1,8 +1,9 @@
 import { Model, DataTypes } from "sequelize";
 import { sequelize } from "../database";
+import { Column, Table } from "sequelize-typescript";
 
-export class Card extends Model {}
-Card.init(
+export class Card2 extends Model {}
+Card2.init(
   {
     name: DataTypes.STRING,
     attack: DataTypes.INTEGER,
@@ -10,3 +11,21 @@ Card.init(
   },
   { sequelize }
 );
+
+export interface ICard {
+  name: string;
+  attack: number;
+  type: string;
+}
+
+@Table
+export class Card extends Model implements ICard {
+  @Column
+  name!: string;
+
+  @Column
+  attack!: number;
+
+  @Column
+  type!: string;
+}

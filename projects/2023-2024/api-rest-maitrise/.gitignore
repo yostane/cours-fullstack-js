@@ -5,3 +5,4 @@ db.sqlite
 .env.dev
 .env.prod
 pglocal.session.sql
+build/
