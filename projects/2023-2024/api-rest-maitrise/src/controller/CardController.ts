@@ -12,7 +12,7 @@ import {
 import { Card, ICard } from "../model/Card";
 
 @Route("cards")
-export class CardsController extends Controller {
+export class CardController extends Controller {
   @Get("/")
   public async getAll(): Promise<ICard[]> {
     return await Card.findAll();

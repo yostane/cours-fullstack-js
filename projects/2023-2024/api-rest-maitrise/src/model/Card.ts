@@ -2,6 +2,8 @@ import { Model, DataTypes } from "sequelize";
 import { sequelize } from "../database";
 import { Column, Table } from "sequelize-typescript";
 
+/* Remplacé par le code en dessous pour avoir
+une compatibilité avec tsoa 
 export class Card2 extends Model {}
 Card2.init(
   {
@@ -11,13 +13,16 @@ Card2.init(
   },
   { sequelize }
 );
+*/
 
+/** Pour être détecté par tsoa, il faut passer par une interface */
 export interface ICard {
   name: string;
   attack: number;
   type: string;
 }
 
+/** Cette classe est compatible avec sequelize tout en gradant la compatiibilité avec tsoa */
 @Table
 export class Card extends Model implements ICard {
   @Column

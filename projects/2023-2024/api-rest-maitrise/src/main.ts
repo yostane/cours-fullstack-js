@@ -3,7 +3,7 @@ import bodyParser from "body-parser";
 import { Card } from "./model/Card";
 import { sequelize } from "./database";
 import morgan from "morgan";
-import { CardsController as CardController } from "./controller/CardController";
+import { CardController as CardController } from "./controller/CardController";
 
 export const app = express();
 
@@ -21,7 +21,7 @@ app.get("/api/", (req, res) => {
 });
 
 app.get("/api/cards", async (req, res) => {
-  res.json();
+  res.json(await cardController.getAll());
 });
 
 app.post("/api/cards", async (req, res) => {
