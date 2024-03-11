@@ -5,12 +5,12 @@ export const folderRouter = express.Router();
 
 folderRouter.get("/", async (req, res) => {
   const folderController = new FolderController();
-  const content = folderController.getContent(req.body.path);
+  const content = await folderController.getChildren(req.body.path);
   res.json(content);
 });
 
 folderRouter.post("/", async (req, res) => {
   const folderController = new FolderController();
-  const content = folderController.createFolder(req.body.path);
+  await folderController.createFolder(req.body.path);
   res.end();
 });
