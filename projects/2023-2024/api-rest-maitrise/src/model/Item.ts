@@ -1,0 +1,3 @@
+interface IItem {
+  path: string;
+}

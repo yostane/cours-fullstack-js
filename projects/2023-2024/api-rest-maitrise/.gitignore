@@ -6,3 +6,4 @@ db.sqlite
 .env.prod
 pglocal.session.sql
 build/
+swagger.json

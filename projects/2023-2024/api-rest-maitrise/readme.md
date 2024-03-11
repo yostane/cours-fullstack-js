@@ -8,14 +8,6 @@
 - Initialiser un projet express
 - Ajouter les fichiers `tsconfig.json` et jest.config.js `npx ts-jest config:init`
 - [dotenvx permet d'avoir plusieurs fichiers d'environnements](https://github.com/dotenvx/dotenvx)
-
-```env
-DB_DIALECT=
-DB_USER=
-DB_PASSWORD=
-DB_DATABASE=
-```
-
 - Base de données locale [postgres via un container](https://www.docker.com/blog/how-to-use-the-postgres-docker-official-image/)
   - Installer docker et docker-composer ou podman et podman-compose
   - `scoop install podman` puis `pip3 install podman-compose` ou `pip install -r requirements.txt`
@@ -23,3 +15,11 @@ DB_DATABASE=
   - `Concurrently` permet de générer le fichier openAPI
   - Utiliser [sequelize-typescript](https://www.npmjs.com/package/sequelize-typescript) pour une meilleure intégration avec tsoa
 - Journalisation avec Morgan
+- Upload de fichiers avec [multer](https://expressjs.com/en/resources/middleware/multer.html)
+
+```txt
+DB_DIALECT=
+DB_USER=
+DB_PASSWORD=
+DB_DATABASE=
+```

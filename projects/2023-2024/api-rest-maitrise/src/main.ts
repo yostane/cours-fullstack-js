@@ -4,11 +4,27 @@ import { Card } from "./model/Card";
 import { sequelize } from "./database";
 import morgan from "morgan";
 import { CardController as CardController } from "./controller/CardController";
+import swaggerUi from "swagger-ui-express";
+import { folderRouter } from "./routes/FolderRouter";
 
 export const app = express();
 
+// logs des requêtes
 app.use(morgan("tiny"));
 app.use(bodyParser.json());
+// Permet d'exposer le fichier openapi à swagger
+app.use("/static", express.static("public"));
+app.use(
+  "/api/docs/",
+  swaggerUi.serve,
+  swaggerUi.setup(undefined, {
+    swaggerOptions: {
+      url: "/static/swagger.json",
+    },
+  })
+);
+
+app.use("/api/folders", folderRouter);
 
 const cardController = new CardController();
 

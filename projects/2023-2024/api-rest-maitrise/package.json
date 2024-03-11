@@ -6,7 +6,7 @@
   "scripts": {
     "install:podman:windows": "scoop install podman && pip install -r requirements.txt",
     "start:db:dev": "podman machine start && podman-compose up -d",
-    "start:dev": "concurrently \"dotenvx run --env-file=env/.env.dev -- nodemon\" \"nodemon -x tsoa spec\"",
+    "start:dev": "concurrently \"dotenvx run --env-file=env/.env.dev -- nodemon\" \"nodemon -x tsoa spec-and-routes\"",
     "start:prod": "dotenvx run --env-file=env/.env.prod -- ts-node src/main.ts",
     "test": "dotenvx run --env-file=env/.env.test -- jest --coverage",
     "openapi": "tsoa spec"

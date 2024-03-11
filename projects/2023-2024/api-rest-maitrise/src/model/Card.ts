@@ -1,6 +1,4 @@
-import { Model, DataTypes } from "sequelize";
-import { sequelize } from "../database";
-import { Column, Table } from "sequelize-typescript";
+import { Column, Table, Model, DataType } from "sequelize-typescript";
 
 /* Remplacé par le code en dessous pour avoir
 une compatibilité avec tsoa 
@@ -28,7 +26,7 @@ export class Card extends Model implements ICard {
   @Column
   name!: string;
 
-  @Column
+  @Column(DataType.INTEGER)
   attack!: number;
 
   @Column

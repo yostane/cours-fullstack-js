@@ -1,5 +1,8 @@
-import { Sequelize } from "sequelize";
+import { Sequelize } from "sequelize-typescript";
 import "@dotenvx/dotenvx";
+import { Folder } from "./model/Folder";
+import { File } from "./model/File";
+import { Card } from "./model/Card";
 
 function getDatabase(): Sequelize {
   const dialect = process.env.DB_DIALECT;
@@ -23,5 +26,11 @@ function getDatabase(): Sequelize {
   throw new Error();
 }
 
-export const sequelize = getDatabase();
+function getDatabaseWithModels(): Sequelize {
+  const sequelize = getDatabase();
+  sequelize.addModels([Folder, File, Card]);
+  return sequelize;
+}
+
+export const sequelize = getDatabaseWithModels();
 console.log("using database with dialect", sequelize.getDialect());
