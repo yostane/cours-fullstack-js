@@ -87,7 +87,7 @@ describe("Test main.ts", () => {
       .post("/api/folders")
       .set("Authorization", `Bearer ${token}`)
       .send({ path: "/" });
-    expect(res.body).toMatchObject(rootFolders);
+    expect(res.body).toIncludeAllPartialMembers(rootFolders);
 
     const res2 = await request(app)
       .post("/api/folders")

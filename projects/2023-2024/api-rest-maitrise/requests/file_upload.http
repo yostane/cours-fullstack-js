@@ -1,0 +1,16 @@
+# source: https://stackoverflow.com/a/23517227
+POST http://localhost:3000/api/files/upload
+Content-Type: multipart/form-data; boundary=2a8ae6ad-f4ad-4d9a-a92c-6d217011fe0f
+
+--2a8ae6ad-f4ad-4d9a-a92c-6d217011fe0f
+Content-Disposition: form-data; name="extra"
+Content-Type: text/plain
+
+/documents
+--2a8ae6ad-f4ad-4d9a-a92c-6d217011fe0f
+Content-Disposition: form-data; name="datafile"; filename="notes.txt"
+Content-Type: text/plain
+
+Hello, ceci est un test d'upload
+Fin du fichier
+--2a8ae6ad-f4ad-4d9a-a92c-6d217011fe0f--

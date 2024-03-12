@@ -9,6 +9,7 @@ import { folderRouter } from "./routes/FolderRouter";
 import { userRouter } from "./routes/UserRouter";
 import passport from "passport";
 import "./services/authentication";
+import { fileRouter } from "./routes/FileRouter";
 
 export const app = express();
 
@@ -36,6 +37,7 @@ app.use(
   passport.authenticate("jwt", { session: false }),
   folderRouter
 );
+app.use("/api/files", fileRouter);
 
 const cardController = new CardController();
 

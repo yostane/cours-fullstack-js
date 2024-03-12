@@ -17,14 +17,6 @@ folderRouter.post("/", async (req, res) => {
   res.json(content);
 });
 
-declare global {
-  namespace Express {
-    interface Request {
-      user?: User;
-    }
-  }
-}
-
 folderRouter.post("/create", async (req, res) => {
   const folderController = new FolderController();
   const user = req.user;
