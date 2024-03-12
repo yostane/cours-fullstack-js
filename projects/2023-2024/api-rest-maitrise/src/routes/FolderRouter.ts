@@ -1,24 +1,40 @@
 import express from "express";
 import { FolderController } from "../controller/FolderController";
-import passport from "passport";
-import "../services/authentication";
 
 export const folderRouter = express.Router();
 
 folderRouter.post("/", async (req, res) => {
   const folderController = new FolderController();
+  const user = req.user;
+  if (!user) {
+    res.sendStatus(401);
+    return;
+  }
   const content = await folderController.getChildren({
     path: req.body.path,
-    user: req.user,
+    user: user,
   });
   res.json(content);
 });
 
+declare global {
+  namespace Express {
+    interface Request {
+      user?: User;
+    }
+  }
+}
+
 folderRouter.post("/create", async (req, res) => {
   const folderController = new FolderController();
+  const user = req.user;
+  if (!user) {
+    res.sendStatus(401);
+    return;
+  }
   await folderController.createFolder({
     path: req.body.path,
-    user: req.user,
+    user: user,
   });
   res.end();
 });

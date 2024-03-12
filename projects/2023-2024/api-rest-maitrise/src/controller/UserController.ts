@@ -17,10 +17,11 @@ import {
 } from "../model/User";
 import { compare, compareSync, hashSync } from "bcrypt";
 import jwt from "jsonwebtoken";
+import { COMPLEX_STRING } from "../services/authentication";
 
 // generate access token. Remplacer secret par une chaine aléatoire
 function getToken(id: number): string {
-  return jwt.sign({ id: id }, "secret", {
+  return jwt.sign({ id: id }, COMPLEX_STRING, {
     expiresIn: "1d",
   });
 }

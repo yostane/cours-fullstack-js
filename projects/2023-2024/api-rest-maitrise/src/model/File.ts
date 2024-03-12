@@ -4,6 +4,7 @@ import {
   ForeignKey,
   Model,
   Table,
+  Unique,
 } from "sequelize-typescript";
 import { IItem } from "./Item";
 import { User } from "./User";
@@ -15,6 +16,7 @@ export interface IFile extends IItem {}
 
 @Table
 export class File extends Model implements IFile {
+  @Unique
   @Column
   path!: string;
 

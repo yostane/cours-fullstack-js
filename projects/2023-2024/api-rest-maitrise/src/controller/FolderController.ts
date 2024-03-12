@@ -9,6 +9,7 @@ import {
   Route,
   SuccessResponse,
   Request,
+  Header,
 } from "tsoa";
 import { Folder, IFolderRequest } from "../model/Folder";
 import { File } from "../model/File";
@@ -40,9 +41,6 @@ export class FolderController extends Controller {
   ): Promise<IItem[]> {
     const path = request.path;
     const currentUser = request.user;
-    if (!currentUser) {
-      throw new Error();
-    }
     const findOptions = {
       include: [User],
       where: {
@@ -59,9 +57,6 @@ export class FolderController extends Controller {
   public async createFolder(@Request() request: IFolderRequest): Promise<void> {
     const path = request.path;
     const currentUser = request.user;
-    if (!currentUser) {
-      throw new Error();
-    }
     const folder = await Folder.create({ path: path, owner: currentUser });
     folder.$set("owner", currentUser);
   }

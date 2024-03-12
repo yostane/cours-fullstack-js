@@ -4,9 +4,11 @@ import {
   ForeignKey,
   Model,
   Table,
+  Unique,
 } from "sequelize-typescript";
 import { IItem } from "./Item";
 import { IUser, User } from "./User";
+import { Body } from "tsoa";
 
 /**
  * path example: /photos, /documents/2024
@@ -15,6 +17,7 @@ export interface IFolder extends IItem {}
 
 @Table
 export class Folder extends Model implements IFolder {
+  @Unique
   @Column
   path!: string;
 
@@ -26,15 +29,7 @@ export class Folder extends Model implements IFolder {
   ownerId!: number;
 }
 
-declare global {
-  namespace Express {
-    interface Request {
-      user?: User;
-    }
-  }
-}
-
 export interface IFolderRequest {
   path: string;
-  user?: User;
+  user: User;
 }

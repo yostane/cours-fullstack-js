@@ -2,9 +2,11 @@ import { ExtractJwt, Strategy } from "passport-jwt";
 import passport from "passport";
 import { User } from "../model/User";
 
+export const COMPLEX_STRING = "secret";
+
 const opts = {
   jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-  secretOrKey: "secret",
+  secretOrKey: COMPLEX_STRING,
 };
 
 passport.use(
