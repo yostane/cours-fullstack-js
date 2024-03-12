@@ -11,6 +11,7 @@ function getDatabase(): Sequelize {
     return new Sequelize({
       dialect: "sqlite",
       storage: "db.sqlite",
+      logging: false,
     });
   } else if (dialect === "postgres") {
     return new Sequelize(

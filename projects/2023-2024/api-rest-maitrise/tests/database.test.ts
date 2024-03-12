@@ -1,4 +1,4 @@
-import { sequelize } from "../src/database";
+import { sequelize } from "../src/services/database";
 import { Card } from "../src/model/Card";
 
 describe("Testing the database", () => {

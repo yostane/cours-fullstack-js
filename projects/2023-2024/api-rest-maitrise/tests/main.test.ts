@@ -1,13 +1,27 @@
 import request from "supertest";
-
 import { app, server } from "../src/main";
-import { sequelize } from "../src/database";
-import { Folder, IFolder } from "../src/model/Folder";
-import { IUser, User } from "../src/model/User";
+import { sequelize } from "../src/services/database";
+import { Folder, IFolder, IFolderRequest } from "../src/model/Folder";
+import { IAuthRequestBody, IUser, User } from "../src/model/User";
+import "jest-extended";
 
 describe("Test main.ts", () => {
+  const user: IUser = {
+    email: "test@test.com",
+    id: 0,
+  };
+
+  const testUser: IAuthRequestBody = {
+    email: "test@test.com",
+    password: "test",
+  };
+
+  let token = "";
+
   beforeEach(async () => {
     await sequelize.sync({ force: true });
+    const res = await request(app).post("/api/users/register").send(testUser);
+    token = res.body.token;
   });
 
   test("get message", async () => {
@@ -32,58 +46,60 @@ describe("Test main.ts", () => {
     expect(res.status).toEqual(200);
   });
 
-  const user: IUser = {
-    email: "test@test.com",
-    id: 0,
-  };
-
-  const rootFolders: IFolder[] = [
+  const rootFolders = [
     {
       path: "/documents",
-      owner: user,
     },
     {
       path: "/photos",
-      owner: user,
     },
   ];
-  const photoFolders: IFolder[] = [
+  const photoFolders = [
     {
       path: "/photos/2023",
-      owner: user,
     },
     {
       path: "/photos/2024",
-      owner: user,
     },
   ];
   it.each([...rootFolders, ...photoFolders])(
     "Adding one folder",
     async (folder) => {
-      const res = await request(app).post(`/api/folders/create`).send(folder);
+      const res = await request(app)
+        .post(`/api/folders/create`)
+        .set("Authorization", `Bearer ${token}`)
+        .send(folder);
       expect(res.status).toEqual(200);
     }
   );
 
   test("list subfolders", async () => {
-    const u = await User.create({ email: user.email });
-    user.id = u.id;
-    for (const folder of [...rootFolders, ...photoFolders]) {
-      const f = await Folder.create({ path: folder.path });
-      f.$set("owner", u);
-    }
-    const res = await request(app).post("/api/folders").send({ path: "/" });
+    const promises = [...rootFolders, ...photoFolders].map((item) =>
+      request(app)
+        .post("/api/folders/create")
+        .set("Authorization", `Bearer ${token}`)
+        .send(item)
+    );
+
+    await Promise.all(promises);
+
+    const res = await request(app)
+      .post("/api/folders")
+      .set("Authorization", `Bearer ${token}`)
+      .send({ path: "/" });
     expect(res.body).toMatchObject(rootFolders);
 
     const res2 = await request(app)
       .post("/api/folders")
+      .set("Authorization", `Bearer ${token}`)
       .send({ path: "/photos" });
-    expect(res.body).toMatchObject(photoFolders);
+    expect(res2.body).toIncludeAllPartialMembers(photoFolders);
 
     const res3 = await request(app)
       .get("/api/folders")
+      .set("Authorization", `Bearer ${token}`)
       .send({ path: "/documents" });
-    expect(res.body).toBe([]);
+    expect(res3.body).toBeEmpty();
   });
 
   afterAll(() => {

@@ -17,19 +17,18 @@ import { IItem } from "../model/Item";
 import { IUser, User } from "../model/User";
 
 function countSlashes(input: string): number {
-  return input.match(/\//g)?.length ?? 0 - (input.endsWith("/") ? 1 : 0);
+  const slashCount = input.match(/\//g)?.length ?? 0;
+  const extraSlashes = input.endsWith("/") ? 1 : 0;
+  console.log("countSlashes", input, slashCount, extraSlashes);
+  return slashCount - extraSlashes;
 }
 
-function filterChilren<T extends IItem>(
-  items: T[],
-  path: string,
-  currentUser: IUser
-): T[] {
+function filterChilren<T extends IItem>(items: T[], path: string): T[] {
   return items.filter(
     (item) =>
       item.path.startsWith(path) &&
       path !== item.path &&
-      countSlashes(path) === countSlashes(item.path)
+      countSlashes(path) === countSlashes(item.path) - 1
   );
 }
 
@@ -50,7 +49,7 @@ export class FolderController extends Controller {
     const folders = await Folder.findAll(findOptions);
     const files = await File.findAll(findOptions);
     const allContent = [...folders, ...files];
-    return filterChilren(allContent, path, currentUser);
+    return filterChilren(allContent, path);
   }
 
   @Post("/create")
