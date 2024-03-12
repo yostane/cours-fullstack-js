@@ -3,6 +3,7 @@ import "@dotenvx/dotenvx";
 import { Folder } from "./model/Folder";
 import { File } from "./model/File";
 import { Card } from "./model/Card";
+import { User } from "./model/User";
 
 function getDatabase(): Sequelize {
   const dialect = process.env.DB_DIALECT;
@@ -28,7 +29,7 @@ function getDatabase(): Sequelize {
 
 function getDatabaseWithModels(): Sequelize {
   const sequelize = getDatabase();
-  sequelize.addModels([Folder, File, Card]);
+  sequelize.addModels([Folder, File, Card, User]);
   return sequelize;
 }
 

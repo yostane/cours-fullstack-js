@@ -1,14 +1,27 @@
-import { Column, Model, Table } from "sequelize-typescript";
+import {
+  BelongsTo,
+  Column,
+  ForeignKey,
+  Model,
+  Table,
+} from "sequelize-typescript";
+import { IItem } from "./Item";
+import { IUser, User } from "./User";
 
 /**
  * path example: /photos, /documents/2024
  */
-export interface IFolder extends IItem {
-  path: string;
-}
+export interface IFolder extends IItem {}
 
 @Table
 export class Folder extends Model implements IFolder {
   @Column
   path!: string;
+
+  @BelongsTo(() => User)
+  owner!: User;
+
+  @ForeignKey(() => User)
+  @Column
+  ownerId!: number;
 }

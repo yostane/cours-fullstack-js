@@ -2,7 +2,8 @@ import request from "supertest";
 
 import { app, server } from "../src/main";
 import { sequelize } from "../src/database";
-import { IFolder } from "../src/model/Folder";
+import { Folder, IFolder } from "../src/model/Folder";
+import { IUser, User } from "../src/model/User";
 
 describe("Test main.ts", () => {
   beforeEach(async () => {
@@ -31,12 +32,19 @@ describe("Test main.ts", () => {
     expect(res.status).toEqual(200);
   });
 
+  const user: IUser = {
+    email: "test@test.com",
+    id: 0,
+  };
+
   const testFolders: IFolder[] = [
     {
       path: "/documents",
+      owner: user,
     },
     {
       path: "/photos",
+      owner: user,
     },
   ];
   it.each(testFolders)("Adding one folder", async (folder) => {
@@ -45,10 +53,13 @@ describe("Test main.ts", () => {
   });
 
   test("adding multiple folders", async () => {
+    const u = await User.create({ email: user.email });
+    user.id = u.id;
     for (const folder of testFolders) {
-      await request(app).post(`/api/folders`).send(folder);
+      const f = await Folder.create({ path: folder.path });
+      f.$set("owner", u);
     }
-    const res = await request(app).get("/api/folders").send();
+    const res = await request(app).get("/api/folders").send({ path: "/" });
     expect(res.body).toMatchObject(testFolders);
   });
 

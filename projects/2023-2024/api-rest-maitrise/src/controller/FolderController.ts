@@ -11,26 +11,43 @@ import {
 } from "tsoa";
 import { Folder } from "../model/Folder";
 import { File } from "../model/File";
+import { IItem } from "../model/Item";
+import { IUser, User } from "../model/User";
+
+function filterChilren<T extends IItem>(
+  items: T[],
+  path: string,
+  currentUser: IUser
+): T[] {
+  return items.filter(
+    (item) => item.path.startsWith(path) && path !== item.path
+  );
+}
 
 @Route("/folders")
 export class FolderController extends Controller {
   @Get("/{path}")
-  public async getContent(path: string): Promise<IItem[]> {
-    const folders = (await Folder.findAll()).filter((folder) =>
-      folder.path.startsWith(path)
-    );
-
-    const files = await File.findAll({
+  public async getChildren(
+    path: string,
+    currentUser: IUser = { id: 0, email: "test@test.com" }
+  ): Promise<IItem[]> {
+    const findOptions = {
+      include: [User],
       where: {
-        path: path,
+        "$owner.email$": currentUser.email,
       },
-    });
-
-    return [...folders, ...files];
+    };
+    const folders = await Folder.findAll(findOptions);
+    const files = await File.findAll(findOptions);
+    const allContent = [...folders, ...files];
+    return filterChilren(allContent, path, currentUser);
   }
 
   @Post("/{path}")
-  public async createFolder(path: string): Promise<void> {
-    await Folder.create({ path: path });
+  public async createFolder(
+    path: string,
+    currentUser: IUser = { id: 0, email: "test@test.com" }
+  ): Promise<void> {
+    await Folder.create({ path: path, owner: currentUser });
   }
 }
