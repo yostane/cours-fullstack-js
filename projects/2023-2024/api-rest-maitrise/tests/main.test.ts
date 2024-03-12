@@ -60,7 +60,7 @@ describe("Test main.ts", () => {
   it.each([...rootFolders, ...photoFolders])(
     "Adding one folder",
     async (folder) => {
-      const res = await request(app).post(`/api/folders`).send(folder);
+      const res = await request(app).post(`/api/folders/create`).send(folder);
       expect(res.status).toEqual(200);
     }
   );
@@ -72,11 +72,11 @@ describe("Test main.ts", () => {
       const f = await Folder.create({ path: folder.path });
       f.$set("owner", u);
     }
-    const res = await request(app).get("/api/folders").send({ path: "/" });
+    const res = await request(app).post("/api/folders").send({ path: "/" });
     expect(res.body).toMatchObject(rootFolders);
 
     const res2 = await request(app)
-      .get("/api/folders")
+      .post("/api/folders")
       .send({ path: "/photos" });
     expect(res.body).toMatchObject(photoFolders);
 

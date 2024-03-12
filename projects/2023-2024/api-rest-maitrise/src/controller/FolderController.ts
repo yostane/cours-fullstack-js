@@ -8,8 +8,9 @@ import {
   Query,
   Route,
   SuccessResponse,
+  Request,
 } from "tsoa";
-import { Folder } from "../model/Folder";
+import { Folder, IFolderRequest } from "../model/Folder";
 import { File } from "../model/File";
 import { IItem } from "../model/Item";
 import { IUser, User } from "../model/User";
@@ -33,11 +34,15 @@ function filterChilren<T extends IItem>(
 
 @Route("/folders")
 export class FolderController extends Controller {
-  @Get("/")
+  @Post("/")
   public async getChildren(
-    path: string,
-    currentUser: IUser = { id: 0, email: "test@test.com" }
+    @Request() request: IFolderRequest
   ): Promise<IItem[]> {
+    const path = request.path;
+    const currentUser = request.user;
+    if (!currentUser) {
+      throw new Error();
+    }
     const findOptions = {
       include: [User],
       where: {
@@ -50,11 +55,14 @@ export class FolderController extends Controller {
     return filterChilren(allContent, path, currentUser);
   }
 
-  @Post("/")
-  public async createFolder(
-    path: string,
-    currentUser: IUser = { id: 0, email: "test@test.com" }
-  ): Promise<void> {
-    await Folder.create({ path: path, owner: currentUser });
+  @Post("/create")
+  public async createFolder(@Request() request: IFolderRequest): Promise<void> {
+    const path = request.path;
+    const currentUser = request.user;
+    if (!currentUser) {
+      throw new Error();
+    }
+    const folder = await Folder.create({ path: path, owner: currentUser });
+    folder.$set("owner", currentUser);
   }
 }

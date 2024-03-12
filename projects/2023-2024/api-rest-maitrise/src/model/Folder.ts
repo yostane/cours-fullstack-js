@@ -25,3 +25,16 @@ export class Folder extends Model implements IFolder {
   @Column
   ownerId!: number;
 }
+
+declare global {
+  namespace Express {
+    interface Request {
+      user?: User;
+    }
+  }
+}
+
+export interface IFolderRequest {
+  path: string;
+  user?: User;
+}

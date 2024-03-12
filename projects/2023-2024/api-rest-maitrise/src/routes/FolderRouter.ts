@@ -5,22 +5,20 @@ import "../services/authentication";
 
 export const folderRouter = express.Router();
 
-folderRouter.get(
-  "/",
-  passport.authenticate("jwt", { session: false }),
-  async (req, res) => {
-    const folderController = new FolderController();
-    const content = await folderController.getChildren(req.body.path);
-    res.json(content);
-  }
-);
+folderRouter.post("/", async (req, res) => {
+  const folderController = new FolderController();
+  const content = await folderController.getChildren({
+    path: req.body.path,
+    user: req.user,
+  });
+  res.json(content);
+});
 
-folderRouter.post(
-  "/",
-  passport.authenticate("jwt", { session: false }),
-  async (req, res) => {
-    const folderController = new FolderController();
-    await folderController.createFolder(req.body.path);
-    res.end();
-  }
-);
+folderRouter.post("/create", async (req, res) => {
+  const folderController = new FolderController();
+  await folderController.createFolder({
+    path: req.body.path,
+    user: req.user,
+  });
+  res.end();
+});

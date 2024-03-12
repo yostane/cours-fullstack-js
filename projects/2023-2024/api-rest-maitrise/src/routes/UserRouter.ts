@@ -9,7 +9,7 @@ userRouter.post("/login", async (req, res) => {
     const content = await userController.login(req.body);
     res.json(content);
   } catch (e) {
-    res.end(401);
+    res.sendStatus(401);
   }
 });
 
@@ -19,6 +19,6 @@ userRouter.post("/register", async (req, res) => {
     const content = await userController.register(req.body);
     res.json(content);
   } catch (e) {
-    res.end(401);
+    res.sendStatus(401);
   }
 });

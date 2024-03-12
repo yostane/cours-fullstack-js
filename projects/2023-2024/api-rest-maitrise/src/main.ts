@@ -31,7 +31,11 @@ app.use(
 );
 
 app.use("/api/users", userRouter);
-app.use("/api/folders", folderRouter);
+app.use(
+  "/api/folders",
+  passport.authenticate("jwt", { session: false }),
+  folderRouter
+);
 
 const cardController = new CardController();
 

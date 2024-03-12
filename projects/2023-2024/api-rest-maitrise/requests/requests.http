@@ -8,3 +8,44 @@ Content-Type: application/json
   "attack": 50,
   "type": "monster"
 }
+###
+POST http://localhost:3000/api/users/register
+Content-Type: application/json
+
+{
+  "email": "user@test.com",
+  "password": "1234"
+}
+###
+POST http://localhost:3000/api/users/login
+Content-Type: application/json
+
+{
+  "email": "user@test.com",
+  "password": "1234"
+}
+###
+POST http://localhost:3000/api/folders
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNzEwMjU2MTg0LCJleHAiOjE3MTAzNDI1ODR9.AqP1-Q-etTiVgdfEVmzfhZG4ruJ9vXB5Z1VVbyTGrYo
+Content-Type: application/json
+
+{
+  "path":"/"
+}
+###
+POST http://localhost:3000/api/folders/create
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNzEwMjU2MTg0LCJleHAiOjE3MTAzNDI1ODR9.AqP1-Q-etTiVgdfEVmzfhZG4ruJ9vXB5Z1VVbyTGrYo
+Content-Type: application/json
+
+{
+  "path":"/photos"
+}
+###
+POST http://localhost:3000/api/folders/create
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNzEwMjU2MTg0LCJleHAiOjE3MTAzNDI1ODR9.AqP1-Q-etTiVgdfEVmzfhZG4ruJ9vXB5Z1VVbyTGrYo
+Content-Type: application/json
+
+{
+  "path":"/documents"
+}
+
