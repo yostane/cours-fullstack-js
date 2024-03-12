@@ -37,7 +37,7 @@ describe("Test main.ts", () => {
     id: 0,
   };
 
-  const testFolders: IFolder[] = [
+  const rootFolders: IFolder[] = [
     {
       path: "/documents",
       owner: user,
@@ -47,20 +47,43 @@ describe("Test main.ts", () => {
       owner: user,
     },
   ];
-  it.each(testFolders)("Adding one folder", async (folder) => {
-    const res = await request(app).post(`/api/folders`).send(folder);
-    expect(res.status).toEqual(200);
-  });
+  const photoFolders: IFolder[] = [
+    {
+      path: "/photos/2023",
+      owner: user,
+    },
+    {
+      path: "/photos/2024",
+      owner: user,
+    },
+  ];
+  it.each([...rootFolders, ...photoFolders])(
+    "Adding one folder",
+    async (folder) => {
+      const res = await request(app).post(`/api/folders`).send(folder);
+      expect(res.status).toEqual(200);
+    }
+  );
 
-  test("adding multiple folders", async () => {
+  test("list subfolders", async () => {
     const u = await User.create({ email: user.email });
     user.id = u.id;
-    for (const folder of testFolders) {
+    for (const folder of [...rootFolders, ...photoFolders]) {
       const f = await Folder.create({ path: folder.path });
       f.$set("owner", u);
     }
     const res = await request(app).get("/api/folders").send({ path: "/" });
-    expect(res.body).toMatchObject(testFolders);
+    expect(res.body).toMatchObject(rootFolders);
+
+    const res2 = await request(app)
+      .get("/api/folders")
+      .send({ path: "/photos" });
+    expect(res.body).toMatchObject(photoFolders);
+
+    const res3 = await request(app)
+      .get("/api/folders")
+      .send({ path: "/documents" });
+    expect(res.body).toBe([]);
   });
 
   afterAll(() => {

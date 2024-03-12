@@ -14,13 +14,20 @@ import { File } from "../model/File";
 import { IItem } from "../model/Item";
 import { IUser, User } from "../model/User";
 
+function countSlashes(input: string): number {
+  return input.match(/\//g)?.length ?? 0 - (input.endsWith("/") ? 1 : 0);
+}
+
 function filterChilren<T extends IItem>(
   items: T[],
   path: string,
   currentUser: IUser
 ): T[] {
   return items.filter(
-    (item) => item.path.startsWith(path) && path !== item.path
+    (item) =>
+      item.path.startsWith(path) &&
+      path !== item.path &&
+      countSlashes(path) === countSlashes(item.path)
   );
 }
 
