@@ -1,9 +1,9 @@
 import { Sequelize } from "sequelize-typescript";
 import "@dotenvx/dotenvx";
-import { Folder } from "./model/Folder";
-import { File } from "./model/File";
-import { Card } from "./model/Card";
-import { User } from "./model/User";
+import { Folder } from "../model/Folder";
+import { File } from "../model/File";
+import { Card } from "../model/Card";
+import { User } from "../model/User";
 
 function getDatabase(): Sequelize {
   const dialect = process.env.DB_DIALECT;

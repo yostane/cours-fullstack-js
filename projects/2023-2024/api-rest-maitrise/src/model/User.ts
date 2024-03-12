@@ -23,4 +23,16 @@ export class User extends Model implements IUser {
   @Unique
   @Column
   email!: string;
+
+  @Column
+  password!: string;
+}
+
+export interface IAuthRequestBody {
+  email: string;
+  password: string;
+}
+
+export interface IAuthResponseBody {
+  token: string;
 }

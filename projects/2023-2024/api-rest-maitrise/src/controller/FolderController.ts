@@ -33,7 +33,7 @@ function filterChilren<T extends IItem>(
 
 @Route("/folders")
 export class FolderController extends Controller {
-  @Get("/{path}")
+  @Get("/")
   public async getChildren(
     path: string,
     currentUser: IUser = { id: 0, email: "test@test.com" }
@@ -50,7 +50,7 @@ export class FolderController extends Controller {
     return filterChilren(allContent, path, currentUser);
   }
 
-  @Post("/{path}")
+  @Post("/")
   public async createFolder(
     path: string,
     currentUser: IUser = { id: 0, email: "test@test.com" }

@@ -1,13 +1,19 @@
 import express from "express";
 import bodyParser from "body-parser";
 import { Card } from "./model/Card";
-import { sequelize } from "./database";
+import { sequelize } from "./services/database";
 import morgan from "morgan";
 import { CardController as CardController } from "./controller/CardController";
 import swaggerUi from "swagger-ui-express";
 import { folderRouter } from "./routes/FolderRouter";
+import { userRouter } from "./routes/UserRouter";
+import passport from "passport";
+import "./services/authentication";
 
 export const app = express();
+
+// init and configure passport
+app.use(passport.initialize());
 
 // logs des requêtes
 app.use(morgan("tiny"));
@@ -24,6 +30,7 @@ app.use(
   })
 );
 
+app.use("/api/users", userRouter);
 app.use("/api/folders", folderRouter);
 
 const cardController = new CardController();
