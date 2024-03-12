@@ -11,13 +11,13 @@ extra:
 
 nav:
   - index.md
+  - projet-api-drive.md
 
 plugins:
   - search
   - glightbox
 
 theme:
-  custom_dir: overrides
   logo: img/logo.jpg
   favicon: img/logo.jpg
   name: material
@@ -54,8 +54,8 @@ markdown_extensions:
   - attr_list
   - md_in_html
   - pymdownx.emoji:
-      emoji_index: !!python/name:materialx.emoji.twemoji
-      emoji_generator: !!python/name:materialx.emoji.to_svg
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
   - pymdownx.highlight:
       anchor_linenums: true
   - pymdownx.snippets:
