@@ -1,20 +1,21 @@
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 import Counter from './components/Counter'
 import Hello from './components/Hello'
+import Header from './components/Header'
+import { useState } from 'react'
 
 function App() {
+  const [increment, setIncrement] = useState(1);
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-      </div>
+      <Header />
       <Hello />
-      <Counter />
-      <Counter />
+      <input value={increment} 
+      onChange={e => setIncrement(+e.target.value)} 
+      required />
+      <Counter initialValue={10} increment={increment} />
+      <Counter initialValue={-30} increment={1} />
+      <div>Cours de react</div>
     </>
   )
 }

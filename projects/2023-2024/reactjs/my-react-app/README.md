@@ -7,6 +7,20 @@ Currently, two official plugins are available:
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
+## Démarrer un nouveau projet react + vite
+
+- Installer [nodejs](https://nodejs.org/)
+- Initier un nouveau projet: `npm create vite@latest my-react-app -- --template react`
+- Ensuite faire ces commandes:
+
+```sh
+cd my-react-app # ouvrir le projet dans le terminal
+npm install # Installer les dépendances dans package.json (vers node_modules)
+npm run dev # Lancer le projet en local (via un serveur de développement)
+```
+
+- Pour corriger [l'avertissement sur la validation des props](https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/prop-types.md), utiliser [prop-types](https://www.npmjs.com/package/prop-types).
+
 ## Notions de JS
 
 ```js
