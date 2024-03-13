@@ -65,6 +65,7 @@ export class FolderController extends Controller {
     if (!path.startsWith("/") || path.length < 2 || path.endsWith("/")) {
       throw new Error("Incorrect path");
     }
+    // TODO: check with current user also
     const count = await Folder.count({
       where: {
         path: path,
