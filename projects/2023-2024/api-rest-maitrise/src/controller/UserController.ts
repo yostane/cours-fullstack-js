@@ -18,11 +18,12 @@ import {
 import { compare, compareSync, hashSync } from "bcrypt";
 import jwt from "jsonwebtoken";
 import { COMPLEX_STRING } from "../services/authentication";
+import "@dotenvx/dotenvx";
 
 // generate access token. Remplacer secret par une chaine aléatoire
 function getToken(id: number): string {
   return jwt.sign({ id: id }, COMPLEX_STRING, {
-    expiresIn: "1d",
+    expiresIn: process.env.TOKEN_DURATION ?? "1d",
   });
 }
 

@@ -10,6 +10,9 @@ import {
   SuccessResponse,
   Request,
   Header,
+  Hidden,
+  Inject,
+  Security,
 } from "tsoa";
 import { Folder, IFolderRequest } from "../model/Folder";
 import { File } from "../model/File";
@@ -32,20 +35,21 @@ function filterChilren<T extends IItem>(items: T[], path: string): T[] {
   );
 }
 
-@Route("/folders")
+@Route("/api/folders")
+@Security("jwt")
 export class FolderController extends Controller {
-  @Post("/")
+  @Get("/")
   public async getChildren(
-    @Request() request: IFolderRequest
+    @Query() path: string,
+    @Inject() currentUser: IUser
   ): Promise<IItem[]> {
-    const path = request.path;
-    const currentUser = request.user;
     const findOptions = {
       include: [User],
       where: {
         "$owner.email$": currentUser.email,
       },
     };
+    // TODO: optimiser le filtrage côté BDD (actuellement on récupère tout le contenu du user puis on filtre dans le code)
     const folders = await Folder.findAll(findOptions);
     const files = await File.findAll(findOptions);
     const allContent = [...folders, ...files];
@@ -53,9 +57,12 @@ export class FolderController extends Controller {
   }
 
   @Post("/create")
-  public async createFolder(@Request() request: IFolderRequest): Promise<void> {
+  public async createFolder(
+    @Body() request: IFolderRequest,
+    @Inject() user: IUser
+  ): Promise<void> {
+    const currentUser = user as User;
     const path = request.path;
-    const currentUser = request.user;
     const folder = await Folder.create({ path: path, owner: currentUser });
     folder.$set("owner", currentUser);
   }

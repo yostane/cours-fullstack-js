@@ -64,6 +64,6 @@ const PORT = 3000;
 
 export const server = app.listen(PORT, async () => {
   // TODO: do only in development and test modes
-  await sequelize.sync();
+  await sequelize.sync({ alter: true });
   console.log(`⚡️[server]: Server is running at http://localhost:${PORT}`);
 });

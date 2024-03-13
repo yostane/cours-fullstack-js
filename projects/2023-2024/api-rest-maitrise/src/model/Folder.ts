@@ -17,7 +17,6 @@ export interface IFolder extends IItem {}
 
 @Table
 export class Folder extends Model implements IFolder {
-  @Unique
   @Column
   path!: string;
 
@@ -31,5 +30,4 @@ export class Folder extends Model implements IFolder {
 
 export interface IFolderRequest {
   path: string;
-  user: User;
 }
