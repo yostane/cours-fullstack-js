@@ -84,21 +84,21 @@ describe("Test main.ts", () => {
     await Promise.all(promises);
 
     const res = await request(app)
-      .post("/api/folders")
+      .get("/api/folders?path=/")
       .set("Authorization", `Bearer ${token}`)
-      .send({ path: "/" });
+      .send();
     expect(res.body).toIncludeAllPartialMembers(rootFolders);
 
     const res2 = await request(app)
-      .post("/api/folders")
+      .get("/api/folders?path=/photos")
       .set("Authorization", `Bearer ${token}`)
-      .send({ path: "/photos" });
+      .send();
     expect(res2.body).toIncludeAllPartialMembers(photoFolders);
 
     const res3 = await request(app)
-      .get("/api/folders")
+      .get("/api/folders?path=/documents")
       .set("Authorization", `Bearer ${token}`)
-      .send({ path: "/documents" });
+      .send();
     expect(res3.body).toBeEmpty();
   });
 
