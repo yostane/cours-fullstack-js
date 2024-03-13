@@ -22,7 +22,6 @@ import { IUser, User } from "../model/User";
 function countSlashes(input: string): number {
   const slashCount = input.match(/\//g)?.length ?? 0;
   const extraSlashes = input.endsWith("/") ? 1 : 0;
-  console.log("countSlashes", input, slashCount, extraSlashes);
   return slashCount - extraSlashes;
 }
 

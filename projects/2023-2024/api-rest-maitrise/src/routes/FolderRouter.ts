@@ -4,13 +4,13 @@ import { FolderController } from "../controller/FolderController";
 export const folderRouter = Router();
 
 folderRouter.get("/", async (req, res) => {
-  console.log(req.query.path, "path");
+  const path = req.query.path as string;
   const folderController = new FolderController();
-  if (!req.user) {
+  if (!req.user || !path) {
     res.sendStatus(401);
     return;
   }
-  const content = await folderController.getChildren(req.params.path, req.user);
+  const content = await folderController.getChildren(path, req.user);
   res.json(content);
 });
 
