@@ -62,6 +62,17 @@ export class FolderController extends Controller {
   ): Promise<void> {
     const currentUser = user as User;
     const path = request.path;
+    if (!path.startsWith("/") || path.length < 2 || path.endsWith("/")) {
+      throw new Error("Incorrect path");
+    }
+    const count = await Folder.count({
+      where: {
+        path: path,
+      },
+    });
+    if (count > 0) {
+      throw new Error("Folder already exists");
+    }
     const folder = await Folder.create({ path: path, owner: currentUser });
     folder.$set("owner", currentUser);
   }

@@ -21,11 +21,21 @@ folderRouter.post("/create", async (req, res) => {
     res.sendStatus(401);
     return;
   }
-  await folderController.createFolder(
-    {
-      path: req.body.path,
-    },
-    user
-  );
-  res.end();
+  try {
+    await folderController.createFolder(
+      {
+        path: req.body.path,
+      },
+      user
+    );
+    res.end();
+  } catch (e) {
+    if (e instanceof Error) {
+      res.status(400).json({
+        message: e.message,
+      });
+    } else {
+      res.sendStatus(400);
+    }
+  }
 });
