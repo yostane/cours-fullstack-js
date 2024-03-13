@@ -9,7 +9,8 @@
     "start:dev": "concurrently \"dotenvx run --env-file=env/.env.dev -- nodemon\" \"nodemon -x tsoa spec-and-routes\"",
     "start:prod": "dotenvx run --env-file=env/.env.prod -- ts-node src/main.ts",
     "test": "dotenvx run --env-file=env/.env.test -- jest --coverage",
-    "openapi": "tsoa spec"
+    "openapi": "tsoa spec",
+    "lint": "eslint"
   },
   "keywords": [],
   "author": "",
@@ -47,6 +48,7 @@
     "@types/swagger-ui-express": "^4.1.6",
     "@types/validator": "^13.11.9",
     "concurrently": "^8.2.2",
+    "eslint": "^8.57.0",
     "jest-extended": "^4.0.2",
     "nodemon": "^3.1.0",
     "supertest": "^6.3.4",
