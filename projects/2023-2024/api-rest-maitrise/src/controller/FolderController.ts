@@ -3,14 +3,9 @@ import {
   Body,
   Controller,
   Get,
-  Path,
   Post,
   Query,
   Route,
-  SuccessResponse,
-  Request,
-  Header,
-  Hidden,
   Inject,
   Security,
 } from "tsoa";
@@ -18,6 +13,7 @@ import { Folder, IFolderRequest } from "../model/Folder";
 import { File } from "../model/File";
 import { IItem } from "../model/Item";
 import { IUser, User } from "../model/User";
+import { Op } from "sequelize";
 
 function countSlashes(input: string): number {
   const slashCount = input.match(/\//g)?.length ?? 0;
@@ -43,9 +39,18 @@ export class FolderController extends Controller {
     @Inject() currentUser: IUser
   ): Promise<IItem[]> {
     const findOptions = {
-      include: [User],
+      include: [
+        {
+          model: User,
+          attributes: ["email", "id"], // https://stackoverflow.com/a/38247617
+        },
+      ],
+      attributes: ["path"],
       where: {
         "$owner.email$": currentUser.email,
+        path: {
+          [Op.startsWith]: path, // Tous les chemins qui commencent par path
+        },
       },
     };
     // TODO: optimiser le filtrage côté BDD (actuellement on récupère tout le contenu du user puis on filtre dans le code)
@@ -55,7 +60,7 @@ export class FolderController extends Controller {
     return filterChilren(allContent, path);
   }
 
-  @Post("/create")
+  @Post("/")
   public async createFolder(
     @Body() request: IFolderRequest,
     @Inject() user: IUser
@@ -69,6 +74,7 @@ export class FolderController extends Controller {
     const count = await Folder.count({
       where: {
         path: path,
+        ownerId: currentUser.id,
       },
     });
     if (count > 0) {

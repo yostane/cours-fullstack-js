@@ -66,7 +66,7 @@ describe("Test main.ts", () => {
     "Adding one folder",
     async (folder) => {
       const res = await request(app)
-        .post(`/api/folders/create`)
+        .post(`/api/folders`)
         .set("Authorization", `Bearer ${token}`)
         .send(folder);
       expect(res.status).toEqual(200);
@@ -76,7 +76,7 @@ describe("Test main.ts", () => {
   test("list subfolders", async () => {
     const promises = [...rootFolders, ...photoFolders].map((item) =>
       request(app)
-        .post("/api/folders/create")
+        .post("/api/folders")
         .set("Authorization", `Bearer ${token}`)
         .send(item)
     );

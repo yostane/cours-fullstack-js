@@ -32,7 +32,7 @@ Authorization: Bearer {{token}}
 GET http://{{host}}/api/folders?path=/photos
 Authorization: Bearer {{token}}
 ###
-POST http://{{host}}/api/folders/create
+POST http://{{host}}/api/folders
 Authorization: Bearer {{token}}
 Content-Type: application/json
 
@@ -40,7 +40,23 @@ Content-Type: application/json
   "path":"/photos"
 }
 ###
-POST http://localhost:3000/api/folders/create
+POST http://{{host}}/api/folders
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "path":"/photos/2024"
+}
+###
+POST http://{{host}}/api/folders
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "path":"/photos/2025"
+}
+###
+POST http://localhost:3000/api/folders
 Authorization: Bearer {{token}}
 Content-Type: application/json
 
@@ -48,7 +64,7 @@ Content-Type: application/json
   "path":"/documents"
 }
 ###
-POST http://localhost:3000/api/folders/create
+POST http://localhost:3000/api/folders
 Authorization: Bearer {{token}}
 Content-Type: application/json
 

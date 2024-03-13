@@ -14,7 +14,7 @@ folderRouter.get("/", async (req, res) => {
   res.json(content);
 });
 
-folderRouter.post("/create", async (req, res) => {
+folderRouter.post("/", async (req, res) => {
   const folderController = new FolderController();
   const user = req.user;
   if (!user) {
