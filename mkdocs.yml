@@ -12,6 +12,7 @@ extra:
 nav:
   - index.md
   - projet-api-drive.md
+  - projet-veterlib.md
 
 plugins:
   - search
