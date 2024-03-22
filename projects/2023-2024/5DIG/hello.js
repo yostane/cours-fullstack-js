@@ -48,3 +48,25 @@ for (const key in planete1) {
     console.log("not OwnProperty", key, "=>", value);
   }
 }
+
+console.log(1 == "1", 1 === "1", 1 != "1", 1 !== "1");
+console.log(("b" + "a" + +"a" + "a").toLowerCase());
+
+console.log(1 / 0 + 1 / 0, 0 / 0, +"a", +"3676736");
+
+function add(x, y) {
+  return x + y;
+}
+
+const add2 = function (x, y) {
+  return x + y;
+};
+
+const add3 = (x, y) => {
+  return x + y;
+};
+
+const add4 = (x, y) => x + y;
+
+console.log(add(2, 4), add3(3, -199));
+console.log(add(2), add3(), add4(12, 33, 343), add("2", 10));
