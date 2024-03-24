@@ -19,7 +19,11 @@ npm install # Installer les dépendances dans package.json (vers node_modules)
 npm run dev # Lancer le projet en local (via un serveur de développement)
 ```
 
-- Pour corriger [l'avertissement sur la validation des props](https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/prop-types.md), utiliser [prop-types](https://www.npmjs.com/package/prop-types).
+- [react.dev](https://react.dev/) propose une belle introduction aux composants react
+- Exercice de création de composant avec props en entrée
+  - Pour corriger [l'avertissement sur la validation des props](https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/prop-types.md), utiliser [prop-types](https://www.npmjs.com/package/prop-types).
+- Consultation du site: [react.dev/learn](https://react.dev/learn)
+- Guide pour ajotuer [react router](https://github.com/ErickKS/vite-react-router)
 
 ## Notions de JS
 
