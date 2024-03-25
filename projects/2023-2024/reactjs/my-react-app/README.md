@@ -24,7 +24,8 @@ npm run dev # Lancer le projet en local (via un serveur de développement)
   - Pour corriger [l'avertissement sur la validation des props](https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/prop-types.md), utiliser [prop-types](https://www.npmjs.com/package/prop-types).
 - Consultation du site: [react.dev/learn](https://react.dev/learn)
 - Guide pour ajotuer [react router](https://github.com/ErickKS/vite-react-router)
-- [map, filter, reduce animé](https://navin-moorthy.github.io/blog/map-filter-reduce-animated/)
+  - [map, filter, reduce animé](https://navin-moorthy.github.io/blog/map-filter-reduce-animated/)
+- Intégration de [firebase](https://medium.com/@sanchit0496/google-firebase-and-reactjs-integration-74855ec024ec)
 
 ## Notions de JS
 
