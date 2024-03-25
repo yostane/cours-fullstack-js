@@ -24,6 +24,7 @@ npm run dev # Lancer le projet en local (via un serveur de développement)
   - Pour corriger [l'avertissement sur la validation des props](https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/prop-types.md), utiliser [prop-types](https://www.npmjs.com/package/prop-types).
 - Consultation du site: [react.dev/learn](https://react.dev/learn)
 - Guide pour ajotuer [react router](https://github.com/ErickKS/vite-react-router)
+- [map, filter, reduce animé](https://navin-moorthy.github.io/blog/map-filter-reduce-animated/)
 
 ## Notions de JS
 
@@ -60,4 +61,24 @@ let result2 = x%2 === 0 ? "pair" : "impair";
 
 console.log(2 + "2", 1 == "1", 1 === "1", 1 === 1);
 console.log(1 != "1", 1 !== "1", 1 !== 1)
+
+// map => à prendre dans le sens de mise en correspondance de deux valeur (mapping)
+const numbers = [10, 2, -3, 4, 55];
+const newNumbers = numbers.map(n => n + 10);
+console.log("numbers", numbers);
+console.log("newNumbers", newNumbers);
+const newStrings = numbers.map(n => `Hello ${n}`);
+console.log("newStrings", newStrings);
+
+// Objet litéral
+const streetFighter1 = {
+  name: "ryu",
+  specialArrack: "Hadoken"
+};
+// Objet litéral qui ressemble au JSON -> JS Object Notation
+const streetFighter2 = {
+  "name": "Sagat",
+  "specialArrack": "Tiger Uppercut"
+};
+console.log(streetFighter1, streetFighter2);
 ```
