@@ -27,6 +27,36 @@ npm run dev # Lancer le projet en local (via un serveur de développement)
   - [map, filter, reduce animé](https://navin-moorthy.github.io/blog/map-filter-reduce-animated/)
 - Intégration de [firebase](https://medium.com/@sanchit0496/google-firebase-and-reactjs-integration-74855ec024ec)
 
+```js
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+import { getFirestore } from "@firebase/firestore";
+import { getAuth } from "@firebase/auth";
+
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "",
+  authDomain: "",
+  projectId: "",
+  storageBucket: "",
+  messagingSenderId: "",
+  appId: "",
+  measurementId: "",
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+
+export const db = getFirestore(app);
+export const auth = getAuth(app);
+```
+
 ## Notions de JS
 
 ```js
