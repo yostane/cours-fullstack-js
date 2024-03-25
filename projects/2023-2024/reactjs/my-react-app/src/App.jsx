@@ -13,12 +13,13 @@ function App() {
       <Header />
       <Hello />
       <FirebaseDemo />
-      <input
-        value={increment}
-        onChange={(e) => setIncrement(+e.target.value)}
-        required
-      />
       <div style={{ display: "flex" }}>
+        <input
+          style={{ flex: "auto" }}
+          value={increment}
+          onChange={(e) => setIncrement(+e.target.value)}
+          required
+        />
         <Counter
           style={{ flex: "auto" }}
           initialValue={10}
