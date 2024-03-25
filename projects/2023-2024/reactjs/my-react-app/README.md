@@ -57,6 +57,16 @@ export const db = getFirestore(app);
 export const auth = getAuth(app);
 ```
 
+firebaserc
+
+```json
+{
+  "projects": {
+    "default": "nom du projet"
+  }
+}
+```
+
 ## Notions de JS
 
 ```js
