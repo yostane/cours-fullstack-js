@@ -2,7 +2,7 @@ import { useState } from "react";
 import { auth } from "../firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 
-export default function FirebaseDemo() {
+export default function FirebaseAuthDemo() {
   const [email, setEmail] = useState("test@test.com");
   const [password, setPassword] = useState("password");
   async function createUser() {

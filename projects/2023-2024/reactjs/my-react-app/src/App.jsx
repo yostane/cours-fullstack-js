@@ -4,7 +4,8 @@ import Hello from "./components/Hello";
 import Header from "./components/Header";
 import { useState } from "react";
 import StreetFigherList from "./components/StreetFighterList";
-import FirebaseDemo from "./components/FirebaseDemo";
+import FirebaseDemo from "./components/FirebaseAuthDemo";
+import FirebaseStoreDemo from "./components/FirebaseStoreDemo";
 
 function App() {
   const [increment, setIncrement] = useState(1);
@@ -13,6 +14,7 @@ function App() {
       <Header />
       <Hello />
       <FirebaseDemo />
+      <FirebaseStoreDemo />
       <div style={{ display: "flex" }}>
         <input
           style={{ flex: "auto" }}
