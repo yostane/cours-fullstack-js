@@ -3,6 +3,7 @@ import Counter from './components/Counter'
 import Hello from './components/Hello'
 import Header from './components/Header'
 import { useState } from 'react'
+import StreetFigherList from './components/StreetFighterList'
 
 function App() {
   const [increment, setIncrement] = useState(1);
@@ -15,7 +16,8 @@ function App() {
       required />
       <Counter initialValue={10} increment={increment} />
       <Counter initialValue={-30} increment={1} />
-      <div>Cours de react</div>
+      <h2>Boucle for</h2>
+      <StreetFigherList />
     </>
   )
 }
