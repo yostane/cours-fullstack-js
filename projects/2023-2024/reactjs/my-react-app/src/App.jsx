@@ -5,12 +5,15 @@ function App() {
   return (
     <>
       <nav>
-        <Link to="/home">Home</Link>
-        {" | "}
-        <Link to="/fighters">Fighters</Link>
+        <Link to="/">Home</Link> | <Link to="/fighters">Fighters</Link>
+      </nav>
+      <nav>
+        <a href="/">Home avec la balise a</a>
       </nav>
 
+      <div>Début du outlet</div>
       <Outlet />
+      <div>Fin du outlet</div>
     </>
   );
 }
