@@ -13,6 +13,7 @@ nav:
   - index.md
   - projet-api-drive.md
   - projet-veterlib.md
+  - project-react.md
 
 plugins:
   - search
