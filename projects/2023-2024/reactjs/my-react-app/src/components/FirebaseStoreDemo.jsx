@@ -1,11 +1,38 @@
 import { useEffect, useState } from "react";
 import { db } from "../firebase";
-import { getDocs, collection } from "firebase/firestore";
+import {
+  getDocs,
+  collection,
+  query,
+  where,
+  doc,
+  setDoc,
+} from "firebase/firestore";
 
 export default function FirebaseStoreDemo() {
   const fightersCollection = collection(db, "fighters");
   // useState permet de générer un état
   const [fightersList, setFightersList] = useState([]);
+
+  async function filter() {
+    const q = query(collection(db, "fighters"), where("hp", ">", 50));
+    const fightersSnapshot = await getDocs(q);
+    const list = fightersSnapshot.docs.map((fighter) => (
+      <li key={fighter.id}>Hp: {fighter.data().hp}</li>
+    ));
+    setFightersList(list);
+  }
+
+  async function addFighter() {
+    // Doc: permet de créer un document vierge
+    const newDoc = doc(fightersCollection);
+    // setDoc permet de mettre des données dans le document
+    await setDoc(newDoc, {
+      name: "Blanka",
+      hp: 200,
+      specialPower: "Blanka roll",
+    });
+  }
 
   async function fetchFighters() {
     const fightersSnapshot = await getDocs(fightersCollection);
@@ -22,7 +49,12 @@ export default function FirebaseStoreDemo() {
     fetchFighters();
   });
 
-  return <ul>{fightersList}</ul>;
+  return (
+    <>
+      <ul>{fightersList}</ul>
+      <button onClick={addFighter}>Add Fighter</button>
+    </>
+  );
 }
 
 /*
