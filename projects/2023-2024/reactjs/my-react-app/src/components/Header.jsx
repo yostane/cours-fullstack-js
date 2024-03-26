@@ -1,14 +1,11 @@
-import viteLogo from '/vite.svg'
+import viteLogo from "/vite.svg";
 
-function Header() {
-
+export default function Header() {
   return (
     <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
+      <a href="https://vitejs.dev" target="_blank">
+        <img src={viteLogo} className="logo" alt="Vite logo" />
+      </a>
     </div>
-  )
+  );
 }
-
-export default Header

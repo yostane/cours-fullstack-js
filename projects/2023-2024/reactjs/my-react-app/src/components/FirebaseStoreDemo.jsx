@@ -7,6 +7,7 @@ import {
   where,
   doc,
   setDoc,
+  deleteDoc,
 } from "firebase/firestore";
 
 export default function FirebaseStoreDemo() {
@@ -15,7 +16,7 @@ export default function FirebaseStoreDemo() {
   const [fightersList, setFightersList] = useState([]);
 
   async function filter() {
-    const q = query(collection(db, "fighters"), where("hp", ">", 50));
+    const q = query(fightersCollection, where("hp", ">", 50));
     const fightersSnapshot = await getDocs(q);
     const list = fightersSnapshot.docs.map((fighter) => (
       <li key={fighter.id}>Hp: {fighter.data().hp}</li>
@@ -34,11 +35,19 @@ export default function FirebaseStoreDemo() {
     });
   }
 
+  async function deleteFighter(fighter) {
+    const d = doc(fightersCollection, fighter);
+    await deleteDoc(d);
+  }
+
   async function fetchFighters() {
     const fightersSnapshot = await getDocs(fightersCollection);
     const list = fightersSnapshot.docs.map((fighter) => (
       <li key={fighter.id}>
         Name: {fighter.data().name}. Hp: {fighter.data().hp}
+        <button onClick={async () => await deleteFighter(fighter)}>
+          Delete
+        </button>
       </li>
     ));
     setFightersList(list);
@@ -46,6 +55,7 @@ export default function FirebaseStoreDemo() {
 
   // useEffect permet de générer un changement d'état
   useEffect(() => {
+    console.log("calling use effect");
     fetchFighters();
   });
 
