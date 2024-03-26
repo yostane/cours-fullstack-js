@@ -27,6 +27,7 @@ npm run dev # Lancer le projet en local (via un serveur de développement)
   - `npm i react-router-dom`
 - [map, filter, reduce animé](https://navin-moorthy.github.io/blog/map-filter-reduce-animated/)
 - Intégration de [firebase](https://medium.com/@sanchit0496/google-firebase-and-reactjs-integration-74855ec024ec). [Autre tuto](https://dev-academy.com/react-firebase/)
+  - Souci de quota exceeded. [Solution1](https://dev.to/adamwknox/i-made-a-mistake-implementing-a-react-hook-and-got-a-denial-of-service-from-my-backend-5cji)
 
 ```js
 // Import the functions you need from the SDKs you need

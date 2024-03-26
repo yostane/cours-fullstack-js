@@ -40,24 +40,24 @@ export default function FirebaseStoreDemo() {
     await deleteDoc(d);
   }
 
-  async function fetchFighters() {
-    const fightersSnapshot = await getDocs(fightersCollection);
-    const list = fightersSnapshot.docs.map((fighter) => (
-      <li key={fighter.id}>
-        Name: {fighter.data().name}. Hp: {fighter.data().hp}
-        <button onClick={async () => await deleteFighter(fighter)}>
-          Delete
-        </button>
-      </li>
-    ));
-    setFightersList(list);
-  }
-
   // useEffect permet de générer un changement d'état
   useEffect(() => {
+    async function fetchFighters() {
+      const fightersSnapshot = await getDocs(fightersCollection);
+      const list = fightersSnapshot.docs.map((fighter) => (
+        <li key={fighter.id}>
+          Name: {fighter.data().name}. Hp: {fighter.data().hp}
+          <button onClick={async () => await deleteFighter(fighter)}>
+            Delete
+          </button>
+        </li>
+      ));
+      setFightersList(list);
+    }
+
     console.log("calling use effect");
     fetchFighters();
-  });
+  }, []);
 
   return (
     <>
