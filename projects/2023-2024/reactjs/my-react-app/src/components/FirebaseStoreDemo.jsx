@@ -24,3 +24,14 @@ export default function FirebaseStoreDemo() {
 
   return <ul>{fightersList}</ul>;
 }
+
+/*
+  première syntaxe pour manipuler les promesses (avant l'implémentation du await)
+  getDocs(fightersCollection).then(fightersSnapshot => {
+    const list = fightersSnapshot.docs.map((fighter) => (
+      <li key={fighter.id}>
+        Name: {fighter.data().name}. Hp: {fighter.data().hp}
+      </li>
+    ));
+    setFightersList(list);
+  })*/
