@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 // treshold -> seuil en anglais
 function StreetFigherList({ treshold }) {
@@ -13,11 +14,18 @@ function StreetFigherList({ treshold }) {
       specialArrack: "Tiger Uppercut",
       hp: 110,
     },
+    {
+      name: "Akuma",
+      specialArrack: "GoHadoken",
+      hp: 80,
+    },
   ];
 
   const streetFighterItems = streetFighters.map((streetFighter) => (
     <li key={streetFighter.name}>
-      Name: {streetFighter.name}.
+      <Link to={"/fighters/" + streetFighter.name}>
+        Name: {streetFighter.name}
+      </Link>
       <ol>
         <li>Power: {streetFighter.specialArrack}</li>
         <li
