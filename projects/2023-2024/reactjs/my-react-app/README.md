@@ -25,7 +25,7 @@ npm run dev # Lancer le projet en local (via un serveur de développement)
 - Consultation du site: [react.dev/learn](https://react.dev/learn)
 - Guide pour ajotuer [react router](https://github.com/ErickKS/vite-react-router)
   - [map, filter, reduce animé](https://navin-moorthy.github.io/blog/map-filter-reduce-animated/)
-- Intégration de [firebase](https://medium.com/@sanchit0496/google-firebase-and-reactjs-integration-74855ec024ec)
+- Intégration de [firebase](https://medium.com/@sanchit0496/google-firebase-and-reactjs-integration-74855ec024ec). [Autre tuto](https://dev-academy.com/react-firebase/)
 
 ```js
 // Import the functions you need from the SDKs you need
@@ -57,7 +57,7 @@ export const db = getFirestore(app);
 export const auth = getAuth(app);
 ```
 
-firebaserc
+- `.firebaserc`
 
 ```json
 {

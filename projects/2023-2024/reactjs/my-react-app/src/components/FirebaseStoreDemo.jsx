@@ -1,18 +1,25 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { db } from "../firebase";
 import { getDocs, collection } from "firebase/firestore";
 
 export default function FirebaseStoreDemo() {
   const fightersCollection = collection(db, "fighters");
+  // useState permet de générer un état
   const [fightersList, setFightersList] = useState([]);
 
-  // TODO: à corriger le use state
-  useState(async () => {
-    const fightersDocs = await getDocs(fightersCollection);
-    const list = fightersDocs.docs.map((fighter) => (
-      <li key={fighter.id}>{fighter.data().name}</li>
+  async function fetchFighters() {
+    const fightersSnapshot = await getDocs(fightersCollection);
+    const list = fightersSnapshot.docs.map((fighter) => (
+      <li key={fighter.id}>
+        Name: {fighter.data().name}. Hp: {fighter.data().hp}
+      </li>
     ));
     setFightersList(list);
+  }
+
+  // useEffect permet de générer un changement d'état
+  useEffect(() => {
+    fetchFighters();
   });
 
   return <ul>{fightersList}</ul>;
