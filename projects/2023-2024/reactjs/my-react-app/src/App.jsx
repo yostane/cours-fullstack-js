@@ -1,10 +1,16 @@
 import "./App.css";
-import HomePage from "./pages/HomePage";
+import { Link, Outlet } from "react-router-dom";
 
 function App() {
   return (
     <>
-      <HomePage />
+      <nav>
+        <Link to="/home">Home</Link>
+        {" | "}
+        <Link to="/fighters">Fighters</Link>
+      </nav>
+
+      <Outlet />
     </>
   );
 }

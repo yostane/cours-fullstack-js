@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { Header } from "../components/Header";
-import { Hello } from "../components/Hello";
+import Header from "../components/Header";
+import Hello from "../components/Hello";
 import Counter from "../components/Counter";
 import StreetFigherList from "../components/StreetFighterList";
 
