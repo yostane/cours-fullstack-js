@@ -14,7 +14,12 @@ userRouter.post("/register", (req, res) => {
   userService.add(req.body);
   res.json({
     toekn: jwt.sign(
-      { id: req.body.id, email: req.email, year: 2024 },
+      {
+        id: req.body.id,
+        email: req.body.email,
+        isVet: req.body.isVet ?? false,
+        year: 2024,
+      },
       JWT_SECRET,
       {
         expiresIn: "1d",
