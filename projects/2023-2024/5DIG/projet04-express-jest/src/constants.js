@@ -10,3 +10,5 @@ export const planets = [
     speed: 23232,
   },
 ];
+
+export const JWT_SECRET = "";

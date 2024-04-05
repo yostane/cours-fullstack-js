@@ -13,6 +13,7 @@ Content-Type: application/json
 ###
 PATCH {{base_url}}/planets/3
 Content-Type: application/json
+Authorization: Bearer dfsdgfdsoginfdgdfgdfkgjdfg/sfdgdgdfgdfgdfg
 
 {
     "speed": 150
@@ -29,3 +30,30 @@ Content-Type: application/json
 DELETE {{base_url}}/planets/1
 ###
 DELETE {{base_url}}/planets/bis/2
+###
+POST {{base_url}}/users/login
+Content-Type: application/json
+
+{
+  "email":"mail@mail.com",
+  "password": "password"
+}
+###
+POST {{base_url}}/users/register
+Content-Type: application/json
+
+{
+  "id": 1,
+  "email":"mail@mail.com",
+  "password": "pwd"
+}
+###
+POST {{base_url}}/users/register
+Content-Type: application/json
+
+{
+  "id": 2,
+  "email":"vet@mail.com",
+  "password": "pwd",
+  "isVet": true
+}
