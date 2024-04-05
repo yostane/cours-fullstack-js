@@ -36,8 +36,13 @@ app.patch("/planets/:id", (req, res) => {
         planet[key] = element;
       }
     }
+    res.end();
+  } else {
+    res.status(404).end();
   }
 });
+
+app.delete("/planets/:id", (req, res) => {});
 
 const port = 3000;
 app.listen(port, () => {
