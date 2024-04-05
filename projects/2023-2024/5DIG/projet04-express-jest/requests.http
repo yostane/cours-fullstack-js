@@ -1,0 +1,31 @@
+@base_url=http://localhost:3000
+###
+GET {{base_url}}/planets
+###
+POST {{base_url}}/planets
+Content-Type: application/json
+
+{
+    "id": 3,
+    "name": "Julien",
+    "speed": 200
+}
+###
+PATCH {{base_url}}/planets/3
+Content-Type: application/json
+
+{
+    "speed": 150
+}
+###
+# Should get a 404 here
+PATCH {{base_url}}/planets/777
+Content-Type: application/json
+
+{
+    "speed": 150
+}
+###
+DELETE {{base_url}}/planets/1
+###
+DELETE {{base_url}}/planets/bis/2
