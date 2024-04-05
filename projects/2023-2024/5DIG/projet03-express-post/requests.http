@@ -1,0 +1,19 @@
+@base_url=http://localhost:3000
+###
+GET {{base_url}}/planets
+###
+POST {{base_url}}/planets
+Content-Type: application/json
+
+{
+    "id": 3,
+    "name": "Julien",
+    "speed": 200
+}
+###
+PATCH {{base_url}}/planets/3
+Content-Type: application/json
+
+{
+    "speed": 150
+}

@@ -1,11 +1,9 @@
-// require est le système d'import commonJS utilisé par nodejs
-import { readdirSync } from "fs";
 import express from "express";
-
-const files = readdirSync(".");
-console.log(files);
+import { planets } from "./constants.js";
+import bodyParser from "body-parser";
 
 const app = express();
+app.use(bodyParser.json());
 
 app.get("/", (req, res) => {
   res.send(`
@@ -15,19 +13,30 @@ app.get("/", (req, res) => {
   `);
 });
 
-const planets = [
-  {
-    name: "soleil",
-    speed: 1000000,
-  },
-  {
-    name: "jupyter",
-    speed: 23232,
-  },
-];
+app.post("/planets", (req, res) => {
+  console.log("headers", req.headers);
+  console.log("body", req.body);
+  planets.push(req.body);
+  res.end();
+});
 
 app.get("/planets", (req, res) => {
   res.json(planets);
+});
+
+app.patch("/planets/:id", (req, res) => {
+  console.log(req.params.id);
+  console.log(req.body);
+  const planet = planets.find((planet) => planet.id === +req.params.id);
+  if (planet) {
+    console.log("planet found");
+    for (const key in req.body) {
+      if (Object.hasOwnProperty.call(req.body, key)) {
+        const element = req.body[key];
+        planet[key] = element;
+      }
+    }
+  }
 });
 
 const port = 3000;
