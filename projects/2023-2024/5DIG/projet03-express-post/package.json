@@ -1,0 +1,17 @@
+{
+  "name": "demo-projet",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Projet de démo",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "dev": "node src/app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "moi",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.1"
+  }
+}
