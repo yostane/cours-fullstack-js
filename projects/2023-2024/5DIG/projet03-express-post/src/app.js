@@ -1,6 +1,6 @@
 import express from "express";
-import { planets } from "./constants.js";
 import bodyParser from "body-parser";
+import { planetRouter } from "./routes/PlanetRouter.js";
 
 const app = express();
 app.use(bodyParser.json());
@@ -13,57 +13,7 @@ app.get("/", (req, res) => {
   `);
 });
 
-app.post("/planets", (req, res) => {
-  console.log("headers", req.headers);
-  console.log("body", req.body);
-  planets.push(req.body);
-  res.end();
-});
-
-app.get("/planets", (req, res) => {
-  res.json(planets);
-});
-
-app.patch("/planets/:id", (req, res) => {
-  console.log(req.params.id);
-  console.log(req.body);
-  const planet = planets.find((planet) => planet.id === +req.params.id);
-  if (planet) {
-    console.log("planet found");
-    for (const key in req.body) {
-      if (Object.hasOwnProperty.call(req.body, key)) {
-        const element = req.body[key];
-        planet[key] = element;
-      }
-    }
-    res.end();
-  } else {
-    res.status(404).end();
-  }
-});
-
-app.delete("/planets/:id", (req, res) => {
-  const index = planets.findIndex((planet) => planet.id === +req.params.id);
-  if (index >= 0) {
-    planets.splice(index, 1);
-    res.end();
-  } else {
-    res.status(404).end();
-  }
-});
-
-app.delete("/planets/bis/:id", (req, res) => {
-  const remainingPlanets = planets.filter(
-    (planet) => planet.id !== +req.params.id
-  );
-  if (remainingPlanets.length < planets.length) {
-    planets.splice(0, planets.length);
-    planets.push(...remainingPlanets);
-    res.end();
-  } else {
-    res.status(404).end();
-  }
-});
+app.use("/planets", planetRouter);
 
 const port = 3000;
 app.listen(port, () => {
