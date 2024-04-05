@@ -42,7 +42,15 @@ app.patch("/planets/:id", (req, res) => {
   }
 });
 
-app.delete("/planets/:id", (req, res) => {});
+app.delete("/planets/:id", (req, res) => {
+  const index = planets.findIndex((planet) => planet.id === +req.params.id);
+  if (index >= 0) {
+    planets.splice(index, 1);
+    res.end();
+  } else {
+    res.status(404).end();
+  }
+});
 
 const port = 3000;
 app.listen(port, () => {

@@ -17,3 +17,13 @@ Content-Type: application/json
 {
     "speed": 150
 }
+###
+# Should get a 404 here
+PATCH {{base_url}}/planets/777
+Content-Type: application/json
+
+{
+    "speed": 150
+}
+###
+DELETE {{base_url}}/planets/1
