@@ -11,4 +11,4 @@ export const planets = [
   },
 ];
 
-export const JWT_SECRET = "";
+export const JWT_SECRET = "test";
