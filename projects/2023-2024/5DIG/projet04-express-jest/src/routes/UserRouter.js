@@ -23,16 +23,18 @@ function generateOkBody(user) {
 
 userRouter.post("/login", (req, res) => {
   const userService = new UserService();
+  console.log(req.body);
   const user = userService.find(req.body.email, req.body.password);
+  console.log(user);
   if (!user) {
     res.status(401).end();
   } else {
-    res.json(generateOkBody());
+    res.json(generateOkBody(user));
   }
 });
 
 userRouter.post("/register", (req, res) => {
   const userService = new UserService();
   userService.add(req.body);
-  res.json(generateOkBody());
+  res.json(generateOkBody(req.body));
 });

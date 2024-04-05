@@ -1,20 +1,23 @@
 import { User } from "../model/User.js";
 
+const users = [
+  new User(3, "drvet@vet.com", "pwd", true),
+  new User(5, "client@vet.com", "pwd", false),
+];
+
 export class UserService {
-  constructor() {
-    this.users = [
-      new User(3, "drvet@vet.com", "pwd", true),
-      new User(5, "client@vet.com", "pwd", false),
-    ];
-  }
+  constructor() {}
 
   add(user) {
-    this.users.push(user);
+    users.push(
+      new User(user.id, user.email, user.password, user.isVet ?? false)
+    );
   }
 
   find(email, password) {
-    return this.users.find(
+    const user = users.find(
       (user) => user.email === email && user.password === password
     );
+    return user;
   }
 }
