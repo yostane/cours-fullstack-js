@@ -52,6 +52,19 @@ app.delete("/planets/:id", (req, res) => {
   }
 });
 
+app.delete("/planets/bis/:id", (req, res) => {
+  const remainingPlanets = planets.filter(
+    (planet) => planet.id !== +req.params.id
+  );
+  if (remainingPlanets.length < planets.length) {
+    planets.splice(0, planets.length);
+    planets.push(...remainingPlanets);
+    res.end();
+  } else {
+    res.status(404).end();
+  }
+});
+
 const port = 3000;
 app.listen(port, () => {
   console.log("serveur démarré sur le port", port);

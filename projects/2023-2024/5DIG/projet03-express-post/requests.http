@@ -27,3 +27,5 @@ Content-Type: application/json
 }
 ###
 DELETE {{base_url}}/planets/1
+###
+DELETE {{base_url}}/planets/bis/2
