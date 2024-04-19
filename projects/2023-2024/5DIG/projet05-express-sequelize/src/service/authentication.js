@@ -11,7 +11,7 @@ const opts = {
 passport.use(
   new Strategy(opts, async (payload, done) => {
     const userService = new UserService();
-    const user = userService.findById(payload.id);
+    const user = await userService.findById(payload.id);
     if (!user) {
       done("User not found");
       return;

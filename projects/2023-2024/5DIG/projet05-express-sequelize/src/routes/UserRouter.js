@@ -21,10 +21,10 @@ function generateOkBody(user) {
   return { token };
 }
 
-userRouter.post("/login", (req, res) => {
+userRouter.post("/login", async (req, res) => {
   const userService = new UserService();
   console.log(req.body);
-  const user = userService.find(req.body.email, req.body.password);
+  const user = await userService.find(req.body.email, req.body.password);
   console.log(user);
   if (!user) {
     res.status(401).end();
@@ -33,8 +33,8 @@ userRouter.post("/login", (req, res) => {
   }
 });
 
-userRouter.post("/register", (req, res) => {
+userRouter.post("/register", async (req, res) => {
   const userService = new UserService();
-  userService.add(req.body);
+  await userService.add(req.body);
   res.json(generateOkBody(req.body));
 });
