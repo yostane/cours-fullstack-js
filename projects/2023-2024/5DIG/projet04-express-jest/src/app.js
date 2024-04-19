@@ -16,5 +16,9 @@ app.get("/", (req, res) => {
   `);
 });
 
-app.use("/planets", passport.authenticate("jwt"), planetRouter);
+app.use(
+  "/planets",
+  passport.authenticate("jwt", { session: false }),
+  planetRouter
+);
 app.use("/users", userRouter);

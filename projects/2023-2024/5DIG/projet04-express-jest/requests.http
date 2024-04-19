@@ -1,6 +1,7 @@
 @base_url=http://localhost:3000
 ###
 GET {{base_url}}/planets
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiZW1haWwiOiJkcnZldEB2ZXQuY29tIiwiaXNWZXQiOnRydWUsInllYXIiOjIwMjQsImlhdCI6MTcxMzUzMDQzOCwiZXhwIjoxNzEzNjE2ODM4fQ.72rx3PfIw9qLDdT26OLTv50SQspqHvpP6Sg4QxYj9VQ
 ###
 POST {{base_url}}/planets
 Content-Type: application/json

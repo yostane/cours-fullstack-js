@@ -1,7 +1,7 @@
 import { ExtractJwt, Strategy } from "passport-jwt";
-import { JWT_SECRET } from "../constants";
+import { JWT_SECRET } from "../constants.js";
 import passport from "passport";
-import { UserService } from "./UserService";
+import { UserService } from "./UserService.js";
 
 const opts = {
   jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
