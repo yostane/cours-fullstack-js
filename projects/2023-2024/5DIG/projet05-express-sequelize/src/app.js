@@ -1,28 +1,21 @@
 import express from "express";
 import bodyParser from "body-parser";
-import { planetRouter } from "./routes/PlanetRouter.js";
+import { animalRouter } from "./routes/AnimalRouter.js";
 import { userRouter } from "./routes/UserRouter.js";
 import passport from "passport";
 import "./service/authentication.js";
 
 import { sequelize } from "./service/database.js";
 import "./model/User.js";
+import "./model/Animal.js";
 sequelize.sync();
 
 export const app = express();
 app.use(bodyParser.json());
 
-app.get("/", (req, res) => {
-  res.send(`
-  <html>
-    <body>Hello express</body>
-  </html>
-  `);
-});
-
 app.use(
-  "/planets",
+  "/animals",
   passport.authenticate("jwt", { session: false }),
-  planetRouter
+  animalRouter
 );
 app.use("/users", userRouter);

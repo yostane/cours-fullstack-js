@@ -1,9 +1,18 @@
 import request from "supertest";
 import { app } from "../src/app";
 import { expect, jest, test, describe } from "@jest/globals";
-import { planets } from "../src/constants";
 
-describe("Test planets", () => {
+// TODO: fix
+
+describe("Add some users", () => {
+  test("It should add some users", async () => {
+    const response = await request(app).get("/planets");
+    expect(response.statusCode).toBe(200);
+    expect(response.body).toIncludeAllMembers(planets);
+  });
+});
+
+describe("Test get all animals", () => {
   test("It should GET some planets", async () => {
     const response = await request(app).get("/planets");
     expect(response.statusCode).toBe(200);
