@@ -1,4 +1,5 @@
 import { Animal } from "../model/Animal.js";
+import { User } from "../model/User.js";
 import { UserService } from "./UserService.js";
 
 export class AnimalService {
@@ -19,12 +20,12 @@ export class AnimalService {
     if (!user) {
       throw new Error("not found");
     }
-    return user.getAnimals();
+    return await user.getAnimals();
   }
 
-  async update(id, newAnimal) {
+  async update(idUser, id, newAnimal) {
     const animal = await this.findById(id);
-    if (!animal) {
+    if (!animal || (await animal.getUser()).id !== idUser) {
       throw new Error("not found");
     }
     animal.set(newAnimal);
@@ -34,12 +35,13 @@ export class AnimalService {
   async findById(id) {
     return await Animal.findOne({
       where: { id },
+      include: User,
     });
   }
 
-  async deleteOne(id) {
+  async deleteOne(idUser, id) {
     const animal = await this.findById(id);
-    if (!animal) {
+    if (!animal || (await animal.getUser()).id !== idUser) {
       throw new Error("not found");
     }
     await animal.destroy();

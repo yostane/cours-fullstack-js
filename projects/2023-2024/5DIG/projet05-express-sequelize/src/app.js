@@ -9,7 +9,7 @@ import { sequelize } from "./service/database.js";
 import { User } from "./model/User.js";
 import { Animal } from "./model/Animal.js";
 User.hasMany(Animal);
-Animal.hasOne(User);
+Animal.belongsTo(User);
 sequelize.sync();
 
 export const app = express();

@@ -22,7 +22,7 @@ animalRouter.post("/", async (req, res) => {
 animalRouter.put("/:id", async (req, res) => {
   const animalService = new AnimalService();
   try {
-    await animalService.update(+req.params.id, req.body);
+    await animalService.update(req.user.id, +req.params.id, req.body);
     res.end();
   } catch (e) {
     res.sendStatus(400);
@@ -32,7 +32,7 @@ animalRouter.put("/:id", async (req, res) => {
 animalRouter.delete("/:id", async (req, res) => {
   const animalService = new AnimalService();
   try {
-    await animalService.deleteOne(+req.params.id);
+    await animalService.deleteOne(req.user.id, +req.params.id);
     res.end();
   } catch (e) {
     res.sendStatus(404);
