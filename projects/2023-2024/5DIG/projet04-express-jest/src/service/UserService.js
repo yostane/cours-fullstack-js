@@ -20,4 +20,8 @@ export class UserService {
     );
     return user;
   }
+
+  findById(id) {
+    return users.find((user) => user.id === id);
+  }
 }
