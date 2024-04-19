@@ -1,7 +1,15 @@
 import { Model, DataTypes } from "sequelize";
 import { sequelize } from "../service/database.js";
 
-export class User extends Model {}
+export class User extends Model {
+  toDto() {
+    return {
+      email: this.email,
+      isVet: this.isVet,
+      id: this.id,
+    };
+  }
+}
 User.init(
   {
     email: {

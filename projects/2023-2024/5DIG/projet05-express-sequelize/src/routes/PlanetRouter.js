@@ -27,7 +27,7 @@ planetRouter.post("/favorite/:id", (req, res) => {
     "TODO: mettre cette planete:",
     planet,
     "en favori du user:",
-    user
+    user.toDto()
   );
   res.end();
 });
