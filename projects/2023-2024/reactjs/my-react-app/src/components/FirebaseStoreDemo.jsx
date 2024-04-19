@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { db } from "../firebase";
 import {
   getDocs,
@@ -33,36 +33,32 @@ export default function FirebaseStoreDemo() {
       hp: 200,
       specialPower: "Blanka roll",
     });
+    await fetchFighters();
   }
 
   async function deleteFighter(fighter) {
-    const d = doc(fightersCollection, fighter);
-    await deleteDoc(d);
+    await deleteDoc(fighter);
+    await fetchFighters();
   }
 
-  // useEffect permet de générer un changement d'état
-  useEffect(() => {
-    async function fetchFighters() {
-      const fightersSnapshot = await getDocs(fightersCollection);
-      const list = fightersSnapshot.docs.map((fighter) => (
-        <li key={fighter.id}>
-          Name: {fighter.data().name}. Hp: {fighter.data().hp}
-          <button onClick={async () => await deleteFighter(fighter)}>
-            Delete
-          </button>
-        </li>
-      ));
-      setFightersList(list);
-    }
-
-    console.log("calling use effect");
-    fetchFighters();
-  }, []);
+  async function fetchFighters() {
+    const fightersSnapshot = await getDocs(fightersCollection);
+    const list = fightersSnapshot.docs.map((fighter) => (
+      <li key={fighter.id}>
+        Name: {fighter.data().name}. Hp: {fighter.data().hp}
+        <button onClick={async () => await deleteFighter(fighter.ref)}>
+          Delete
+        </button>
+      </li>
+    ));
+    setFightersList(list);
+  }
 
   return (
     <>
       <ul>{fightersList}</ul>
       <button onClick={addFighter}>Add Fighter</button>
+      <button onClick={fetchFighters}>Fetch Fighters</button>
     </>
   );
 }
