@@ -1,0 +1,82 @@
+@base_url=http://localhost:3000
+###
+# @name login
+POST {{base_url}}/users/login
+Content-Type: application/json
+
+{
+  "email":"drvet@vet.com",
+  "password": "pwd"
+}
+###
+# @name login
+POST {{base_url}}/users/register
+Content-Type: application/json
+
+{
+  "id": 1,
+  "email":"mail@mail.com",
+  "password": "pwd"
+}
+###
+# @name login
+POST {{base_url}}/users/login
+Content-Type: application/json
+
+{
+  "email":"mail@mail.com",
+  "password": "pwd"
+}
+### 
+# @name login
+POST {{base_url}}/users/register
+Content-Type: application/json
+
+{
+  "id": 2,
+  "email":"vet@mail.com",
+  "password": "pwd",
+  "isVet": true
+}
+###
+@authToken={{login.response.body.token}}
+###
+GET {{base_url}}/planets
+Authorization: Bearer {{authToken}}
+###
+POST {{base_url}}/planets/favorite/1
+Authorization: Bearer {{authToken}}
+###
+POST {{base_url}}/planets
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
+
+{
+    "id": 3,
+    "name": "Julien",
+    "speed": 200
+}
+###
+PATCH {{base_url}}/planets/3
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+{
+    "speed": 150
+}
+###
+# Should get a 404 here
+PATCH {{base_url}}/planets/777
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
+
+{
+    "speed": 150
+}
+###
+DELETE {{base_url}}/planets/1
+Authorization: Bearer {{authToken}}
+###
+DELETE {{base_url}}/planets/bis/2
+Authorization: Bearer {{authToken}}
+###
