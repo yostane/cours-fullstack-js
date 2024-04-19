@@ -6,8 +6,10 @@ import passport from "passport";
 import "./service/authentication.js";
 
 import { sequelize } from "./service/database.js";
-import "./model/User.js";
-import "./model/Animal.js";
+import { User } from "./model/User.js";
+import { Animal } from "./model/Animal.js";
+User.hasMany(Animal);
+Animal.hasOne(User);
 sequelize.sync();
 
 export const app = express();

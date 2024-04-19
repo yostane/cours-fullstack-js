@@ -5,14 +5,14 @@ export const animalRouter = express.Router();
 
 animalRouter.get("/", async (req, res) => {
   const animalService = new AnimalService();
-  const animals = await animalService.findAll();
+  const animals = await animalService.findAll(req.user.id);
   res.send(animals.map((animal) => animal.toDto()));
 });
 
 animalRouter.post("/", async (req, res) => {
   const animalService = new AnimalService();
   try {
-    await animalService.add(req.body);
+    await animalService.add(req.user.id, req.body);
     res.end();
   } catch (e) {
     res.sendStatus(400);

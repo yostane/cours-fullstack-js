@@ -4,7 +4,7 @@ POST {{base_url}}/users/register
 Content-Type: application/json
 
 {
-  "email":"drvet@vet.com",
+  "email":"drvetO@vet.com",
   "password": "pwd",
   "isVet": true
 }

@@ -1,3 +1,4 @@
+import { Animal } from "../model/Animal.js";
 import { User } from "../model/User.js";
 
 export class UserService {
@@ -20,6 +21,7 @@ export class UserService {
   async findById(id) {
     return await User.findOne({
       where: { id },
+      include: Animal,
     });
   }
 }

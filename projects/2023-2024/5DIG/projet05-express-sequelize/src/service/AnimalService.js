@@ -1,14 +1,25 @@
 import { Animal } from "../model/Animal.js";
+import { UserService } from "./UserService.js";
 
 export class AnimalService {
   constructor() {}
 
-  async add(animal) {
-    await Animal.create(animal);
+  async add(idUser, animal) {
+    const userService = new UserService();
+    const user = await userService.findById(idUser);
+    if (!user) {
+      throw new Error("not found");
+    }
+    await user.createAnimal(animal);
   }
 
-  async findAll() {
-    return await Animal.findAll();
+  async findAll(idUser) {
+    const userService = new UserService();
+    const user = await userService.findById(idUser);
+    if (!user) {
+      throw new Error("not found");
+    }
+    return user.getAnimals();
   }
 
   async update(id, newAnimal) {
