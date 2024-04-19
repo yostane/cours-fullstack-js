@@ -11,6 +11,15 @@ export class AnimalService {
     return await Animal.findAll();
   }
 
+  async update(id, newAnimal) {
+    const animal = await this.findById(id);
+    if (!animal) {
+      throw new Error("not found");
+    }
+    animal.set(newAnimal);
+    await animal.save();
+  }
+
   async findById(id) {
     return await Animal.findOne({
       where: { id },

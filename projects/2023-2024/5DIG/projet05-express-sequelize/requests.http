@@ -47,6 +47,14 @@ Content-Type: application/json
     "name": "Milou {{$randomInt 1 200}}"
 }
 ###
+PUT {{base_url}}/animals/1
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
+
+{
+    "name": "Idéfix {{$randomInt 1 200}}"
+}
+###
 DELETE {{base_url}}/animals/1
 Authorization: Bearer {{authToken}}
 ###
