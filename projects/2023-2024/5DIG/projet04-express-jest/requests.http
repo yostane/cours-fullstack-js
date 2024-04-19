@@ -48,6 +48,7 @@ POST {{base_url}}/planets/favorite/1
 Authorization: Bearer {{authToken}}
 ###
 POST {{base_url}}/planets
+Authorization: Bearer {{authToken}}
 Content-Type: application/json
 
 {
@@ -58,7 +59,7 @@ Content-Type: application/json
 ###
 PATCH {{base_url}}/planets/3
 Content-Type: application/json
-Authorization: Bearer dfsdgfdsoginfdgdfgdfkgjdfg/sfdgdgdfgdfgdfg
+Authorization: Bearer {{authToken}}
 
 {
     "speed": 150
@@ -66,6 +67,7 @@ Authorization: Bearer dfsdgfdsoginfdgdfgdfkgjdfg/sfdgdgdfgdfgdfg
 ###
 # Should get a 404 here
 PATCH {{base_url}}/planets/777
+Authorization: Bearer {{authToken}}
 Content-Type: application/json
 
 {
@@ -73,6 +75,8 @@ Content-Type: application/json
 }
 ###
 DELETE {{base_url}}/planets/1
+Authorization: Bearer {{authToken}}
 ###
 DELETE {{base_url}}/planets/bis/2
+Authorization: Bearer {{authToken}}
 ###
