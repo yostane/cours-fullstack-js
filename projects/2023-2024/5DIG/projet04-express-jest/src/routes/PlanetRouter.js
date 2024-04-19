@@ -10,6 +10,28 @@ planetRouter.post("/", (req, res) => {
   res.end();
 });
 
+planetRouter.post("/favorite/:id", (req, res) => {
+  const planet = planets.find((planet) => planet.id === +req.params.id);
+  if (!planet) {
+    res.status(404).end();
+    return;
+  }
+  const user = req.user;
+  // Pas nécessaire car déjà fait dans authentication.js, mais on fait quand même pour être vraiment tranquille
+  if (!user) {
+    res.status(401).end();
+    return;
+  }
+  // à partir de là, on a le user et la planete, donc on peut enregistrer le favori
+  console.log(
+    "TODO: mettre cette planete:",
+    planet,
+    "en favori du user:",
+    user
+  );
+  res.end();
+});
+
 planetRouter.get("/", (req, res) => {
   res.json(planets);
 });

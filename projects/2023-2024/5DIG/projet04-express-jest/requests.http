@@ -1,7 +1,51 @@
 @base_url=http://localhost:3000
 ###
+# @name login
+POST {{base_url}}/users/login
+Content-Type: application/json
+
+{
+  "email":"drvet@vet.com",
+  "password": "pwd"
+}
+###
+# @name login
+POST {{base_url}}/users/register
+Content-Type: application/json
+
+{
+  "id": 1,
+  "email":"mail@mail.com",
+  "password": "pwd"
+}
+###
+# @name login
+POST {{base_url}}/users/login
+Content-Type: application/json
+
+{
+  "email":"mail@mail.com",
+  "password": "pwd"
+}
+### 
+# @name login
+POST {{base_url}}/users/register
+Content-Type: application/json
+
+{
+  "id": 2,
+  "email":"vet@mail.com",
+  "password": "pwd",
+  "isVet": true
+}
+###
+@authToken={{login.response.body.token}}
+###
 GET {{base_url}}/planets
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiZW1haWwiOiJkcnZldEB2ZXQuY29tIiwiaXNWZXQiOnRydWUsInllYXIiOjIwMjQsImlhdCI6MTcxMzUzMDQzOCwiZXhwIjoxNzEzNjE2ODM4fQ.72rx3PfIw9qLDdT26OLTv50SQspqHvpP6Sg4QxYj9VQ
+Authorization: Bearer {{authToken}}
+###
+POST {{base_url}}/planets/favorite/1
+Authorization: Bearer {{authToken}}
 ###
 POST {{base_url}}/planets
 Content-Type: application/json
@@ -32,37 +76,3 @@ DELETE {{base_url}}/planets/1
 ###
 DELETE {{base_url}}/planets/bis/2
 ###
-POST {{base_url}}/users/login
-Content-Type: application/json
-
-{
-  "email":"drvet@vet.com",
-  "password": "pwd"
-}
-###
-POST {{base_url}}/users/register
-Content-Type: application/json
-
-{
-  "id": 1,
-  "email":"mail@mail.com",
-  "password": "pwd"
-}
-###
-POST {{base_url}}/users/login
-Content-Type: application/json
-
-{
-  "email":"mail@mail.com",
-  "password": "pwd"
-}
-###
-POST {{base_url}}/users/register
-Content-Type: application/json
-
-{
-  "id": 2,
-  "email":"vet@mail.com",
-  "password": "pwd",
-  "isVet": true
-}
