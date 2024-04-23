@@ -38,6 +38,7 @@ export default function FirebaseStoreDemo() {
     }
     console.log("favorites doc snapshot", docSnap);
     console.log("favorites data", docSnap.data());
+    // { "B4qOoGeU7rKa0WlWtBKS": true, "sEotHleZAAwrZKm97mij": true}
     return docSnap.data();
   }
 
