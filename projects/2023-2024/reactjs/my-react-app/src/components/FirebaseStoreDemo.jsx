@@ -16,8 +16,6 @@ export default function FirebaseStoreDemo() {
   // useState permet de générer un état
   const [fightersList, setFightersList] = useState([]);
 
-  let favoriteFighterDoc = undefined;
-
   async function filter() {
     const q = query(fightersCollection, where("hp", ">", 50));
     const fightersSnapshot = await getDocs(q);
@@ -36,17 +34,17 @@ export default function FirebaseStoreDemo() {
     const docSnap = await getDoc(docRef);
     if (!docSnap.exists()) {
       console.log("No favorites");
-      return;
+      return undefined;
     }
     console.log("favorites doc snapshot", docSnap);
     console.log("favorites data", docSnap.data());
-    favoriteFighterDoc = docSnap.data();
+    return docSnap.data();
   }
 
-  function isFavorite(fighterId) {
+  function isFavorite(favoriteFightersDoc, fighterId) {
     const result =
-      favoriteFighterDoc &&
-      Object.prototype.hasOwnProperty.call(favoriteFighterDoc, fighterId);
+      favoriteFightersDoc &&
+      Object.prototype.hasOwnProperty.call(favoriteFightersDoc, fighterId);
     console.log("is favorite", fighterId, result);
     return result;
   }
@@ -66,14 +64,14 @@ export default function FirebaseStoreDemo() {
       });
       return;
     }
-    const favoriteDoc = docSnap.data();
-    if (await isFavorite(fighterId)) {
-      favoriteDoc[fighterId] = true;
+    const favoriteFightersDoc = docSnap.data();
+    if (isFavorite(favoriteFightersDoc, fighterId)) {
+      delete favoriteFightersDoc[fighterId];
     } else {
-      delete favoriteDoc[fighterId];
+      favoriteFightersDoc[fighterId] = true;
     }
-    await setDoc(docRef, favoriteDoc);
-    await fetchFavorites();
+    await setDoc(docRef, favoriteFightersDoc);
+    await fetchFighters();
   }
 
   async function addFighter() {
@@ -95,15 +93,15 @@ export default function FirebaseStoreDemo() {
 
   async function fetchFighters() {
     const fightersSnapshot = await getDocs(fightersCollection);
-    await fetchFavorites();
+    const favoriteFightersDoc = await fetchFavorites();
     const list = fightersSnapshot.docs.map((fighter) => (
       <li key={fighter.id}>
         Name: {fighter.data().name}. Hp: {fighter.data().hp}
-        <button onClick={async () => await deleteFighter(fighter.ref)}>
+        <button onClick={async () => await deleteFighter(fighter.id)}>
           Delete
         </button>
-        <button onClick={async () => await toggleFavorite(fighter.ref)}>
-          {isFavorite(fighter.id) ? "💖" : "💛"}
+        <button onClick={async () => await toggleFavorite(fighter.id)}>
+          {isFavorite(favoriteFightersDoc, fighter.id) ? "💖" : "💛"}
         </button>
       </li>
     ));
