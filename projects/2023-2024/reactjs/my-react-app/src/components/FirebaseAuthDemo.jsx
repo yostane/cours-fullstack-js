@@ -1,6 +1,10 @@
 import { useState } from "react";
 import { auth } from "../firebase";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signOut,
+} from "firebase/auth";
 
 export default function FirebaseAuthDemo() {
   const [email, setEmail] = useState("test@test.com");
@@ -12,6 +16,20 @@ export default function FirebaseAuthDemo() {
       password
     );
     console.log(userCredentials.user.email, userCredentials.user.uid);
+  }
+
+  async function login() {
+    const userCredentials = await signInWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
+    console.log(userCredentials.user.email, userCredentials.user.uid);
+  }
+
+  async function logout() {
+    await signOut(auth);
+    console.log("Logged out");
   }
 
   return (
@@ -38,6 +56,8 @@ export default function FirebaseAuthDemo() {
         />
       </div>
       <button onClick={createUser}>Create user</button>
+      <button onClick={login}>Login</button>
+      <button onClick={logout}>Logout</button>
     </div>
   );
 }

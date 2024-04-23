@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { db } from "../firebase";
+import { auth, db } from "../firebase";
 import {
   getDocs,
   collection,
@@ -8,12 +8,15 @@ import {
   doc,
   setDoc,
   deleteDoc,
+  getDoc,
 } from "firebase/firestore";
 
 export default function FirebaseStoreDemo() {
   const fightersCollection = collection(db, "fighters");
   // useState permet de générer un état
   const [fightersList, setFightersList] = useState([]);
+
+  let favoriteFighterDoc = undefined;
 
   async function filter() {
     const q = query(fightersCollection, where("hp", ">", 50));
@@ -22,6 +25,55 @@ export default function FirebaseStoreDemo() {
       <li key={fighter.id}>Hp: {fighter.data().hp}</li>
     ));
     setFightersList(list);
+  }
+
+  async function fetchFavorites() {
+    if (!auth.currentUser) {
+      console.error("No user loggedIn");
+      return;
+    }
+    const docRef = doc(db, "favorites", auth.currentUser.uid);
+    const docSnap = await getDoc(docRef);
+    if (!docSnap.exists()) {
+      console.log("No favorites");
+      return;
+    }
+    console.log("favorites doc snapshot", docSnap);
+    console.log("favorites data", docSnap.data());
+    favoriteFighterDoc = docSnap.data();
+  }
+
+  function isFavorite(fighterId) {
+    const result =
+      favoriteFighterDoc &&
+      Object.prototype.hasOwnProperty.call(favoriteFighterDoc, fighterId);
+    console.log("is favorite", fighterId, result);
+    return result;
+  }
+
+  async function toggleFavorite(fighterId) {
+    console.log("setting as favorite", fighterId);
+    if (!auth.currentUser) {
+      console.error("No user loggedIn");
+      return;
+    }
+    const docRef = doc(db, "favorites", auth.currentUser.uid);
+    const docSnap = await getDoc(docRef);
+    if (!docSnap.exists()) {
+      console.log("new favorite doc");
+      await setDoc(docRef, {
+        [fighterId]: true,
+      });
+      return;
+    }
+    const favoriteDoc = docSnap.data();
+    if (await isFavorite(fighterId)) {
+      favoriteDoc[fighterId] = true;
+    } else {
+      delete favoriteDoc[fighterId];
+    }
+    await setDoc(docRef, favoriteDoc);
+    await fetchFavorites();
   }
 
   async function addFighter() {
@@ -43,11 +95,15 @@ export default function FirebaseStoreDemo() {
 
   async function fetchFighters() {
     const fightersSnapshot = await getDocs(fightersCollection);
+    await fetchFavorites();
     const list = fightersSnapshot.docs.map((fighter) => (
       <li key={fighter.id}>
         Name: {fighter.data().name}. Hp: {fighter.data().hp}
         <button onClick={async () => await deleteFighter(fighter.ref)}>
           Delete
+        </button>
+        <button onClick={async () => await toggleFavorite(fighter.ref)}>
+          {isFavorite(fighter.id) ? "💖" : "💛"}
         </button>
       </li>
     ));
