@@ -125,3 +125,37 @@ const streetFighter2 = {
 };
 console.log(streetFighter1, streetFighter2);
 ```
+
+## Règles de sécurité Firestore
+
+- Accès en lecture à tout le monde et accès en écriture uniquement aux personnes connectées sur **Firebase Authentication**
+
+```js
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /{document=**} {
+      allow read;
+      allow write: if (request.auth.uid != null);
+    }
+  }
+}
+```
+
+- Ci-dessous, on a une collection users qui contient des documents dont le nom et l'identifiant de l'utilisateur. La règle mise en place, n'autorise l'accès au profil que pour son utilisateur.
+
+```js
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Make sure the uid of the requesting user matches name of the user
+    // document. The wildcard expression {userId} makes the userId variable
+    // available in rules.
+    match /users/{userId} {
+      allow read, update, delete: if request.auth != null && request.auth.uid == userId;
+      allow create: if request.auth != null;
+    }
+  }
+}
+```
+
+- [Plus de doc et d'exemples](https://firebase.google.com/docs/firestore/security/rules-conditions?hl=fr)

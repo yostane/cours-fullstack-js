@@ -10,7 +10,7 @@ function StreetFigherList({ treshold }) {
         Name: {streetFighter.name}
       </Link>
       <ol>
-        <li>Power: {streetFighter.specialArrack}</li>
+        <li>Power: {streetFighter.specialAttack}</li>
         <li
           style={{
             color: streetFighter.hp < treshold ? "red" : "green",
