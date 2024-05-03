@@ -61,3 +61,25 @@ Authorization: Bearer {{authToken}}
 DELETE {{base_url}}/animals/2
 Authorization: Bearer {{authToken}}
 ###
+POST {{base_url}}/appointments
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
+
+{
+  "idVet" : 1,
+  "idAnimal": 1,
+  "date": "2024-07-01T09:30:00.0Z"
+}
+###
+POST {{base_url}}/appointments
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
+
+{
+  "idVet" : 1,
+  "idAnimal": 2,
+  "date": "2024-07-02T10:00:00.0Z"
+}
+###
+GET {{base_url}}/appointments
+Authorization: Bearer {{authToken}}

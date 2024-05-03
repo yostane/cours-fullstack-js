@@ -1,9 +1,16 @@
-import { AnimalService } from "./AnimalService";
-import { UserService } from "./UserService";
+import { Appointment } from "../model/Appointment.js";
+import { AnimalService } from "./AnimalService.js";
+import { UserService } from "./UserService.js";
 
 export class AppointmentService {
   constructor() {}
 
+  /**
+   * Permet de prendre un rendez-vous à un animal avec un médecin
+   * @param {number} idUser Le médecin (attention, ce n'est pas forcément l'utilisateur connecté)
+   * @param {number} idAnimal le patient
+   * @param {Date} date la date du rendez-vous
+   */
   async add(idUser, idAnimal, date) {
     const userService = new UserService();
     const user = await userService.findById(idUser);
@@ -12,20 +19,31 @@ export class AppointmentService {
     }
 
     const animalService = new AnimalService();
-    const animal = animalService.findById(idAnimal);
+    const animal = await animalService.findById(idAnimal);
     if (!animal) {
       throw new Error("Animal not found");
     }
     //TODO: vérifier que le créneaux n'a pas été pris ni par l'animal ni par le véto
+    const appointment = await Appointment.create({
+      date: date,
+    });
+    await user.setAppointment(appointment);
+    await animal.setAppointment(appointment);
   }
 
-  async findAll(idUser) {}
-
-  async deleteOne(idUser, id) {
-    const animal = await this.findById(id);
-    if (!animal || (await animal.getUser()).id !== idUser) {
+  /**
+   * Trouve les rendez-vous d'un médecin
+   * @param {*} idUser: l'identidiant du médecin
+   */
+  async findAllForVet(idUser) {
+    const userService = new UserService();
+    const user = await userService.findById(idUser);
+    if (!user && !user.isVet) {
       throw new Error("not found");
     }
-    await animal.destroy();
+    // mixin rajouté par sequelize quand on a précisé la relation one-to-many dans le app.js
+    user.getAppointments();
   }
+
+  async deleteOne(idUser, id) {}
 }

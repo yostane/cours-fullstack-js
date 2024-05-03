@@ -9,6 +9,8 @@ import { sequelize } from "./service/database.js";
 import { User } from "./model/User.js";
 import { Animal } from "./model/Animal.js";
 import { Appointment } from "./model/Appointment.js";
+import { appointmentRouter } from "./routes/AppointmentRouter.js";
+
 User.hasMany(Animal);
 Animal.belongsTo(User);
 
@@ -16,6 +18,8 @@ Appointment.hasOne(User);
 Appointment.hasOne(Animal);
 Animal.hasMany(Appointment);
 User.hasMany(Appointment);
+
+// Déclenche l'exécution du SQL qui créé les tables
 sequelize.sync();
 
 export const app = express();
@@ -25,5 +29,10 @@ app.use(
   "/animals",
   passport.authenticate("jwt", { session: false }),
   animalRouter
+);
+app.use(
+  "/appointments",
+  passport.authenticate("jwt", { session: false }),
+  appointmentRouter
 );
 app.use("/users", userRouter);
