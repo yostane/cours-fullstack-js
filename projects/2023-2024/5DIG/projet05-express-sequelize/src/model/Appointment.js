@@ -3,12 +3,18 @@ import { sequelize } from "../service/database.js";
 
 export class Appointment extends Model {
   async toDto() {
+    const user = await this.getUser();
+    const animal = await this.getAnimal();
     return {
       id: this.id,
       date: this.date,
       comment: this.comment,
-      vet: (await this.getUser()).email,
-      animal: (await this.getAnimal()).name,
+      vet: {
+        email: user.email,
+      },
+      animal: {
+        name: animal.name,
+      },
     };
   }
 }

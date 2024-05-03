@@ -9,7 +9,7 @@ Content-Type: application/json
   "isVet": true
 }
 ###
-# @name login
+# @name vetLogin
 POST {{base_url}}/users/login
 Content-Type: application/json
 
@@ -23,9 +23,11 @@ Content-Type: application/json
 
 {
   "email":"mail@mail.com",
-  "password": "pwd"
+  "password": "pwd",
+  "isVet": false
 }
 ###
+# @name nonVetLogin
 POST {{base_url}}/users/login
 Content-Type: application/json
 
@@ -34,13 +36,14 @@ Content-Type: application/json
   "password": "pwd"
 }
 ###
-@authToken={{login.response.body.token}}
+@vetAuthToken={{vetLogin.response.body.token}}
+@nonVetAuthToken={{nonVetLogin.response.body.token}}
 ###
 GET {{base_url}}/animals
-Authorization: Bearer {{authToken}}
+Authorization: Bearer {{nonVetAuthToken}}
 ###
 POST {{base_url}}/animals
-Authorization: Bearer {{authToken}}
+Authorization: Bearer {{nonVetAuthToken}}
 Content-Type: application/json
 
 {
@@ -48,7 +51,7 @@ Content-Type: application/json
 }
 ###
 PUT {{base_url}}/animals/1
-Authorization: Bearer {{authToken}}
+Authorization: Bearer {{nonVetAuthToken}}
 Content-Type: application/json
 
 {
@@ -56,30 +59,32 @@ Content-Type: application/json
 }
 ###
 DELETE {{base_url}}/animals/1
-Authorization: Bearer {{authToken}}
+Authorization: Bearer {{nonVetAuthToken}}
 ###
 DELETE {{base_url}}/animals/2
-Authorization: Bearer {{authToken}}
+Authorization: Bearer {{nonVetAuthToken}}
 ###
 POST {{base_url}}/appointments
-Authorization: Bearer {{authToken}}
+Authorization: Bearer {{nonVetAuthToken}}
 Content-Type: application/json
 
 {
   "idVet" : 1,
   "idAnimal": 1,
-  "date": "2024-07-01T09:30:00.0Z"
+  "date": "2024-07-01T09:30:00.0Z",
+  "comment": "nez qui coule"
 }
 ###
 POST {{base_url}}/appointments
-Authorization: Bearer {{authToken}}
+Authorization: Bearer {{nonVetAuthToken}}
 Content-Type: application/json
 
 {
   "idVet" : 1,
   "idAnimal": 2,
-  "date": "2024-07-02T10:00:00.0Z"
+  "date": "2024-07-02T10:00:00.0Z",
+  "comment": "dent malade"
 }
 ###
 GET {{base_url}}/appointments
-Authorization: Bearer {{authToken}}
+Authorization: Bearer {{vetAuthToken}}

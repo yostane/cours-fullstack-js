@@ -11,7 +11,7 @@ export class AppointmentService {
    * @param {number} idAnimal le patient
    * @param {Date} date la date du rendez-vous
    */
-  async add(idUser, idAnimal, date) {
+  async add(idUser, idAnimal, appointmentInfo) {
     const userService = new UserService();
     const user = await userService.findById(idUser);
     if (!user || !user.isVet) {
@@ -24,11 +24,11 @@ export class AppointmentService {
       throw new Error("Animal not found");
     }
     //TODO: vérifier que le créneaux n'a pas été pris ni par l'animal ni par le véto
-    const appointment = await Appointment.create({
-      date: date,
-    });
-    await user.setAppointment(appointment);
-    await animal.setAppointment(appointment);
+    const appointment = await Appointment.create(appointmentInfo);
+    await user.addAppointment(appointment);
+    await animal.addAppointment(appointment);
+    await appointment.setUser(user);
+    await appointment.setAnimal(animal);
   }
 
   /**
@@ -42,7 +42,7 @@ export class AppointmentService {
       throw new Error("not found");
     }
     // mixin rajouté par sequelize quand on a précisé la relation one-to-many dans le app.js
-    user.getAppointments();
+    return await user.getAppointments();
   }
 
   async deleteOne(idUser, id) {}
