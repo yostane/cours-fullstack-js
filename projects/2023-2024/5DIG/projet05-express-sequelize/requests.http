@@ -1,4 +1,5 @@
-@base_url=http://localhost:3000
+//@base_url=http://localhost:3000
+@base_url=yoscours.alwaysdata.net
 ###
 POST {{base_url}}/users/register
 Content-Type: application/json
@@ -87,4 +88,4 @@ Content-Type: application/json
 }
 ###
 GET {{base_url}}/appointments
-Authorization: Bearer {{nonVetAuthToken}}
+Authorization: Bearer {{vetAuthToken}}
