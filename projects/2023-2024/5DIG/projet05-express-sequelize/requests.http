@@ -87,4 +87,4 @@ Content-Type: application/json
 }
 ###
 GET {{base_url}}/appointments
-Authorization: Bearer {{vetAuthToken}}
+Authorization: Bearer {{nonVetAuthToken}}

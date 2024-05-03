@@ -38,8 +38,8 @@ export class AppointmentService {
   async findAllForVet(idUser) {
     const userService = new UserService();
     const user = await userService.findById(idUser);
-    if (!user && !user.isVet) {
-      throw new Error("not found");
+    if (!user || !user.isVet) {
+      throw new Error("not found or not vet");
     }
     // mixin rajouté par sequelize quand on a précisé la relation one-to-many dans le app.js
     return await user.getAppointments();
