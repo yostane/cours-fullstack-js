@@ -8,14 +8,14 @@ import "./service/authentication.js";
 import { sequelize } from "./service/database.js";
 import { User } from "./model/User.js";
 import { Animal } from "./model/Animal.js";
-import { Apointment } from "./model/Apointment.js";
+import { Appointment } from "./model/Appointment.js";
 User.hasMany(Animal);
 Animal.belongsTo(User);
 
-Apointment.hasOne(User);
-Apointment.hasOne(Animal);
-Animal.hasMany(Apointment);
-User.hasMany(Apointment);
+Appointment.hasOne(User);
+Appointment.hasOne(Animal);
+Animal.hasMany(Appointment);
+User.hasMany(Appointment);
 sequelize.sync();
 
 export const app = express();
