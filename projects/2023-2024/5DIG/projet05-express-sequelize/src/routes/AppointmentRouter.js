@@ -8,7 +8,10 @@ appointmentRouter.get("/", async (req, res) => {
   // ?? -> valeur par défaut si on a null ou undefined
   const appointments =
     (await appointmentService.findAllForVet(req.user.id)) ?? [];
-  res.json(appointments.map(async (appointment) => await appointment.toDto()));
+  const dtoAppointmentsPromise = appointments.map(
+    async (appointment) => await appointment.toDto()
+  );
+  res.json(await Promise.all(dtoAppointmentsPromise));
 });
 
 appointmentRouter.post("/", async (req, res) => {

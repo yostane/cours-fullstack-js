@@ -14,8 +14,8 @@ import { appointmentRouter } from "./routes/AppointmentRouter.js";
 User.hasMany(Animal);
 Animal.belongsTo(User);
 
-Appointment.hasOne(User);
-Appointment.hasOne(Animal);
+Appointment.belongsTo(User);
+Appointment.belongsTo(Animal);
 Animal.hasMany(Appointment);
 User.hasMany(Appointment);
 
