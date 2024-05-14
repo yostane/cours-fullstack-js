@@ -18,5 +18,5 @@ Réaliser une application CRUD avec le thème de votre choix.
 - Belle interface et plus travaillée par rapport au projet vu en cours (4 pts)
 - Pour chaque bogue trouvé, il y aura des points en moins.
 
-Il est possible de se faire aider par de l'IA générative.
+Il est possible de se faire aider par de l'IA générative de façon raisonnable (tant qu'on arrive à expliquer le code correctement).
 Par contre, il n'est pas autorisé de rendre le résultat d'un tutoriel (sinon, la note sera de 0)
