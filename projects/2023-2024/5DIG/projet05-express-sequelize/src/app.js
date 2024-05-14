@@ -8,14 +8,18 @@ import "./service/authentication.js";
 import { sequelize } from "./service/database.js";
 import { User } from "./model/User.js";
 import { Animal } from "./model/Animal.js";
-import { Apointment } from "./model/Apointment.js";
+import { Appointment } from "./model/Appointment.js";
+import { appointmentRouter } from "./routes/AppointmentRouter.js";
+
 User.hasMany(Animal);
 Animal.belongsTo(User);
 
-Apointment.hasOne(User);
-Apointment.hasOne(Animal);
-Animal.hasMany(Apointment);
-User.hasMany(Apointment);
+Appointment.belongsTo(User);
+Appointment.belongsTo(Animal);
+Animal.hasMany(Appointment);
+User.hasMany(Appointment);
+
+// Déclenche l'exécution du SQL qui créé les tables
 sequelize.sync();
 
 export const app = express();
@@ -25,5 +29,10 @@ app.use(
   "/animals",
   passport.authenticate("jwt", { session: false }),
   animalRouter
+);
+app.use(
+  "/appointments",
+  passport.authenticate("jwt", { session: false }),
+  appointmentRouter
 );
 app.use("/users", userRouter);
