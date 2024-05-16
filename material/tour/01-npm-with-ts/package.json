@@ -1,0 +1,16 @@
+{
+  "name": "01-npm-with-ts",
+  "version": "1.0.0",
+  "description": "First project",
+  "main": "index.js",
+  "scripts": {
+    "start": "ts-node src/hello.ts",
+    "start:bun": "bun src/hello.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "myself",
+  "license": "ISC",
+  "dependencies": {
+    "ts-node": "^10.9.2"
+  }
+}
