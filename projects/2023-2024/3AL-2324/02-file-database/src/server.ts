@@ -7,4 +7,4 @@ import { fileRouter } from "./routes/FileRouter";
 // On exporte le serveur pour pouvoir l'utiliser dans main.ts
 export const server = express();
 
-server.use("/api", fileRouter);
+server.use("/", fileRouter);
