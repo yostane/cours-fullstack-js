@@ -1,0 +1,27 @@
+{
+  "name": "02-file-database",
+  "version": "1.0.0",
+  "description": "Project API (Application Programming Interface) Rest CRUD",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon",
+    "start": "ts-node src/main.ts"
+  },
+  "keywords": [
+    "express",
+    "api",
+    "rest",
+    "crud"
+  ],
+  "author": "yostane",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2",
+    "ts-node": "^10.9.2"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.14.2",
+    "nodemon": "^3.1.3"
+  }
+}
