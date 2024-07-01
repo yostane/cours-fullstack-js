@@ -3,6 +3,7 @@
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "esModuleInterop": true,
+    "moduleResolution": "NodeNext",
     "target": "ES2022"
   }
 }
