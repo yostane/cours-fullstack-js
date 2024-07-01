@@ -1,5 +1,6 @@
 import { log } from "console";
 import express from "express";
+import { FileService } from "../Services/FileService";
 
 const files = [
   {
@@ -11,8 +12,13 @@ const files = [
 ];
 
 export const fileRouter = express.Router();
+const fileService = new FileService();
 
-fileRouter.get("/", (req, res) => {
+// Comme on a mis un await dans l'implémentation de la fonction flèche () => {}
+// , il faut donc la déclarer en async
+fileRouter.get("/", async (req, res) => {
+  // await permet de récupérer les fichiers sans faire le then (la callback)
+  const files = await fileService.getAll();
   res.json(files);
 });
 

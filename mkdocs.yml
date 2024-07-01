@@ -11,6 +11,7 @@ extra:
 
 nav:
   - index.md
+  - projet-api-crud.md
   - projet-api-drive.md
   - projet-veterlib.md
   - project-react.md
