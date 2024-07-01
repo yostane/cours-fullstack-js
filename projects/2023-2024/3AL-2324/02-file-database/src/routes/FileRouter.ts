@@ -25,9 +25,34 @@ fileRouter.post("/", (req, res) => {
 });
 
 fileRouter.put("/:id", (req, res) => {
+  // Pas d'id dans le body
   const newFile = req.body;
+  const id = +req.params.id;
+  const index = files.findIndex((file) => file.id === id);
+  newFile.id = id;
+  files[index] = newFile;
   res.end();
 });
+
+fileRouter.put("/", (req, res) => {
+  const newFile = req.body;
+  const index = files.findIndex((file) => file.id === newFile.id);
+  files[index] = newFile;
+  res.end();
+});
+
+// fileRouter.patch("/:id", (req, res) => {
+//   const newFile = req.body;
+//   const id = +req.params.id;
+//   const index = files.findIndex((file) => file.id === id);
+//   // mise à jour du file uniquement avec les données présentes (on n'écrase un champ absent dans le body)
+//   // Solution fonctionne en js mais pas en TS
+//   const file = files[index];
+//   for (const newKey in newFile) {
+//     files[index][newKey] = newFile[newKey];
+//   }
+//   res.end();
+// });
 
 // :id est un path param
 // ?p1=v1&p2=v2 sont des query params

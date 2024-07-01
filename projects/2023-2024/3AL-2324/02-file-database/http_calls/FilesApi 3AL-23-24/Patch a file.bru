@@ -1,0 +1,23 @@
+meta {
+  name: Patch a file
+  type: http
+  seq: 7
+}
+
+put {
+  url: http://localhost:3000/1
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "name": "tintin.png",
+    "size": 200,
+    "url": "https://placehold.co/600x400/EEE/31343C"
+  }
+}
