@@ -1,8 +1,9 @@
-import { AllowNull, Column, Model, Table } from "sequelize-typescript";
+import { AllowNull, Column, Model, Table, Unique } from "sequelize-typescript";
 
 @Table
 export class File extends Model {
   @AllowNull(false)
+  @Unique
   @Column
   name: string;
   @AllowNull(false)

@@ -22,6 +22,24 @@ fileRouter.get("/", async (req, res) => {
   res.json(files);
 });
 
+fileRouter.get("/:id", async (req, res) => {
+  const id = +req.params.id;
+  const file = await fileService.findOne(id);
+  res.json(file);
+});
+
+fileRouter.get("/name/:name", async (req, res) => {
+  const name = req.params.name;
+  const file = await fileService.findOneByName(name);
+  res.json(file);
+});
+
+fileRouter.get("/name-op/:name", async (req, res) => {
+  const name = req.params.name;
+  const file = await fileService.findOneByNameWithOperator(name);
+  res.json(file);
+});
+
 fileRouter.post("/", async (req, res) => {
   try {
     const file = req.body;
