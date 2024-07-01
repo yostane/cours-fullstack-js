@@ -1,0 +1,23 @@
+meta {
+  name: Delete a file
+  type: http
+  seq: 4
+}
+
+delete {
+  url: http://localhost:3000/1
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "name": "serrure.png",
+    "size": 300,
+    "url": "https://fr.wikipedia.org/wiki/Serrure#/media/Fichier:Serrure-Dogon.jpg"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "FilesApi 3AL-23-24",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}
