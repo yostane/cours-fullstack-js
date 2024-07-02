@@ -5,15 +5,15 @@ Proposer une api REST qui permet de stocker des fichiers avec leurs métadonnée
 ## Sujet
 
 - Compléter l'API pour avoir toutes les routes CRUD manquantes (PUT, PATCH, DELTE d'un fichier) fonctionnelles avec une BDD sqlite. (5 pts)
-- Proposer une route GET `/:id/qrcode` qui fournit le lien d'un fichier sous forme d'une image QRCode (astuce: utiliser la lib [qrcode](https://www.npmjs.com/package/qrcode)) (1 pts)
-- Proposer une route GET `/images` qui liste les images (fichiers avec les extensions png, jpg, jpeg, gif et svg). Les autres fichiers ne doivent pas être listés. (1 pts)
-- Proposer une route GET `/id:/check` qui vérifie si l'url du fichier est joignable (via une requête HEAD par exemple) (1 pt)
-- Proposer une route GET `/descending` qui affiche les fichiers triés par ordre décroissant de taille. (1 pts)
+- Proposer une route GET `/qrcode/:id` qui fournit le lien d'un fichier sous forme d'une image QRCode (astuce: utiliser la lib [qrcode](https://www.npmjs.com/package/qrcode)) (1 pts)
+- Proposer une route GET `/filter/images` qui liste les images (fichiers avec les extensions png, jpg, jpeg, gif et svg). Les autres fichiers ne doivent pas être listés. (1 pts)
+- Proposer une route GET `/check/id:` qui vérifie si l'url du fichier est joignable (via une requête HEAD par exemple) (1 pt)
+- Proposer une route GET `/sort/descending` qui affiche les fichiers triés par ordre décroissant de taille. (1 pts)
 - Proposer une route GET `/search/:name` qui permet de rechercher les fichiers qui contiennent le mot `:name` dans leurs noms. (1 pts)
 - Proposer une route GET `/lastdays/:days` qui affiche les fichiers qui ont été modifiés ou créés dans les `:days` derniers jours. (1 pts)
 - Proposer une route GET `/latestfiles/:count` qui affiche les `:count` derniers fichiers qui ont été créés. (1 pts)
 - Proposer une route DELETE `/large/:size` qui supprime les fichiers dont la taille dépasse strictement `:size`. Dans le cas où aucun fichier n'a été supprimé, renvoyer une 204. Si au moins un fichier a été supprimé, renvoyer une 200. (2 pt)
-- Proposer une route PATCH `/:oldDomain/:newDomain` qui remplace tous les domaines `:oldDomain` par `:newDomain` dans le champ url. (3 pts)
+- Proposer une route PATCH `/rename/:oldDomain/:newDomain` qui remplace tous les domaines `:oldDomain` par `:newDomain` dans le champ url. (3 pts)
 - Proposer une route GET `/total` qui calcule et retourne l'objet suivant avec les bonnes valeurs (3 pts):
 
 ```json
