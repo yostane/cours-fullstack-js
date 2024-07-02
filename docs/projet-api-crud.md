@@ -5,9 +5,9 @@ Proposer une api REST qui permet de stocker des fichiers avec leurs métadonnée
 ## Sujet
 
 - Compléter l'API pour avoir toutes les routes CRUD manquantes (PUT, PATCH, DELTE d'un fichier) fonctionnelles avec une BDD sqlite. (5 pts)
-- Proposer une route GET `/qrcode/:id` qui fournit le lien d'un fichier sous forme d'une image QRCode (astuce: utiliser la lib [qrcode](https://www.npmjs.com/package/qrcode)) (1 pts)
+- Proposer une route GET `/qrcode/:id` qui fournit le lien d'un fichier sous forme d'une image QRCode (💡 utiliser la lib [qrcode](https://www.npmjs.com/package/qrcode)) (1 pts)
 - Proposer une route GET `/filter/images` qui liste les images (fichiers avec les extensions png, jpg, jpeg, gif et svg). Les autres fichiers ne doivent pas être listés. (1 pts)
-- Proposer une route GET `/check/id:` qui vérifie si l'url du fichier est joignable (via une requête HEAD par exemple) (1 pt)
+- Proposer une route GET `/check/id:` qui vérifie si l'url du fichier est joignable (💡 via une requête HEAD par exemple, 💡 vous pouvez utiliser [axios](https://axios-http.com/fr/) pour faire la requête) (1 pt)
 - Proposer une route GET `/sort/descending` qui affiche les fichiers triés par ordre décroissant de taille. (1 pts)
 - Proposer une route GET `/search/:name` qui permet de rechercher les fichiers qui contiennent le mot `:name` dans leurs noms. (1 pts)
 - Proposer une route GET `/lastdays/:days` qui affiche les fichiers qui ont été modifiés ou créés dans les `:days` derniers jours. (1 pts)
