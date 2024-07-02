@@ -2,15 +2,6 @@ import express from "express";
 import { FileService } from "../Services/FileService";
 import { File } from "../Models/File";
 
-const files = [
-  {
-    id: 1,
-    name: "image01.png",
-    size: 200,
-    url: "https://placehold.co/600x400",
-  },
-];
-
 export const fileRouter = express.Router();
 const fileService = new FileService();
 
