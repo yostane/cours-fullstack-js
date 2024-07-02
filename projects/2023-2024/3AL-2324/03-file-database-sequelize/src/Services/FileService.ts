@@ -1,5 +1,6 @@
 import { Op } from "sequelize";
 import { File } from "../Models/File";
+import { FileDTO } from "../Models/FileDTO";
 
 export class FileService {
   findOneByName(nameToFind: string): Promise<File> {
@@ -29,7 +30,7 @@ export class FileService {
     return File.findAll();
   }
 
-  async addOne(fileInfo: any): Promise<void> {
+  async addOne(fileInfo: FileDTO): Promise<void> {
     await File.create({
       name: fileInfo.name,
       url: fileInfo.url,
