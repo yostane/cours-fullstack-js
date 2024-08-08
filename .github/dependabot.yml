@@ -5,11 +5,19 @@
 
 version: 2
 updates:
-  - package-ecosystem: "pip" # See documentation for possible values
-    directory: "/" # Location of package manifests
+  - package-ecosystem: "pip"
+    directory: "/"
     schedule:
       interval: "monthly"
+    groups:
+      dev-dependencies:
+        patterns:
+          - "*" # Group all updates
   - package-ecosystem: "npm" # See documentation for possible values
     directory: "/projects/" # Location of package manifests
     schedule:
       interval: "monthly"
+    groups:
+      dev-dependencies:
+        patterns:
+          - "*" # Group all updates
