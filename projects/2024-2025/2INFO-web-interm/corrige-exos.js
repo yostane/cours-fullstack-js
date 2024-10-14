@@ -98,3 +98,40 @@ exo5([
   { text: "I love!", length: 7 },
   { text: "JavaScript", length: 10 },
 ]);
+
+/**
+ *
+ * @param {{id: number, title: string, completed: boolean}[]} todos
+ * @param {number} id
+ * @returns {{id: number, title: string, completed: boolean}[]}
+ */
+function exo6(todos, id) {
+  return todos.map((todo) => ({
+    id: todo.id,
+    title: todo.title,
+    completed: todo.id === id ? !todo.completed : todo.completed,
+  }));
+}
+
+console.log("Exo 6");
+const todos = [
+  { id: 1, title: "Allumer le PC", completed: true },
+  { id: 2, title: "Faire les exos de JS", completed: false },
+];
+const updatedTodos = exo6(todos, 2);
+console.log(updatedTodos);
+
+/**
+ *
+ * @param {{id: number, title: string, completed: boolean}[]} todos
+ * @returns {string[]}
+ */
+function exo7(todos) {
+  return todos
+    .filter((todo) => todo.completed === true)
+    .map((todo) => todo.title);
+}
+
+console.log("Exo 7");
+console.log(exo7(todos));
+console.log(exo7(updatedTodos));
