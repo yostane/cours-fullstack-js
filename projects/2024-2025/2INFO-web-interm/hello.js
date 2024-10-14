@@ -41,3 +41,13 @@ printCalculation(function (x, y) {
   return x - y;
 });
 printCalculation((x, y) => x - y);
+
+setTimeout(() => {
+  console.log("Hello après un un certain temps");
+}, 1000);
+
+function doSomething() {
+  console.log("I'm doing something");
+}
+
+setTimeout(doSomething, 500);
