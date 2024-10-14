@@ -115,8 +115,8 @@ function exo6(todos, id) {
 
 console.log("Exo 6");
 const todos = [
-  { id: 1, title: "Allumer le PC", completed: true },
-  { id: 2, title: "Faire les exos de JS", completed: false },
+  { id: 2, title: "Allumer le PC", completed: false },
+  { id: 1, title: "Faire les exos de JS", completed: true },
 ];
 const updatedTodos = exo6(todos, 2);
 console.log(updatedTodos);
