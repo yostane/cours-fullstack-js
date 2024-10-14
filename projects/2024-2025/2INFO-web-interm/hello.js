@@ -51,3 +51,7 @@ function doSomething() {
 }
 
 setTimeout(doSomething, 500);
+
+console.log(1 == 1, 1 === 1);
+console.log(1 == "1", 1 === "1");
+console.log(1 != "1", 1 !== "1");
