@@ -21,3 +21,12 @@ const saiyajin3 = {
 
 console.log(saiyajin1.name);
 saiyajin1.launchAttack();
+
+function printPowerful(saiyajinA, saiyajinB) {
+  const result =
+    saiyajinA.power > saiyajinB.power ? saiyajinA.name : saiyajinB.name;
+  console.log(result);
+}
+
+printPowerful(saiyajin1, saiyajin2);
+printPowerful(saiyajin3, { name: "Go âne", power: 1700 });
