@@ -58,9 +58,43 @@ function exo4(items) {
 }
 
 console.log("Exo 4");
-console.log(
-  exo4([
-    { text: "I ❤️", length: 4 },
-    { text: "JavaScript", length: 10 },
-  ])
-);
+exo4([
+  { text: "I ❤️", length: 4 },
+  { text: "JavaScript", length: 10 },
+]);
+
+/**
+ * Un nombre premier doit accepter exactement deux diviseurs (1 n'est donc pas premier)
+ * @param {{text: string, length:number}} item
+ * @returns {number}
+ */
+function isNotPrime(item) {
+  const n = item.length;
+  if (n === 1) {
+    return true;
+  }
+  for (let i = 2; i < n; i++) {
+    if (n % i === 0) {
+      return true;
+    }
+  }
+  return false;
+}
+
+/**
+ *
+ * @param {{text: string, length:number}[]} items
+ */
+function exo5(items) {
+  const filteredItems = items.filter(isNotPrime);
+  console.log(
+    filteredItems.map((i) => i.text),
+    filteredItems.map((i) => i.length)
+  );
+}
+
+console.log("Exo 5");
+exo5([
+  { text: "I love!", length: 7 },
+  { text: "JavaScript", length: 10 },
+]);
