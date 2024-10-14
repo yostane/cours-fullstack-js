@@ -9,3 +9,10 @@ function exo1(numbers) {
 
 console.log(exo1([1, 2, 3, 4, 5]));
 console.log(exo1([11, -2, 76, 91, 5]));
+
+/**
+ *
+ * @param {string[]} texts
+ * @returns {number[]}
+ */
+function exo2(texts) {}
