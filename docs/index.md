@@ -4,6 +4,16 @@ Bienvenue au support de cours.
 
 ![logo généré par firefly](./img/logo.jpg){ width="300" }
 
+## Prérequis
+
+- VScode et les extensions suivantes: ESLint, Prettier et indent-rainbow.
+
+## Quelques définitions
+
+- Le page d'accueil du site [react.dev](https://react.dev/) ainsi que [react.dev/learn](https://react.dev/learn) proposent une bonne introduction aux composants react.
+- Composition : combiner des composants avec d'autres composants.
+- Un composant react est une fonction qui retourne du JSX (du HTML dans du JS).
+
 ## Projet reactjs avec vite
 
 ```sh
@@ -15,10 +25,6 @@ npm run dev
 # Créer un build de production
 npm run build
 ```
-
-- Le page d'accueil du site [react.dev](https://react.dev/) propose une bonne introduction aux composants react.
-- Composition : combiner des composants avec d'autres composants.
-- Un composant react est une fonction qui retourne du JSX (du HTML dans du JS).
 
 Dans le dossier `src`, créer le dossier `components` et y ajouter un fichier `Hello.jsx`.
 
