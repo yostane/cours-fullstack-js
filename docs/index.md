@@ -1,4 +1,4 @@
-# Développement Fullstack en JS et TS
+# Introduction
 
 Bienvenue au support de cours.
 
@@ -7,61 +7,3 @@ Bienvenue au support de cours.
 ## Prérequis
 
 - VScode et les extensions suivantes: ESLint, Prettier et indent-rainbow.
-
-## Exercices JS
-
-> Utiliser `filter` et `map` et les objets littéraux.
-
-1. Créer une fonction qui prend un tableau d'entiers et retourne le triple des éléments pairs et le double des éléments impairs.
-1. Créer une fonction qui prend un tableau de chaînes de caractères et retourne un tableau contenant la longueur de chaque chaîne.
-    - Par exemple pour `['un', 'deux']` on obtient `[2, 4]`
-1. Créer une fonction qui prend un tableau de chaînes de caractères et retourne un tableau d'objets avec le format suivant: `[{text: 'valeur du texte', length: 4}, ...]`
-    - Par exemple pour `['un', 'deux']` on obtient `[ { text: 'un', length: 2 }, { text: 'deux', length: 4 } ]`
-1. Créer une fonction qui tableau d'objets avec le format suivant `[{text: 'valeur du texte', length: 4}, ...]` et affiche dans la console deux tableaux: un avec les textes et un avec les longueurs.
-    - Par exemple pour `[ { text: 'un', length: 2 }, { text: 'deux', length: 4 } ]` on obtient l'affichage suivant dans la console: `['un', 'deux'] [2, 4]`
-1. Refaire le même exercice que précédemment mais ignorant les mots dont la longueur est un nombre premier (il ne figurant pas dans l'affichage final).
-    - Par exemple pour `[ { text: 'aa', length: 2 }, { text: 'bbbb', length: 4 }, { text: 'ccccc', length: 5 } ]` on obtient l'affichage suivant dans la console: `['bbbb'] [4]`
-1. Créer une fonction qui prend deux arguments: un tableau d'objets Todo `[{id:1, title:"..", completed: true/false}, ...]` et un entier. La fonction doit retourner le tableau de Todos en basculant (toggle) le statut de `completed` pour le Todo dont l'id est égal à l'entier passé en argument.
-    - Par exemple pour `[{id:1, title:"..", completed: true}, {id:2, title:"..", completed: false}]` et `2` on obtient `[{id:1, title:"..", completed: true}, {id:2, title:"..", completed: true}]`
-    - Par exemple pour `[{id:1, title:"..", completed: true}, {id:2, title:"..", completed: false}]` et `1` on obtient `[{id:1, title:"..", completed: false}, {id:2, title:"..", completed: false}]`
-1. Créer une fonction qui prend un tableau d'objets Todo (voir exo précédent) et renvoie le titre des todos terminés.
-    - Par exemple: `[{id:1, title:"Todo 1", completed: true}, {id:2, title:"Todo 2", completed: false}]` on obtient `['Todo 1']`
-
-### Astuces
-
-- Si besoin, vous pouvez utiliser [Math.random](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Math/random), pour générer des nombres aléatoires.
-
-## Quelques définitions
-
-- Le page d'accueil du site [react.dev](https://react.dev/) ainsi que [react.dev/learn](https://react.dev/learn) proposent une bonne introduction aux composants react.
-- Composition : combiner des composants avec d'autres composants.
-- Un composant react est une fonction qui retourne du JSX (du HTML dans du JS).
-
-## Projet reactjs avec vite
-
-```sh
-npm create vite@latest my-vue-app -- --template react
-cd my-vue-app
-npm install
-# Lancer un serveur de développement
-npm run dev
-# Créer un build de production
-npm run build
-```
-
-Dans le dossier `src`, créer le dossier `components` et y ajouter un fichier `Hello.jsx`.
-
-- Ajouter un composant `Hello` qui prend un prop `name` et affiche `Hello, {name}`.
-- Ajouter un composant `StateDemo` qui illustre l'état local avec `useState`.
-
-## Exercices
-
-1. Créer un composant `Counter` qui affiche un bouton `+` et un bouton `-` pour incrémenter et décrémenter un compteur. Initialiser le compteur à 42.
-1. Créer un composant `ToLowerCase` qui prend un prop (ou un argument) `text` et affiche le texte en minuscules.
-1. Créer un composant `EurToYen` qui permet de saisir des euros et affiche le montant en yens (1 euro = 130 yens).
-1. Créer un composant `ShowMax` qui prend deux entiers en props et affiche le plus grand.
-
-## Astuces
-
-- Pour activer la colorations des parenthèses, accolades et crochets dans VSCode, activer l'option "Bracket Pair colorization" dans les paramètres.
-- L'extension indent-rainbow permet de colorer les indentations.
