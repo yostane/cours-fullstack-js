@@ -62,4 +62,9 @@ markdown_extensions:
       anchor_linenums: true
   - pymdownx.snippets:
       base_path:
-        ["material/poo", "material/functional", "material/generalities"]
+        [
+          "material/poo",
+          "material/functional",
+          "material/generalities",
+          "projects",
+        ]

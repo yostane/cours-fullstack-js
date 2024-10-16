@@ -26,9 +26,15 @@ Dans le dossier `src`, créer le dossier `components` et y ajouter un fichier `H
 ## Exercices
 
 1. Créer un composant `Counter` qui affiche un bouton `+` et un bouton `-` pour incrémenter et décrémenter un compteur. Initialiser le compteur à 42.
-1. Créer un composant `ToLowerCase` qui prend un prop (ou un argument) `text` et affiche le texte en minuscules.
+1. Créer un composant `ToLowerCase` qui prend un prop (ou un argument) `text` et affiche le texte en minuscules. (💡 astuce: `string.toLowerCase()`)
 1. Créer un composant `EurToYen` qui permet de saisir des euros et affiche le montant en yens (1 euro = 130 yens). (💡 astuce: utiliser `<input type="number" />`)
 1. Créer un composant `ShowMax` qui prend deux entiers en props et affiche le plus grand.
+
+```jsx title="solution"
+
+
+
+```
 
 ## Astuces
 
