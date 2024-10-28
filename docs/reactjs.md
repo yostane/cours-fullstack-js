@@ -31,6 +31,8 @@ Dans le dossier `src`, créer le dossier `components` et y ajouter un fichier `H
 1. Créer un composant `ShowMax` qui prend deux entiers en props et affiche le plus grand.
 1. Créer un composant `Guess` qui affiche un zone éditable numérique et un bouton. A chaque fois que l'utilisateur clique sur le bouton, le composant génère un nouveau nombre aléatoire entre 1 et 10 et affiche si le nombre saisi est trop grand, trop petit ou si c'est le bon nombre. (💡 astuce: utiliser `Math.random()` pour générer un nombre aléatoire).
 1. Créer un composant `CountConsonantsAndVowels` qui prend un prop `text` et affiche le nombre de consonnes et de voyelles (aeiuyo) dans le texte. Instancier ce composant dans `<App>` et faire en sorte que le prop soit alimenté via la valeur d'un texte editable isntancié dans `<App>`. (💡 astuce: utiliser `string.match(/[aeiuyo]/gi)` pour compter les voyelles).
+1. Créer un composant `Palindrome` qui prend un prop `text` et affiche si le texte est un palindrome ou non. (💡 astuce: utiliser `string.split('').reverse().join('')` pour inverser une chaîne de caractères).
+1. Créer un composant `Fibonacci` qui prend un prop `n` et affiche le n-ième terme de la suite de Fibonacci.
 
 ??? "Solutions"
 
