@@ -8,6 +8,7 @@ import StateDemo from "./components/StateDemo";
 import EuroToYen from "./components/EuroToYen";
 import ShowMax from "./components/ShowMax";
 import CountConsonantsAndVowels from "./components/CountConsonantsAndVowels";
+import RandomNumberArray from "./components/RandomNumberArray";
 
 function App() {
   const [inputText, setInputText] = useState("Hello");
@@ -25,7 +26,7 @@ function App() {
         value={inputText}
         onChange={(event) => setInputText(event.target.value)}
       />
-      <h1>Exercices</h1>
+      <h2>Exercices</h2>
       <ul>
         <li>
           Exerice 1: <ExoCount />
@@ -44,6 +45,8 @@ function App() {
           Exerice 6: <CountConsonantsAndVowels word={inputText} />
         </li>
       </ul>
+      <h2>Tableaux</h2>
+      <RandomNumberArray count={3} />
     </>
   );
 }
