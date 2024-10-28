@@ -7,9 +7,10 @@ import MessageShow from "./components/MessageShow";
 import StateDemo from "./components/StateDemo";
 import EuroToYen from "./components/EuroToYen";
 import ShowMax from "./components/ShowMax";
+import CountConsonantsAndVowels from "./components/CountConsonantsAndVowels";
 
 function App() {
-  const [inputText, setInputText] = useState("");
+  const [inputText, setInputText] = useState("Hello");
   return (
     <>
       <Hello />
@@ -38,6 +39,9 @@ function App() {
         </li>
         <li>
           Exerice 4: <ShowMax a={2} b={10} />
+        </li>
+        <li>
+          Exerice 6: <CountConsonantsAndVowels word={inputText} />
         </li>
       </ul>
     </>
