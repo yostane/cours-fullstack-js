@@ -98,11 +98,20 @@ Dans le dossier `src`, créer le dossier `components` et y ajouter un fichier `H
         2022-01-01 12:00:01 deux
         2022-01-01 12:00:02 trois
         ```
+1. Créer un composant `EditableLogger` qui affiche un champ de texte éditable et un bouton **Ajouter**. Chaque fois que l'utilisateur clique sur le bouton **Ajouter**, le texte saisi est ajouté à une liste contenant également l'horodatage de l'ajout. 
+    - Afficher la liste en permettant d'éditer le corps (pas la date) de chaque ligne élément et de supprimer un élément.
+    - Par exemple, si l'utilisateur saisit "un", "deux" et "trois", le composant affiche:
+        ```
+        2022-01-01 12:00:00 un [Input pour modifier le texte] [Bouton pour supprimer]
+        2022-01-01 12:00:01 deux [Input pour modifier le texte] [Bouton pour supprimer]
+        2022-01-01 12:00:02 trois [Input pour modifier le texte] [Bouton pour supprimer]
+        ```
+    - Ajouter les boutons **sauvegarder** et **charger** pour sauvegarder la liste dans le local storage et la charger au démarrage de l'application ou au clique sur le bouton **charger**.
 
 ### Composition
 
 1. Créer un composant `SocialPost` qui prend en props les propriétés `author`, `date`, `content` et `avatar`. Afficher ces propriétés de façon jolie.
-    - Par exemple, si `author = 'Alice'`, `date = '2022-01-01'`, `content = 'Hello world!'` et `avatar = 'alice.jpg'`, le composant affiche:
+    - Par exemple, si `author = 'Alice'`, `date = '2022-01-01'`, `content = 'Hello world!'` et `avatar = 'alice.jpg'`, le composant affiche (de façon pas jolie):
         ```
         <img src="alice.jpg" alt="Avatar de Alice" />
         <h2>Alice</h2>
