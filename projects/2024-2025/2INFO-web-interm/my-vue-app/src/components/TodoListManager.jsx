@@ -15,19 +15,21 @@ export default function TodoListManager() {
       label: label,
       done: false,
     };
+    //[...items, newItem] nouveau tableau qui reprend les élémetns du premier et ajoute un nouvel élément
+    // ...items => item1, items2, item3, ...
     setItems([...items, newItem]);
   }
 
   return (
     <>
-      Add Item:{" "}
+      Add Item:
       <input
         type="text"
         value={label}
         onChange={(event) => setLabel(event.target.value)}
         minLength={1}
       />
-      <button onClick={addItem}>Add Item</button>
+      <button onClick={() => addItem()}>Add Item</button>
       <TodoList items={items} />
     </>
   );
