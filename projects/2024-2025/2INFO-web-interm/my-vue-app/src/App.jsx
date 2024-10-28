@@ -6,6 +6,7 @@ import Hello from "./components/Hello";
 import MessageShow from "./components/MessageShow";
 import StateDemo from "./components/StateDemo";
 import EuroToYen from "./components/EuroToYen";
+import ShowMax from "./components/ShowMax";
 
 function App() {
   const [inputText, setInputText] = useState("");
@@ -35,7 +36,9 @@ function App() {
         <li>
           Exerice 3: <EuroToYen />
         </li>
-        <li>Exerice 4</li>
+        <li>
+          Exerice 4: <ShowMax a={2} b={10} />
+        </li>
       </ul>
     </>
   );
