@@ -101,6 +101,15 @@ Dans le dossier `src`, créer le dossier `components` et y ajouter un fichier `H
 
 ### Composition
 
+1. Créer un composant `SocialPost` qui prend en props les propriétés `author`, `date`, `content` et `avatar`. Afficher ces propriétés de façon jolie.
+    - Par exemple, si `author = 'Alice'`, `date = '2022-01-01'`, `content = 'Hello world!'` et `avatar = 'alice.jpg'`, le composant affiche:
+        ```
+        <img src="alice.jpg" alt="Avatar de Alice" />
+        <h2>Alice</h2>
+        <p>2022-01-01</p>
+        <p>Hello world!</p>
+        ```
+
 ## Astuces
 
 - Pour activer la colorations des parenthèses, accolades et crochets dans VSCode, activer l'option "Bracket Pair colorization" dans les paramètres.
