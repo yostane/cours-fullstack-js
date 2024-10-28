@@ -20,6 +20,40 @@ export default function TodoListManager() {
     setItems([...items, newItem]);
   }
 
+  function updateLabel(label, item) {
+    // Mise à jour du label en passant par une fonction
+    item.label = label;
+    setItems([...items]);
+  }
+
+  const editableItems = items.map((item) => (
+    <article key={item.id}>
+      <b>({item.id})</b>
+      <div>
+        <label htmlFor="label">Label</label>
+        <input
+          type="text"
+          name="label"
+          value={item.label}
+          onChange={(event) => updateLabel(event.target.value, item)}
+        />
+      </div>
+      <div>
+        <label htmlFor="done">Done</label>
+        <input
+          type="checkbox"
+          name="done"
+          checked={item.done}
+          onChange={(event) => {
+            // Update label sans fonction (directement dans le onchange)
+            item.done = event.target.checked;
+            setItems([...items]);
+          }}
+        />
+      </div>
+    </article>
+  ));
+
   return (
     <>
       Add Item:
@@ -31,6 +65,7 @@ export default function TodoListManager() {
       />
       <button onClick={() => addItem()}>Add Item</button>
       <TodoList items={items} />
+      <div>Editable {editableItems}</div>
     </>
   );
 }
