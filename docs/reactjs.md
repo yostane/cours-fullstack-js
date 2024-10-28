@@ -25,6 +25,8 @@ Dans le dossier `src`, créer le dossier `components` et y ajouter un fichier `H
 
 ## Exercices
 
+### Basique
+
 1. Créer un composant `Counter` qui affiche un bouton `+` et un bouton `-` pour incrémenter et décrémenter un compteur. Initialiser le compteur à 42.
 1. Créer un composant `ToLowerCase` qui prend un prop (ou un argument) `text` et affiche le texte en minuscules. (💡 astuce: `string.toLowerCase()`)
 1. Créer un composant `EurToYen` qui permet de saisir des euros et affiche le montant en yens (1 euro = 130 yens). (💡 astuce: utiliser `<input type="number" />`)
@@ -65,6 +67,39 @@ Dans le dossier `src`, créer le dossier `components` et y ajouter un fichier `H
     2024-2025/2INFO-web-interm/my-vue-app/src/components/CountConsonantsAndVowels.jsx
     --8<--
     ```
+
+### Listes
+
+1. Créer un composant `ShowLengths` qui prend un prop `items` (un tableau de chaînes de caractères) et affiche chaque élément suivi de sa longueur. (💡 astuce: utiliser `string.length` pour obtenir la longueur d'une chaîne de caractères).
+    - Par exemple, si `items = ['un', 'deux', 'trois']`, le composant affiche:
+        ```
+        un (2)
+        deux (4)
+        trois (5)
+        ```
+1. Créer un composant `ShowAlternating` qui prend un prop `items` (un tableau de chaînes de caractères) et affiche les éléments de la liste en alternant les couleurs de fond (par exemple, une ligne sur deux en gris). (💡 astuce: utiliser `index % 2 === 0` pour tester si l'index est pair).
+    - Par exemple: si `items = ['un', 'deux', 'trois']`, le composant affiche:
+        ```
+        un (avec fond gris)
+        deux (sans fond)
+        trois (avec fond gris)
+        ```
+1. Créer un composant `LoggerComponent` qui affiche un champ de texte éditable et un bouton **Ajouter**. Chaque fois que l'utilisateur clique sur le bouton **Ajouter**, le texte saisi est ajouté à une liste. Afficher la liste des textes saisis.
+    - Par exemple, si l'utilisateur saisit "un", "deux" et "trois", le composant affiche:
+        ```
+        un
+        deux
+        trois
+        ```
+1. Créer un composant `LoggerComponentExtended` qui affiche un champ de texte éditable et un bouton **Ajouter**. Chaque fois que l'utilisateur clique sur le bouton **Ajouter**, le texte saisi est ajouté à une liste contenant également l'horodatage de l'ajout. Afficher la liste.
+    - Par exemple, si l'utilisateur saisit "un", "deux" et "trois", le composant affiche:
+        ```
+        2022-01-01 12:00:00 un
+        2022-01-01 12:00:01 deux
+        2022-01-01 12:00:02 trois
+        ```
+
+### Composition
 
 ## Astuces
 

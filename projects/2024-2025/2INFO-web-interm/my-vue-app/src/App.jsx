@@ -9,6 +9,7 @@ import EuroToYen from "./components/EuroToYen";
 import ShowMax from "./components/ShowMax";
 import CountConsonantsAndVowels from "./components/CountConsonantsAndVowels";
 import RandomNumberArray from "./components/RandomNumberArray";
+import TodoListManager from "./components/TodoListManager";
 
 function App() {
   const [inputText, setInputText] = useState("Hello");
@@ -47,6 +48,10 @@ function App() {
       </ul>
       <h2>Tableaux</h2>
       <RandomNumberArray count={3} />
+      <h3>TodoList manager</h3>
+      <section>
+        <TodoListManager />
+      </section>
     </>
   );
 }
