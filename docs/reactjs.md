@@ -48,6 +48,18 @@ Dans le dossier `src`, créer le dossier `components` et y ajouter un fichier `H
     --8<--
     ```
 
+    ```jsx title="EuroToYen.jsx"
+    --8<--
+    2024-2025/2INFO-web-interm/my-vue-app/src/components/EuroToYen.jsx
+    --8<--
+    ```
+
+    ```jsx title="ShowMax.jsx"
+    --8<--
+    2024-2025/2INFO-web-interm/my-vue-app/src/components/ShowMax.jsx
+    --8<--
+    ```
+
 ## Astuces
 
 - Pour activer la colorations des parenthèses, accolades et crochets dans VSCode, activer l'option "Bracket Pair colorization" dans les paramètres.
