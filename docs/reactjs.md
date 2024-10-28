@@ -109,6 +109,9 @@ Dans le dossier `src`, créer le dossier `components` et y ajouter un fichier `H
         <p>2022-01-01</p>
         <p>Hello world!</p>
         ```
+1. Créer un composant `SocialPostList` qui prend en prop `posts` (un tableau d'objets avec les propriétés `author`, `date`, `content` et `avatar`) et affiche une liste de `SocialPost`.
+1. Créer un composant `HomePage` qui affiche un logo, un titre et une liste de `SocialPost`. Créer un composant `AboutPage` qui affiche un logo, un titre et un texte de présentation. Dans le composant `App`, afficher les deux liens. Avec un booléen `isHomePage`, afficher soit la page d'accueil, soit la page "à propos" selon le lien sur lequel on clique.
+
 
 ## Astuces
 
