@@ -29,6 +29,11 @@ Dans le dossier `src`, créer le dossier `components` et y ajouter un fichier `H
 1. Créer un composant `ToLowerCase` qui prend un prop (ou un argument) `text` et affiche le texte en minuscules. (💡 astuce: `string.toLowerCase()`)
 1. Créer un composant `EurToYen` qui permet de saisir des euros et affiche le montant en yens (1 euro = 130 yens). (💡 astuce: utiliser `<input type="number" />`)
 1. Créer un composant `ShowMax` qui prend deux entiers en props et affiche le plus grand.
+1. Créer un composant `Guess` qui affiche un zone éditable numérique et un bouton. A chaque fois que l'utilisateur clique sur le bouton, le composant génère un nouveau nombre aléatoire entre 1 et 10 et affiche si le nombre saisi est trop grand, trop petit ou si c'est le bon nombre. (💡 astuce: utiliser `Math.random()` pour générer un nombre aléatoire).
+1. Créer un composant `CountVowels` qui prend un prop `text` et affiche le nombre de voyelles (aeiuyo) dans le texte. Instancier ce composant dans `<App>` et faire en sorte que le prop soit alimenté via la valeur d'un texte editable isntancié dans `<App>`. 
+1. Créer un composant `CountConsonants` qui prend un prop `text` et affiche le nombre de consonnes.
+1. Créer un composant `CountConsonantsAndVowels` qui prend un prop `text` et affiche le nombre de consonnes et de voyelles. 
+
 
 ```jsx title="solution"
 
