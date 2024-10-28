@@ -5,6 +5,7 @@ import ExoLowerCase from "./components/ExoLowerCase";
 import Hello from "./components/Hello";
 import MessageShow from "./components/MessageShow";
 import StateDemo from "./components/StateDemo";
+import EuroToYen from "./components/EuroToYen";
 
 function App() {
   const [inputText, setInputText] = useState("");
@@ -31,7 +32,9 @@ function App() {
           Exerice 2: <ExoLowerCase text="BonJour" />
           From Input Text: <ExoLowerCase text={inputText} />
         </li>
-        <li>Exerice 3</li>
+        <li>
+          Exerice 3: <EuroToYen />
+        </li>
         <li>Exerice 4</li>
       </ul>
     </>
