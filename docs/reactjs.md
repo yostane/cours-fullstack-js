@@ -60,6 +60,12 @@ Dans le dossier `src`, créer le dossier `components` et y ajouter un fichier `H
     --8<--
     ```
 
+    ```jsx title="CountConsonantsAndVowels.jsx"
+    --8<--
+    2024-2025/2INFO-web-interm/my-vue-app/src/components/CountConsonantsAndVowels.jsx
+    --8<--
+    ```
+
 ## Astuces
 
 - Pour activer la colorations des parenthèses, accolades et crochets dans VSCode, activer l'option "Bracket Pair colorization" dans les paramètres.
