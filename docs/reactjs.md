@@ -108,6 +108,20 @@ Dans le dossier `src`, créer le dossier `components` et y ajouter un fichier `H
         ```
     - Ajouter les boutons **sauvegarder** et **charger** pour sauvegarder la liste dans le local storage et la charger au démarrage de l'application ou au clique sur le bouton **charger**.
 
+??? "Solutions"
+
+    ```jsx title="StringsLengths.jsx"
+    --8<--
+    2024-2025/2INFO-web-interm/my-vue-app/src/components/StringsLengths.jsx
+    --8<--
+    ```
+
+    ```jsx title="ShowAlternating.jsx"
+    --8<--
+    2024-2025/2INFO-web-interm/my-vue-app/src/components/ShowAlternating.jsx
+    --8<--
+    ```
+
 ### Composition
 
 1. Créer un composant `SocialPost` qui prend en props les propriétés `author`, `date`, `content` et `avatar`. Afficher ces propriétés de façon jolie.

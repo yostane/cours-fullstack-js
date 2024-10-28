@@ -10,6 +10,8 @@ import ShowMax from "./components/ShowMax";
 import CountConsonantsAndVowels from "./components/CountConsonantsAndVowels";
 import RandomNumberArray from "./components/RandomNumberArray";
 import TodoListManager from "./components/TodoListManager";
+import StringLengths from "./components/StringsLenghts";
+import ShowAlternating from "./components/ShowAlternating";
 
 function App() {
   const [inputText, setInputText] = useState("Hello");
@@ -52,6 +54,13 @@ function App() {
       <section>
         <TodoListManager />
       </section>
+      <h2>List exercises</h2>
+      <div>
+        Exercise 1: <StringLengths texts={["un", "deux", "trois"]} />
+      </div>
+      <div>
+        Exercise 2: <ShowAlternating texts={["un", "deux", "trois"]} />
+      </div>
     </>
   );
 }
