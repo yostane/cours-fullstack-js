@@ -1,3 +1,4 @@
+import { useState } from "react";
 import "./App.css";
 import ExoCount from "./components/ExoCounter";
 import ExoLowerCase from "./components/ExoLowerCase";
@@ -6,6 +7,7 @@ import MessageShow from "./components/MessageShow";
 import StateDemo from "./components/StateDemo";
 
 function App() {
+  const [inputText, setInputText] = useState("");
   return (
     <>
       <Hello />
@@ -14,14 +16,20 @@ function App() {
       <MessageShow message="I 💖 react" />
       <StateDemo />
       <StateDemo />
+      Input Text:{" "}
+      <input
+        type="text"
+        value={inputText}
+        onChange={(event) => setInputText(event.target.value)}
+      />
       <h1>Exercices</h1>
       <ul>
         <li>
           Exerice 1: <ExoCount />
         </li>
         <li>
-          Exerice 2: <ExoLowerCase text="BonJour" />{" "}
-          <ExoLowerCase text="HellO woRLd" />
+          Exerice 2: <ExoLowerCase text="BonJour" />
+          From Input Text: <ExoLowerCase text={inputText} />
         </li>
         <li>Exerice 3</li>
         <li>Exerice 4</li>
