@@ -13,18 +13,12 @@ function getStarParam(params: {}) {
 
 driveRouter.get("/simu", (req, res) => {
   const driveController = new DriveController();
-  res.json(driveController.getSimulatedData());
+  res.json(driveController.generateSimulatedData());
 });
 
 // TODO: A enlever car redondant avec get("/drive/:p"
 driveRouter.get("/", async (req, res) => {
-  const dir = await fs.opendir("./drive");
-  // :Item[] -> tableau d'items.  = [] on initialise avec un tableau vide
-  const items: Item[] = [];
-  for await (const file of dir) {
-    items.push({ name: file.name, isFile: file.isFile() });
-  }
-  res.json(items);
+  res.json(await new DriveController().listRootItems());
 });
 
 driveRouter.get("/info/*", async (req, res) => {

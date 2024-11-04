@@ -23,11 +23,21 @@ export class DriveController {
     return new ItemInfo(path.split("/").pop() ?? "", path, file.size);
   }
 
-  getSimulatedData() {
+  generateSimulatedData() {
     return [
       { name: "anime.txt", isFile: true },
       { name: "courses.txt", isFile: true },
       { name: "souvenirs", isFile: false },
     ];
+  }
+
+  async listRootItems(): Promise<Item[]> {
+    const dir = await fs.opendir("./drive");
+    // :Item[] -> tableau d'items.  = [] on initialise avec un tableau vide
+    const items: Item[] = [];
+    for await (const file of dir) {
+      items.push({ name: file.name, isFile: file.isFile() });
+    }
+    return items;
   }
 }
