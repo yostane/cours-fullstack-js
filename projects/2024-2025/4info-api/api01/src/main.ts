@@ -28,8 +28,10 @@ app.get("/drive", async (req, res) => {
 });
 
 // :p est un path parameter (paramètre de chemin d'url)
-app.get("/drive/:p", async (req, res) => {
-  const dir = await fs.opendir(`./drive/${req.params.p}`);
+app.get("/drive/*", async (req, res) => {
+  const params = req.params as { "0": string };
+  const path = params[0];
+  const dir = await fs.opendir(`./drive/${path}`);
   const items: Item[] = [];
   for await (const file of dir) {
     items.push({ name: file.name, isFile: file.isFile() });
