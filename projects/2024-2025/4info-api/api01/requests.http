@@ -1,4 +1,6 @@
 @base_url=http://localhost:3000
 {{base_url}}/
 ###
+{{base_url}}/drive-simu
+###
 {{base_url}}/drive
