@@ -27,6 +27,28 @@ app.get("/drive", async (req, res) => {
   res.json(items);
 });
 
+app.get("/drive/info/*", async (req, res) => {
+  const params = req.params as { "0": string };
+  const filePath = params[0];
+  const file = await fs.stat(`./drive/${filePath}`);
+  res.json({
+    size: file.size,
+    path: filePath,
+    name: filePath.split("/").pop(),
+  });
+});
+
+app.get("/drive/content/*", async (req, res) => {
+  const params = req.params as { "0": string };
+  const filePath = params[0];
+  console.log(filePath);
+
+  const content = await fs.readFile(`./drive/${filePath}`, {
+    encoding: "utf8",
+  });
+  res.send(content);
+});
+
 // :p est un path parameter (paramètre de chemin d'url)
 app.get("/drive/*", async (req, res) => {
   const params = req.params as { "0": string };
@@ -37,17 +59,6 @@ app.get("/drive/*", async (req, res) => {
     items.push({ name: file.name, isFile: file.isFile() });
   }
   res.json(items);
-});
-
-app.get("/drive/info/*", async (req, res) => {
-  const params = req.params as { "0": string };
-  const filePath = params[0];
-  const file = await fs.stat(`./drive/${filePath}`);
-  res.json({
-    size: file.size,
-    path: filePath,
-    name: filePath.split("/").pop(),
-  });
 });
 
 app.listen(3000, () => {
