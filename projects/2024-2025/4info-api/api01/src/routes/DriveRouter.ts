@@ -1,8 +1,14 @@
 import express from "express";
 import fs from "fs/promises";
 import { Item } from "../model/Item";
+import { DriveController } from "../controller/DriveController";
 
 export const driveRouter = express.Router();
+
+function getStarParam(params: {}) {
+  const p = params as { "0": string };
+  return p[0];
+}
 
 driveRouter.get("/simu", (req, res) => {
   res.json([
@@ -24,8 +30,7 @@ driveRouter.get("/", async (req, res) => {
 });
 
 driveRouter.get("/info/*", async (req, res) => {
-  const params = req.params as { "0": string };
-  const filePath = params[0];
+  const filePath = getStarParam(req.params);
   const file = await fs.stat(`./drive/${filePath}`);
   res.json({
     size: file.size,
@@ -35,24 +40,14 @@ driveRouter.get("/info/*", async (req, res) => {
 });
 
 driveRouter.get("/content/*", async (req, res) => {
-  const params = req.params as { "0": string };
-  const filePath = params[0];
-  console.log(filePath);
-
-  const content = await fs.readFile(`./drive/${filePath}`, {
-    encoding: "utf8",
-  });
+  const filePath = getStarParam(req.params);
+  const content = await new DriveController().getTextFileContent(filePath);
   res.send(content);
 });
 
 // :p est un path parameter (paramètre de chemin d'url)
 driveRouter.get("/*", async (req, res) => {
-  const params = req.params as { "0": string };
-  const path = params[0];
-  const dir = await fs.opendir(`./drive/${path}`);
-  const items: Item[] = [];
-  for await (const file of dir) {
-    items.push({ name: file.name, isFile: file.isFile() });
-  }
+  const path = getStarParam(req.params);
+  const items = await new DriveController().listItemsByPath(path);
   res.json(items);
 });
