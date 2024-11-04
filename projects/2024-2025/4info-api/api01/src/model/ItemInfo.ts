@@ -1,3 +1,3 @@
 export class ItemInfo {
-  constructor(public name: string, path: string, size: number) {}
+  constructor(public name: string, public path: string, public size: number) {}
 }
