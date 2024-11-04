@@ -16,5 +16,6 @@ driveRouter.patch("/move/*/to/*", async (req, res) => {
 1. Implémenter le endpoint `driveRouter.delete("/*")` qui supprime un fichier ou dossier récursivement.
     - ☠️ !!!! attention à ne pas supprimer des fichiers de votre PC autre ce qu'il y a dans drive !!!!
 1. Implémenter un post de fichier markdown (du texte) qui met en gras tout texte "rasengan" avant d'enregistrer le fichier.
+    - Par exemple, si le fichier contient `rasengan`, il devrait être enregistré avec `**rasengan**`.
 1. Implémenter un endpoint `driveRouter.get("/search/:query")` qui retourne les fichiers du drive contenant le texte `query` dans leur nom.
 1. Implémenter un endpoint `driveRouter.get("/search/content/:query")` qui retourne les fichiers du drive contenant le texte `query` dans leur contenu.
