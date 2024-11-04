@@ -33,6 +33,15 @@ driveRouter.get("/content/*", async (req, res) => {
   res.send(content);
 });
 
+driveRouter.post("/content/*", async (req, res) => {
+  const filePath = getStarParam(req.params);
+  const content = await new DriveController().setTextFileContent(
+    filePath,
+    req.body
+  );
+  res.end();
+});
+
 // :p est un path parameter (paramètre de chemin d'url)
 driveRouter.get("/*", async (req, res) => {
   const path = getStarParam(req.params);

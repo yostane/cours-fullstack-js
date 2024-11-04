@@ -3,6 +3,14 @@ import { Item } from "../model/Item";
 import { ItemInfo } from "../model/ItemInfo";
 
 export class DriveController {
+  #getDrivePath(path: string): string {
+    return `./drive/${path}`;
+  }
+  async setTextFileContent(filePath: string, content: string): Promise<void> {
+    const path = this.#getDrivePath(filePath);
+    await fs.writeFile(path, content);
+  }
+
   async listItemsByPath(path: string): Promise<Item[]> {
     const dir = await fs.opendir(`./drive/${path}`);
     const items: Item[] = [];
