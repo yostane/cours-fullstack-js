@@ -2,6 +2,7 @@ import express from "express";
 import fs from "fs/promises";
 import { Item } from "../model/Item";
 import { DriveController } from "../controller/DriveController";
+import path from "path";
 
 export const driveRouter = express.Router();
 
@@ -11,11 +12,8 @@ function getStarParam(params: {}) {
 }
 
 driveRouter.get("/simu", (req, res) => {
-  res.json([
-    { name: "anime.txt", isFile: true },
-    { name: "courses.txt", isFile: true },
-    { name: "souvenirs", isFile: false },
-  ]);
+  const driveController = new DriveController();
+  res.json(driveController.getSimulatedData());
 });
 
 // TODO: A enlever car redondant avec get("/drive/:p"
@@ -30,13 +28,9 @@ driveRouter.get("/", async (req, res) => {
 });
 
 driveRouter.get("/info/*", async (req, res) => {
-  const filePath = getStarParam(req.params);
-  const file = await fs.stat(`./drive/${filePath}`);
-  res.json({
-    size: file.size,
-    path: filePath,
-    name: filePath.split("/").pop(),
-  });
+  const path = getStarParam(req.params);
+  const info = await new DriveController().getItemInfo(path);
+  res.json(info);
 });
 
 driveRouter.get("/content/*", async (req, res) => {

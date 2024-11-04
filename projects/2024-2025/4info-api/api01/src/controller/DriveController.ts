@@ -1,5 +1,6 @@
 import fs from "fs/promises";
 import { Item } from "../model/Item";
+import { ItemInfo } from "../model/ItemInfo";
 
 export class DriveController {
   async listItemsByPath(path: string): Promise<Item[]> {
@@ -15,5 +16,18 @@ export class DriveController {
     return await fs.readFile(`./drive/${filePath}`, {
       encoding: "utf8",
     });
+  }
+
+  async getItemInfo(path: string): Promise<ItemInfo> {
+    const file = await fs.stat(`./drive/${path}`);
+    return new ItemInfo(path.split("/").pop() ?? "", path, file.size);
+  }
+
+  getSimulatedData() {
+    return [
+      { name: "anime.txt", isFile: true },
+      { name: "courses.txt", isFile: true },
+      { name: "souvenirs", isFile: false },
+    ];
   }
 }
