@@ -1,5 +1,5 @@
 import express from "express";
-import { driveRouter } from "./routes/DriverRouter";
+import { driveRouter } from "./routes/DriveRouter";
 
 const app = express();
 

@@ -1,5 +1,5 @@
 {
-  "exec": "node --loader ts-node/esm src/main.ts",
+  "exec": "bun src/main.ts",
   "watch": ["src"],
   "ext": "ts"
 }
