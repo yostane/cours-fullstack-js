@@ -6,6 +6,7 @@ export class DriveController {
   #getDrivePath(path: string): string {
     return `./drive/${path}`;
   }
+
   async setTextFileContent(filePath: string, content: string): Promise<void> {
     const path = this.#getDrivePath(filePath);
     await fs.writeFile(path, content);

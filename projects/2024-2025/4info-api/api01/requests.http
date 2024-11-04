@@ -14,3 +14,10 @@
 {{base_url}}/drive/info/souvenirs/souvenir1.txt
 ###
 {{base_url}}/drive/content/souvenirs/souvenir1.txt
+###
+{{base_url}}/drive/move/souvenirs/2024/souvenir1.txt/to/hello.txt
+###
+POST {{base_url}}/drive/content/souvenirs/2024/souvenir2.txt
+Content-Type: text/plain
+
+Hello\n. Ceci est un fichier texte.
