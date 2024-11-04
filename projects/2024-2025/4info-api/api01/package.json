@@ -5,7 +5,7 @@
   "scripts": {
     "test": "echo 'Hello'",
     "dev": "node --loader ts-node/esm src/main.ts",
-    "start": ""
+    "start": "nodemon"
   },
   "keywords": [],
   "author": "",
