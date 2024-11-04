@@ -16,6 +16,7 @@ app.get("/drive-simu", (req, res) => {
   ]);
 });
 
+// TODO: A enlever car redondant avec get("/drive/:p"
 app.get("/drive", async (req, res) => {
   const dir = await fs.opendir("./drive");
   // :Item[] -> tableau d'items.  = [] on initialise avec un tableau vide
@@ -34,6 +35,16 @@ app.get("/drive/:p", async (req, res) => {
     items.push({ name: file.name, isFile: file.isFile() });
   }
   res.json(items);
+});
+
+app.get("/drive/:p/info", async (req, res) => {
+  const filePath = req.params.p;
+  const file = await fs.stat(`./drive/${req.params.p}`);
+  res.json({
+    size: file.size,
+    path: filePath,
+    name: filePath.split("/").pop(),
+  });
 });
 
 app.listen(3000, () => {
