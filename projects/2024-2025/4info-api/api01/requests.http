@@ -9,4 +9,6 @@
 ###
 {{base_url}}/drive/travail
 ###
-{{base_url}}/drive/anime.txt/info
+{{base_url}}/drive/info/anime.txt
+###
+{{base_url}}/drive/info/souvenirs/souvenir1.txt

@@ -37,9 +37,10 @@ app.get("/drive/:p", async (req, res) => {
   res.json(items);
 });
 
-app.get("/drive/:p/info", async (req, res) => {
-  const filePath = req.params.p;
-  const file = await fs.stat(`./drive/${req.params.p}`);
+app.get("/drive/info/*", async (req, res) => {
+  const params = req.params as { "0": string };
+  const filePath = params[0];
+  const file = await fs.stat(`./drive/${filePath}`);
   res.json({
     size: file.size,
     path: filePath,
