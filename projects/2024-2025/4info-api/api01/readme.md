@@ -24,7 +24,7 @@ driveRouter.patch("/move/*/to/*", async (req, res) => {
 1. Implémenter un endpoint `POST /drive/copyitem/*/touser/:destination_login` qui copie le fichier ou dossier de l'utilisateur courant sur le chemin `*` vers la racine du drive de l'utilisateur `destination_login`.
     - Si l'utilisateur n'existe pas, retourner un code 404.
     - Si l'utilisateur est le même que celui connecté, retourner un code 400.
-    - Par exemple: `POST /drive/copyto/naruto/souvenirs/2024/souvenir1.txt` devrait copier le fichier `souvenir1.txt` de l'utilisateur courant vers la racine du drive de l'utilisateur `naruto`.
+    - Par exemple: `POST /drive/copyitem/souvenirs/2024/souvenir1.txt/touser/naruto` devrait copier le fichier `souvenir1.txt` de l'utilisateur courant vers la racine du drive de l'utilisateur `naruto`.
 1. Implémenter un endpoint `GET /drive/stats` qui retourne les informations suivantes sur le drive de l'utilisateur connecté : nombre de fichiers, nombre de dossiers, taille totale (en octets), quota (espace max en octets) (en supposant que chaque utilisateur a 1 MO de stockage max).
     - Par exemple: `{ files: 5, folders: 2, size: 500, quota: 1000 }` 
 
