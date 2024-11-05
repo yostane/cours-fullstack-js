@@ -16,24 +16,28 @@ driveRouter.get("/simu", (req, res) => {
 
 // TODO: A enlever car redondant avec get("/drive/:p"
 driveRouter.get("/", async (req, res) => {
-  res.json(await new DriveController().listRootItems());
+  res.json(await new DriveController().listRootItems(res.locals.login));
 });
 
 driveRouter.get("/info/*", async (req, res) => {
   const path = getStarParam(req.params);
-  const info = await new DriveController().getItemInfo(path);
+  const info = await new DriveController().getItemInfo(res.locals.login, path);
   res.json(info);
 });
 
 driveRouter.get("/content/*", async (req, res) => {
   const filePath = getStarParam(req.params);
-  const content = await new DriveController().getTextFileContent(filePath);
+  const content = await new DriveController().getTextFileContent(
+    res.locals.login,
+    filePath
+  );
   res.send(content);
 });
 
 driveRouter.post("/content/*", async (req, res) => {
   const filePath = getStarParam(req.params);
   const content = await new DriveController().setTextFileContent(
+    res.locals.login,
     filePath,
     req.body
   );

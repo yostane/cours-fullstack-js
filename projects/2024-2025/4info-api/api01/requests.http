@@ -1,34 +1,38 @@
 @base_url=http://localhost:3000
-@basic_auth=Basic bHVmZnk6bmlrdQ==
+@basic_auth_luffy=Basic bHVmZnk6bmlrdQ==
+@basic_auth_naruto=Basic bmFydXRvOnJhbWVu
 {{base_url}}/
 ###
 {{base_url}}/drive/simu
-Authorization: {{basic_auth}}
+Authorization: {{basic_auth_luffy}}
 ###
 {{base_url}}/drive
-Authorization: {{ basic_auth }}
+Authorization: {{ basic_auth_luffy }}
+###
+{{base_url}}/drive
+Authorization: {{ basic_auth_naruto }}
 ###
 {{base_url}}/drive/souvenirs/2024
-Authorization: {{ basic_auth }}
+Authorization: {{ basic_auth_luffy }}
 ###
 {{base_url}}/drive/travail
-Authorization: {{ basic_auth }}
+Authorization: {{ basic_auth_luffy }}
 ###
 {{base_url}}/drive/info/anime.txt
-Authorization: {{ basic_auth }}
+Authorization: {{ basic_auth_luffy }}
 ###
 {{base_url}}/drive/info/souvenirs/souvenir1.txt
-Authorization: {{ basic_auth }}
+Authorization: {{ basic_auth_luffy }}
 ###
 {{base_url}}/drive/content/souvenirs/souvenir1.txt
-Authorization: {{ basic_auth }}
+Authorization: {{ basic_auth_luffy }}
 ###
 {{base_url}}/drive/move/souvenirs/2024/souvenir1.txt/to/hello.txt
-Authorization: {{ basic_auth }}
+Authorization: {{ basic_auth_luffy }}
 ###
 POST {{base_url}}/drive/content/souvenirs/2024/souvenir2.txt
 Content-Type: text/plain
-Authorization: {{ basic_auth }}
+Authorization: {{ basic_auth_luffy }}
 
 Hello.
 Ceci est un fichier texte.
