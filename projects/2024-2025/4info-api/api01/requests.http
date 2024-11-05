@@ -2,6 +2,7 @@
 {{base_url}}/
 ###
 {{base_url}}/drive/simu
+Authorization: Basic bHVmZnk6bmlrdQ==
 ###
 {{base_url}}/drive
 ###
