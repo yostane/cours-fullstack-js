@@ -28,8 +28,12 @@ app.use(
       res.status(401).send();
       return;
     }
-    await isUserInDatabase(credentials[0], credentials[1]);
-    res.send();
+    const isUser = await isUserInDatabase(credentials[0], credentials[1]);
+    if (!isUser) {
+      res.status(401).send();
+      return;
+    }
+    next();
   },
   driveRouter
 );

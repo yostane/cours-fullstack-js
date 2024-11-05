@@ -10,8 +10,8 @@ export async function isUserInDatabase(
   type QueryResult = { password: string }[];
   const results = query.all(login) as QueryResult;
   console.log(login, password, results);
-  if (results.length != 1) {
-    return false;
-  }
-  return await Bun.password.verify(password, results[0].password);
+  return (
+    results.length == 1 &&
+    (await Bun.password.verify(password, results[0].password))
+  );
 }
