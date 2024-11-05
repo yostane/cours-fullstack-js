@@ -13,6 +13,7 @@ function getStarParam(params: {}) {
 
 driveRouter.get("/simu", (req, res) => {
   const driveController = new DriveController();
+  console.log(res.locals.login);
   res.json(driveController.generateSimulatedData());
 });
 

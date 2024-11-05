@@ -33,6 +33,7 @@ app.use(
       res.status(401).send();
       return;
     }
+    res.locals.login = credentials[0];
     next();
   },
   driveRouter
