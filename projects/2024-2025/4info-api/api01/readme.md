@@ -2,7 +2,7 @@
 
 ## Exercices
 
-> Implémenter une Authentification basic sur tous les endpoints de `driveRouter`.
+> Implémenter une Authentification basic sur tous les endpoints en `/drive`.
 
 1. Implémenter les endpoints `move` en `patch` et `copy` en `post`. Voici un bout de code qui peut vous aider.
     - Bonus: Si la destination est un dossier, garder le nom du fichier d'origine.
@@ -34,7 +34,7 @@ driveRouter.patch("/move/*/to/*", async (req, res) => {
 1. Modifier la BDD pour définir les rôles "admin" et "user" pour les utilisateurs. Un utilisateur a un rôle `user` par défaut. Définir deux admins dans le script de création de la BDD:
     - `gojo` avec le mot de passe `satoru`
     - `nanami` avec le mot de passe `kento`
-1. Implémenter un endpoint `GET /admin/stats` qui renvoie les status de tous les utilisateurs (nombre de fichiers, nombre de dossiers, taille totale, quota). L'admin est un utilisateur qui a un rôle `admin`.
+1. Implémenter un endpoint `GET /admin/stats` qui renvoie les statut de tous les utilisateurs (nombre de fichiers, nombre de dossiers, taille totale, quota).
     - Par exemple: `[ { login: "naruto", files: 5, folders: 2, size: 500, quota: 1000 }, { login: "luffy", files: 5, folders: 2, size: 500, quota: 1000 }, { name: "gojo", files: 5, folders: 2, size: 500, quota: 1000 }, { name: "nanami", files: 5, folders: 2, size: 500, quota: 1000 } ]`
 1. Implémenter un endpoint `POST /admin/upgrade/:login` qui met à jour le rôle de l'utilisateur `login` en `admin`.
     - Si l'utilisateur a déjà ce rôle, ne rien faire et retourner une 200.
