@@ -1,6 +1,7 @@
 @base_url=http://localhost:3000
 @basic_auth_luffy=Basic bHVmZnk6bmlrdQ==
 @basic_auth_naruto=Basic bmFydXRvOnJhbWVu
+@basic_auth_hit=Basic aGl0OmRicw==
 {{base_url}}/
 ###
 {{base_url}}/drive/simu
@@ -19,7 +20,7 @@ Authorization: {{ basic_auth_luffy }}
 Authorization: {{ basic_auth_luffy }}
 ###
 {{base_url}}/drive/info/anime.txt
-Authorization: {{ basic_auth_luffy }}
+Authorization: {{ basic_auth_hit }}
 ###
 {{base_url}}/drive/info/souvenirs/souvenir1.txt
 Authorization: {{ basic_auth_luffy }}

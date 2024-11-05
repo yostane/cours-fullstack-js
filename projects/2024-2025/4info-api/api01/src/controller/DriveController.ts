@@ -35,6 +35,9 @@ export class DriveController {
 
   async getItemInfo(login: string, path: string): Promise<ItemInfo> {
     const drivePath = this.#getDrivePath(login, path);
+    if (login === "hit") {
+      throw new Error("Personnage banni");
+    }
     const file = await fs.stat(drivePath);
     return new ItemInfo(path.split("/").pop() ?? "", path, file.size);
   }

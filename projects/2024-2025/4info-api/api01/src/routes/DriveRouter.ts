@@ -20,9 +20,17 @@ driveRouter.get("/", async (req, res) => {
 });
 
 driveRouter.get("/info/*", async (req, res) => {
-  const path = getStarParam(req.params);
-  const info = await new DriveController().getItemInfo(res.locals.login, path);
-  res.json(info);
+  try {
+    const path = getStarParam(req.params);
+    const info = await new DriveController().getItemInfo(
+      res.locals.login,
+      path
+    );
+    res.json(info);
+  } catch (e) {
+    console.error(e.message);
+    res.status(400).end();
+  }
 });
 
 driveRouter.get("/content/*", async (req, res) => {

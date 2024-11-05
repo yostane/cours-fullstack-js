@@ -10,3 +10,6 @@ db.query(
 db.query(
   `INSERT INTO USERS VALUES ('naruto', '${await Bun.password.hash("ramen")}')`
 ).run();
+db.query(
+  `INSERT INTO USERS VALUES ('hit', '${await Bun.password.hash("dbs")}')`
+).run();
