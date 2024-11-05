@@ -15,7 +15,11 @@ driveRouter.patch("/move/*/to/*", async (req, res) => {
     - Par exemple: `move/souvenirs/2024/souvenir1.txt/to/hello.txt` devrait renommer `souvenir1.txt` en `hello.txt` et le placer à la racine du drive.
 1. Implémenter le endpoint `driveRouter.delete("/*")` qui supprime un fichier ou dossier récursivement.
     - ☠️ !!!! attention à ne pas supprimer des fichiers de votre PC autre ce qu'il y a dans drive !!!!
-1. Implémenter un post de fichier markdown (du texte) qui met en gras tout texte "rasengan" avant d'enregistrer le fichier.
+1. Implémenter un `post /md/*` qui prend en body un texte format markdown et qui met en gras tout texte "rasengan" avant d'enregistrer le fichier.
     - Par exemple, si le fichier contient `rasengan`, il devrait être enregistré avec `**rasengan**`.
 1. Implémenter un endpoint `driveRouter.get("/search/:query")` qui retourne les fichiers du drive contenant le texte `query` dans leur nom.
 1. Implémenter un endpoint `driveRouter.get("/search/content/:query")` qui retourne les fichiers du drive contenant le texte `query` dans leur contenu.
+1. Implémenter un endpoint `POST /drive/copyto/:login/*` qui copie le fichier ou dossier à la racine du drive de l'utilisateur `login`.
+    - Si l'utilisateur n'existe pas, retourner un code 404.
+    - Si l'utilisateur est le même que celui connecté, retourner un code 400.
+1. 
