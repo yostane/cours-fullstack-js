@@ -17,7 +17,7 @@
   },
   "devDependencies": {
     "@types/express": "^5.0.0",
-    "@types/node": "^22.9.0",
-    "nodemon": "^3.1.7"
+    "nodemon": "^3.1.7",
+    "@types/bun": "^1.1.13"
   }
 }
