@@ -4,20 +4,20 @@
   "type": "module",
   "scripts": {
     "test": "echo 'Hello'",
-    "dev": "node --loader ts-node/esm src/main.ts",
-    "start": "nodemon"
+    "dev": "bun src/main.ts",
+    "start": "nodemon",
+    "createdb": "bun src/service/CreateDatabase.ts"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "express": "^4.21.1",
-    "ts-node": "^10.9.2"
+    "express": "^4.21.1"
   },
   "devDependencies": {
     "@types/express": "^5.0.0",
-    "@types/node": "^22.8.7",
+    "@types/node": "^22.9.0",
     "nodemon": "^3.1.7"
   }
 }
