@@ -12,8 +12,8 @@ export class DriveController {
     await fs.writeFile(path, content);
   }
 
-  async listItemsByPath(path: string): Promise<Item[]> {
-    const dir = await fs.opendir(`./drive/${path}`);
+  async listItemsByPath(login: string, path: string): Promise<Item[]> {
+    const dir = await fs.opendir(`./drive/${login}/${path}`);
     const items: Item[] = [];
     for await (const file of dir) {
       items.push({ name: file.name, isFile: file.isFile() });
