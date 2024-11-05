@@ -1,6 +1,7 @@
 import express from "express";
 import { driveRouter } from "./routes/DriveRouter";
 import bodyParser from "body-parser";
+import { isUserInDatabase } from "./service/DatabaseHelper";
 
 const app = express();
 
@@ -12,7 +13,7 @@ app.get("/", (req, res) => {
 
 app.use(
   "/drive",
-  (req, res, next) => {
+  async (req, res, next) => {
     // Authorization: Basic YWxhZGRpbjpvcGVuc2VzYW1l
     // la partie parès basic: base64(login:password)
     const authorization = req.headers.authorization;
@@ -21,8 +22,13 @@ app.use(
       return;
     }
     const b64Credentials = authorization.substring(6);
-    const credentials = atob(b64Credentials);
+    const credentials = atob(b64Credentials).split(":");
     console.log(b64Credentials, credentials);
+    if (credentials.length != 2) {
+      res.status(401).send();
+      return;
+    }
+    await isUserInDatabase(credentials[0], credentials[1]);
     res.send();
   },
   driveRouter

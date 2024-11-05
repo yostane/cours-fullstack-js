@@ -2,10 +2,16 @@ import { Database } from "bun:sqlite";
 
 const db = new Database("./db.sqlite3");
 
-function isUserInDatabase(login: string, password: string) {
-  const query = db.query(
-    "SELCT COUNT(ROWID) FROM USERS WHERE login = ?1 and password = ?2"
-  );
-  const result = query.all(login, password);
-  console.log(result);
+export async function isUserInDatabase(
+  login: string,
+  password: string
+): Promise<boolean> {
+  const query = db.query("SELECT password FROM USERS WHERE login = ?1");
+  type QueryResult = { password: string }[];
+  const results = query.all(login) as QueryResult;
+  console.log(login, password, results);
+  if (results.length != 1) {
+    return false;
+  }
+  return await Bun.password.verify(password, results[0].password);
 }
