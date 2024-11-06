@@ -72,3 +72,9 @@ driveRouter.patch("/move/*/to/*", async (req, res) => {
     - Par exemple si je suis connecté avec *kakashi* et que j'ai lancé les requêtes d'exemples de l'exercice précédent, j'aurai cette réponse à la requête de l'exercice actuel: `[ { "target": "naruto", "path": "souvenirs/2024/souvenir1.txt" }, { "taget": "luffy", "path": "souvenirs/2024/souvenir2.txt" } ]`
 1. Définir un endpoint `GET /drive/shared` qui retourne les fichiers partagés avec l'utilisateur connecté.
     - Par exemple si je suis connecté avec *naruto* et que j'ai lancé les requêtes d'exemples du premier exercice, j'aurai cette réponse à la requête de l'exercice actuel: `[ { "owner": "kakashi", file: "souvenirs/2024/souvenir1.txt" } ]`
+1. Définir un endpoint `GET /drive/shared/:owner_login/*` qui retourne le contenu du fichier partagé `*` avec l'utilisateur connecté. Renvoyer une 403 si l'utilisateur n'a pas accès au fichier.
+    - Par exemple: si *naruto* fait un `GET /drive/shared/kakashi/souvenirs/2024/souvenir1.txt`, il devrait recevoir le contenu du fichier partagé par *kakashi*.
+    - Par contre, si *naruto* fait un `GET /drive/shared/sasuke/souvenirs/2024/souvenir2.txt`, il devrait recevoir une erreur 403 car il n'a pas accès à ce fichier.
+1. Définir un endpoint `DELETE /drive/share/*` qui supprime le partage du fichier `*` avec un autre utilisateur.
+    - Par exemple: si *kakashi* fait un `DELETE /drive/share/souvenirs/2024/souvenir1.txt` (avec un body vide) alors il supprime le partage de son fichier `souvenir1.txt` avec tous les utilisateurs.
+    - Par exemple: si *kakashi* fait un `DELETE /drive/share/souvenirs/2024/souvenir1.txt` avec le body `{ "target": "luffy" }`, alors il supprime le partage de son fichier `souvenir1.txt` avec l'utilisateur `luffy`.
