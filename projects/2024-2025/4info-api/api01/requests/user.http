@@ -14,3 +14,11 @@ Content-Type: application/json
   "login":"user{{$randomInt 1 1000}}",
   "password":"ramen"
 }
+###
+POST {{base_url}}/users/register
+Content-Type: application/json
+
+{
+  "login":"kakashi",
+  "password":"ramen"
+}

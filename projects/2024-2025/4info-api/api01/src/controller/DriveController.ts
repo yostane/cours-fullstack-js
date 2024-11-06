@@ -4,7 +4,7 @@ import { ItemInfo } from "../model/ItemInfo";
 
 export class DriveController {
   getDrivePath(login: string, path: string): string {
-    return `./drive/${login}${path.length > 1 ? login + "/" : ""}`;
+    return `./drive/${login}${path.length > 1 ? "/" + path : ""}`;
   }
 
   async setTextFileContent(

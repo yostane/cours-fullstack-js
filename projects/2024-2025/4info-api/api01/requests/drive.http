@@ -1,7 +1,9 @@
 @base_url=http://localhost:3000
 @basic_auth_luffy=Basic bHVmZnk6bmlrdQ==
 @basic_auth_naruto=Basic bmFydXRvOnJhbWVu
-@basic_auth_hit=Basic aGl0OmRicw==
+@basic_auth_hit=Basic dXNlcjExNTpyYW1lbg==
+
+@basic_auth_kakashi=Basic a2FrYXNoaTpyYW1lbg== 
 {{base_url}}/
 ###
 {{base_url}}/drive/simu
@@ -31,9 +33,9 @@ Authorization: {{ basic_auth_luffy }}
 {{base_url}}/drive/move/souvenirs/2024/souvenir1.txt/to/hello.txt
 Authorization: {{ basic_auth_luffy }}
 ###
-POST {{base_url}}/drive/content/souvenirs/2024/souvenir2.txt
+POST {{base_url}}/drive/content/souvenir2.txt
 Content-Type: text/plain
-Authorization: {{ basic_auth_luffy }}
+Authorization: {{ basic_auth_kakashi }}
 
 Hello.
 Ceci est un fichier texte.
