@@ -47,3 +47,28 @@ driveRouter.patch("/move/*/to/*", async (req, res) => {
 1. Modifier les endpoints existants qui créent ou copient du contenu pour vérifier que l'utilisateur a assez d'espace de stockage pour effectuer l'opération.
     - Si l'utilisateur n'a pas assez d'espace, retourner un code 400.
     - Pas la peine de vérifier pour le move (comme il ne crée pas de nouveau fichiers).
+
+## Exercices Middleare
+
+1. Implémenter un middleware qui vérifie que l'utilisateur a le rôle `admin` pour accéder aux routes en `/admin`.
+1. Implémenter le support des deux schéma d'authentification Bearer et Basic à la fois (sur les routes en `/drive` et en `/admin`). C'est-à-dire que l'on peut passer soit un JWT, soit un authentification basic pour s'authentifier.
+1. Ajouter un middleware pour les routes en `/drive` qui insère dans la réponse le header `Role` qui a comme valeur le rôle de l'utilisateur.
+1. Ajouter un middleware global (avec `app.use`) appelé `LoggerMiddleware` qui log dans dans le fichier `[racine du projet]/logs/logs.txt` la date, le chemin et la méthode de chaque requête reçue.
+    - Par exemple: 
+    ```txt
+    2021-09-01T12:00:00.000Z GET /drive
+    2021-09-01T12:00:01.000Z POST /drive
+    2021-09-01T12:00:02.000Z GET /admin
+    ```
+
+## Partage de fichiers
+
+> Nous allos utiliser une table `UserShares` qui contient les colonnes `owner_rowid`, `sharedto_rowid` et `owner_file_path`. Cette table permet de partager des fichiers entre utilisateurs. Le script de création de la table est déjà défini dans `CreateDatabase.ts`.
+
+1. Définir un endpoint `POST /drive/share/*` qui partage le fichier `*` avec un autre utilisateur. Le body de la requête doit contenir le login de l'utilisateur avec qui partager le fichier.
+    - Par exemple: si *kakashi* fait un `POST /drive/share/souvenirs/2024/souvenir1.txt` avec le body `{ "target": "luffy" }`, alors il partage son fichier `souvenir1.txt` avec l'utilisateur `luffy`.
+    - Par exemple: si *kakashi* fait un `POST souvenirs/2024/souvenir1.txt` avec le body `{ "target": "naruto" }`, alors il partage son fichier `souvenir1.txt` avec l'utilisateur `naruto`.
+1. Définir un endpoint `GET /drive/shares` qui retourne les fichiers partagés de l'utilisateur connecté.
+    - Par exemple si je suis connecté avec *kakashi* et que j'ai lancé les requêtes d'exemples de l'exercice précédent, j'aurai cette réponse à la requête de l'exercice actuel: `[ { "target": "naruto", "path": "souvenirs/2024/souvenir1.txt" }, { "taget": "luffy", "path": "souvenirs/2024/souvenir2.txt" } ]`
+1. Définir un endpoint `GET /drive/shared` qui retourne les fichiers partagés avec l'utilisateur connecté.
+    - Par exemple si je suis connecté avec *naruto* et que j'ai lancé les requêtes d'exemples du premier exercice, j'aurai cette réponse à la requête de l'exercice actuel: `[ { "owner": "kakashi", file: "souvenirs/2024/souvenir1.txt" } ]`

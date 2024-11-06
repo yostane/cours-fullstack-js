@@ -9,6 +9,14 @@ db.query(
   password TEXT NOT NULL)`
 ).run();
 db.query(
+  `CREATE TABLE UserShares(
+  owner_rowid integer NOT NULL,
+  sharedto_rowid integer NOT NULL,
+  owner_file_path TEXT NOT NULL,
+  FOREIGN key(owner_rowid) references USERS(rowid),
+  FOREIGN key(sharedto_rowid) references USERS(rowid))`
+).run();
+db.query(
   `INSERT INTO USERS VALUES ('luffy', '${await Bun.password.hash("niku")}')`
 ).run();
 db.query(
@@ -17,3 +25,4 @@ db.query(
 db.query(
   `INSERT INTO USERS VALUES ('hit', '${await Bun.password.hash("dbs")}')`
 ).run();
+db.query(`INSERT INTO UserShares VALUES (1, 2, 'souvenirs.txt')`).run();
