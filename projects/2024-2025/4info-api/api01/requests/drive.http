@@ -42,3 +42,6 @@ Hello.
 Ceci est un fichier texte.
 
 Paragraphe 2
+###
+{{base_url}}/drive
+Authorization: Bearer {{kakashi_jwt}}
