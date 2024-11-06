@@ -22,3 +22,11 @@ Content-Type: application/json
   "login":"kakashi",
   "password":"ramen"
 }
+###
+POST {{base_url}}/users/login
+Content-Type: application/json
+
+{
+  "login":"kakashi",
+  "password":"ramen"
+}

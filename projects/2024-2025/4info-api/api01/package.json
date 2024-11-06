@@ -13,11 +13,13 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "express": "^4.21.1"
+    "express": "^4.21.1",
+    "jsonwebtoken": "^9.0.2"
   },
   "devDependencies": {
+    "@types/bun": "^1.1.13",
     "@types/express": "^5.0.0",
-    "nodemon": "^3.1.7",
-    "@types/bun": "^1.1.13"
+    "@types/jsonwebtoken": "^9.0.7",
+    "nodemon": "^3.1.7"
   }
 }

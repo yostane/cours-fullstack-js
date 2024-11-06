@@ -15,3 +15,12 @@ userRouter.post("/register", async (req, res) => {
     res.status(400).end();
   }
 });
+
+userRouter.post("/login", (req, res) => {
+  const user = req.body as UserDto;
+  const userController = new UserController();
+  const jwt = userController.getJwt(user.login, user.password);
+  res.json({
+    token: jwt,
+  });
+});

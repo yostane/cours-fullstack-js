@@ -4,6 +4,7 @@
 @basic_auth_hit=Basic dXNlcjExNTpyYW1lbg==
 
 @basic_auth_kakashi=Basic a2FrYXNoaTpyYW1lbg== 
+@kakashi_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoia2FrYXNoaSIsImlhdCI6MTczMDg4NjIwOH0.6kxcWO7cZtrAGHCQhUDRMtJJHPp6vLy40GcvBbi6GyI
 {{base_url}}/
 ###
 {{base_url}}/drive/simu
@@ -35,7 +36,7 @@ Authorization: {{ basic_auth_luffy }}
 ###
 POST {{base_url}}/drive/content/souvenir2.txt
 Content-Type: text/plain
-Authorization: {{ basic_auth_kakashi }}
+Authorization: Bearer {{kakashi_jwt}}
 
 Hello.
 Ceci est un fichier texte.

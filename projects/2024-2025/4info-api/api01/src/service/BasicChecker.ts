@@ -1,5 +1,7 @@
 import { Request, Response, NextFunction } from "express";
 import { isUserInDatabase } from "./DatabaseHelper";
+import jwt, { decode } from "jsonwebtoken";
+import { JWT_SECRET } from "../config/constants";
 
 export async function checkBasicAuth(
   req: Request,
@@ -26,5 +28,28 @@ export async function checkBasicAuth(
     return;
   }
   res.locals.login = credentials[0];
+  next();
+}
+
+export async function checkBearerAuth(
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
+  const authorization = req.headers.authorization;
+  if (authorization == undefined || !authorization.startsWith("Bearer ")) {
+    res.status(401).send();
+    return;
+  }
+  const token = authorization.substring(7);
+  // Vériier la validité du jwt (c'est bien un jwt qu'on a généré)
+  try {
+    type Payload = { name: string };
+    const decoded = jwt.verify(token, JWT_SECRET) as Payload;
+    res.locals.login = decoded.name;
+  } catch (e) {
+    res.status(401).send();
+    return;
+  }
   next();
 }
