@@ -3,8 +3,8 @@ import { Item } from "../model/Item";
 import { ItemInfo } from "../model/ItemInfo";
 
 export class DriveController {
-  #getDrivePath(login: string, path: string): string {
-    return `./drive/${login}/${path}`;
+  getDrivePath(login: string, path: string): string {
+    return `./drive/${login}${path.length > 1 ? login + "/" : ""}`;
   }
 
   async setTextFileContent(
@@ -12,12 +12,12 @@ export class DriveController {
     filePath: string,
     content: string
   ): Promise<void> {
-    const path = this.#getDrivePath(login, filePath);
+    const path = this.getDrivePath(login, filePath);
     await fs.writeFile(path, content);
   }
 
   async listItemsByPath(login: string, path: string): Promise<Item[]> {
-    const drivePath = this.#getDrivePath(login, path);
+    const drivePath = this.getDrivePath(login, path);
     const dir = await fs.opendir(drivePath);
     const items: Item[] = [];
     for await (const file of dir) {
@@ -27,14 +27,14 @@ export class DriveController {
   }
 
   async getTextFileContent(login: string, filePath: string): Promise<string> {
-    const drivePath = this.#getDrivePath(login, filePath);
+    const drivePath = this.getDrivePath(login, filePath);
     return await fs.readFile(drivePath, {
       encoding: "utf8",
     });
   }
 
   async getItemInfo(login: string, path: string): Promise<ItemInfo> {
-    const drivePath = this.#getDrivePath(login, path);
+    const drivePath = this.getDrivePath(login, path);
     if (login === "hit") {
       throw new Error("Personnage banni");
     }

@@ -4,9 +4,14 @@ import { UserDto } from "../model/User";
 
 export const userRouter = express.Router();
 
-userRouter.post("/register", (req, res) => {
-  const user = req.body as UserDto;
-  const userController = new UserController();
-  userController.register(user);
-  res.end();
+userRouter.post("/register", async (req, res) => {
+  try {
+    const user = req.body as UserDto;
+    const userController = new UserController();
+    await userController.register(user);
+    res.end();
+  } catch (e) {
+    console.error(e.message);
+    res.status(400).end();
+  }
 });

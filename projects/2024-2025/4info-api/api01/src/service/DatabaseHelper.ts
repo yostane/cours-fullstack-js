@@ -20,6 +20,5 @@ export async function createUserInDatabase(
   password: string
 ): Promise<void> {
   const query = db.query("INSERT INTO USERS VALUES (?1, ?2)");
-  const insertResult = query.run(login, await Bun.password.hash(password));
-  console.log(insertResult);
+  query.run(login, await Bun.password.hash(password));
 }
