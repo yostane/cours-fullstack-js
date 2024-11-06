@@ -1,0 +1,8 @@
+@base_url=http://localhost:3000
+POST {{base_url}}/users/register
+Content-Type: application/json
+
+{
+  "login":"naruto",
+  "password":"ramen"
+}

@@ -14,3 +14,12 @@ export async function isUserInDatabase(
     (await Bun.password.verify(password, results[0].password))
   );
 }
+
+export async function createUserInDatabase(
+  login: string,
+  password: string
+): Promise<void> {
+  const query = db.query("INSERT INTO USERS VALUES (?1, ?2)");
+  const insertResult = query.run(login, await Bun.password.hash(password));
+  console.log(insertResult);
+}
