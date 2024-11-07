@@ -1,5 +1,11 @@
 # API drive
 
+## Consignes
+
+- Déposer un fichier à la racine de votre dépôt git contenant votre autoévaluation en indiquant:
+    - La liste des qestions auxquelles vous avez répondues ou l'inverse,
+    - Votre note sur 30
+
 ## Exercices
 
 > Implémenter une Authentification basic sur tous les endpoints en `/drive`.
@@ -77,3 +83,14 @@
 1. Définir un endpoint `DELETE /drive/share/*` qui supprime le partage du fichier `*` avec un autre utilisateur *(2)*.
     - Par exemple: si *kakashi* fait un `DELETE /drive/share/souvenirs/2024/souvenir1.txt` (avec un body vide) alors il supprime le partage de son fichier `souvenir1.txt` avec tous les utilisateurs.
     - Par exemple: si *kakashi* fait un `DELETE /drive/share/souvenirs/2024/souvenir1.txt` avec le body `{ "target": "luffy" }`, alors il supprime le partage de son fichier `souvenir1.txt` avec l'utilisateur `luffy`.
+
+
+## Points d'amélioration (à faire après le cours)
+
+- Ajouter des tests.
+- Remplacer les `console.log` par des logs dans un fichier.
+- Dans les endpoints qui ne sont pas en `GET`, passer les chemins dans le body plutôt que sous forme d'un path param.
+    - Par exemple: `POST /drive/copy` avec le body `{ "source": "souvenirs/2024/souvenir1.txt", "destination": "backups/backup10.txt" }`.
+- Gérer l'upload de tout type de fichier (actuellement, seul les fichiers textes et markdown sont gérés).
+    - Astuce: gérer le content-type `multipart/form-data` pour les fichiers.
+- Placer le dossier drive dans un NAS ou un service de stockage en ligne.
