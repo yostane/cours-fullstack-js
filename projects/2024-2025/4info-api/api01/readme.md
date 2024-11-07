@@ -5,6 +5,7 @@
 - Déposer un fichier à la racine de votre dépôt git contenant votre autoévaluation en indiquant:
     - La liste des qestions auxquelles vous avez répondues ou l'inverse,
     - Votre note sur 30
+- Si ce fichier est absent, la note sera de 0/30.
 
 ## Exercices
 
