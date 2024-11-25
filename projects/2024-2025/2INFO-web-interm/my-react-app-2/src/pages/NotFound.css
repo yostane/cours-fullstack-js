@@ -1,31 +1,286 @@
+/*Body Properties
+================================================*/
 #not-found {
-  /* animation properties */
-  animation-name: my-animation;
-  animation-duration: 2s;
-  animation-direction: alternate;
-  animation-iteration-count: infinite;
-  animation-timing-function: linear;
-
-  /* other properties */
-  width: 300px;
-  height: 100px;
-  border-radius: 10px;
-  position: absolute;
-  left: 0;
-  right: 0;
-  margin-left: auto;
-  margin-right: auto;
+  background: lightblue;
+  margin: 0;
+  padding: 0;
 }
 
-@keyframes my-animation {
-  from {
-    background-color: #ff7a59;
-    width: 300px;
-    top: 10px;
+/*Main body component
+================================================*/
+#not-found .main {
+  margin: 40px auto;
+  width: 300px;
+  height: 300px;
+  border-radius: 152px;
+  border: 2px solid rgb(0, 0, 0);
+  background: rgb(255, 255, 255);
+  box-shadow: 0px -20px rgb(190, 190, 190) inset;
+}
+
+/*Face component
+================================================*/
+.face {
+  position: relative;
+  top: -20px;
+  left: 40px;
+  width: 220px;
+  height: 200px;
+  background: rgb(255, 255, 255);
+  border: 2px solid rgb(0, 0, 0);
+  border-radius: 112px / 102px;
+  box-shadow: 0px -12px rgb(190, 190, 190) inset;
+}
+
+/*Foot component - the foot on the right is a box-shadow of the one on the left (any radius changes will affect the both feet)
+================================================*/
+.foot {
+  position: relative;
+  top: 50px;
+  left: 50px;
+  width: 80px;
+  height: 60px;
+  border-radius: 30px 30px 8px 8px;
+  background: rgb(40, 40, 40);
+  /*This box shadow is the foot on the right*/
+  box-shadow: 120px 0px rgb(40, 40, 40);
+}
+
+/*Nose component - the nostils belong to Eye Ball Right component (nostils are box-shadows of Eye Ball Right
+================================================*/
+.nose {
+  position: relative;
+  top: -120px;
+  left: 90px;
+  width: 120px;
+  height: 60px;
+  border-radius: 62px / 32px;
+  border: 2px solid rgb(0, 0, 0);
+  background: rgb(254, 192, 203);
+  box-shadow: 0px -8px rgb(230, 170, 170) inset;
+}
+
+/*Eye components - including Eye Left (inc animation), Eye Right, Eye Ball Left (inc animation) & Eye Ball Right
+================================================*/
+.eye-left {
+  -webkit-animation: eye-looking 20s ease-in-out infinite;
+  -moz-animation: eye-looking 20s ease-in-out infinite;
+  animation: eye-looking 20s ease-in-out infinite;
+  position: relative;
+  top: -354px;
+  left: 76px;
+  width: 60px;
+  height: 60px;
+  border-radius: 34px;
+  background: transparent;
+  border: 4px solid rgb(0, 0, 0);
+  box-shadow: 0px 60px 0px -20px rgb(254, 192, 203) inset;
+}
+
+@-webkit-keyframes eye-looking {
+  5% {
+    box-shadow: 0px 0px 0px -20px pink inset;
   }
-  to {
-    background-color: #33475b;
-    width: 50px;
-    top: 100px;
+  23% {
+    box-shadow: 0px 0px 0px -20px pink inset;
+  }
+  30% {
+    box-shadow: 0px 60px 0px -20px pink inset;
+  }
+}
+@-moz-keyframes eye-looking {
+  5% {
+    box-shadow: 0px 0px 0px -20px pink inset;
+  }
+  23% {
+    box-shadow: 0px 0px 0px -20px pink inset;
+  }
+  30% {
+    box-shadow: 0px 60px 0px -20px pink inset;
+  }
+}
+@keyframes eye-looking {
+  5% {
+    box-shadow: 0px 0px 0px -20px pink inset;
+  }
+  23% {
+    box-shadow: 0px 0px 0px -20px pink inset;
+  }
+  30% {
+    box-shadow: 0px 60px 0px -20px pink inset;
+  }
+}
+
+.eye-right {
+  position: relative;
+  top: -422px;
+  left: 156px;
+  width: 60px;
+  height: 60px;
+  border-radius: 34px;
+  background: transparent;
+  border: 4px solid rgb(0, 0, 0);
+  box-shadow: 0px 60px 0px -20px rgb(254, 192, 203) inset;
+}
+
+.eye-ball-left {
+  -webkit-animation: eye-ball-direction 20s ease-in-out infinite;
+  -moz-animation: eye-ball-direction 20s ease-in-out infinite;
+  animation: eye-ball-direction 20s ease-in-out infinite;
+  position: relative;
+  top: -220px;
+  left: 100px;
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
+  background: rgb(0, 0, 0);
+}
+
+@-webkit-keyframes eye-ball-direction {
+  5% {
+    -webkit-transform: translateY(-20px);
+  }
+  10% {
+    -webkit-transform: translateY(-20px) translateX(-20px);
+  }
+  18% {
+    -webkit-transform: translateY(-20px) translateX(20px);
+  }
+  23% {
+    -webkit-transform: translateY(-16px) translateX(0px);
+  }
+  30% {
+    -webkit-transform: translateY(0px);
+  }
+}
+
+@-moz-keyframes eye-ball-direction {
+  5% {
+    -moz-transform: translateY(-20px);
+  }
+  10% {
+    -moz-transform: translateY(-20px) translateX(-20px);
+  }
+  18% {
+    -moz-transform: translateY(-20px) translateX(20px);
+  }
+  23% {
+    -moz-transform: translateY(-16px) translateX(0px);
+  }
+  30% {
+    -moz-transform: translateY(0px);
+  }
+}
+
+@keyframes eye-ball-direction {
+  5% {
+    transform: translateY(-20px);
+  }
+  10% {
+    transform: translateY(-20px) translateX(-20px);
+  }
+  18% {
+    transform: translateY(-20px) translateX(20px);
+  }
+  23% {
+    transform: translateY(-16px) translateX(0px);
+  }
+  30% {
+    transform: translateY(0px);
+  }
+}
+
+.eye-ball-right {
+  position: relative;
+  top: -444px;
+  left: 180px;
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
+  background: rgb(0, 0, 0);
+  /*The box-shadow below are the two nostrils on the cow's nose*/
+  box-shadow: -18px 60px rgb(0, 0, 0), -58px 60px rgb(0, 0, 0);
+}
+
+/*Ear components - both Ear Left & Ear Right
+================================================*/
+.ear-left {
+  position: relative;
+  top: -340px;
+  width: 80px;
+  height: 30px;
+  border-radius: 42px / 17px;
+  border: 2px solid rgb(0, 0, 0);
+  background: rgb(255, 255, 255);
+  -webkit-transform-origin: right center;
+  -moz-transform-origin: right center;
+  transform-origin: right center;
+  -webkit-transform: rotate(30deg);
+  -moz-transform: rotate(30deg);
+  transform: rotate(30deg);
+  box-shadow: 0px -5px rgb(254, 192, 203) inset;
+}
+
+.ear-right {
+  position: relative;
+  top: -370px;
+  left: 220px;
+  width: 80px;
+  height: 30px;
+  border-radius: 42px / 17px;
+  border: 2px solid rgb(0, 0, 0);
+  background: rgb(255, 255, 255);
+  -webkit-transform-origin: left center;
+  -moz-transform-origin: left center;
+  transform-origin: left center;
+  -webkit-transform: rotate(-30deg);
+  -moz-transform: rotate(-30deg);
+  transform: rotate(-30deg);
+  box-shadow: 0px -5px rgb(254, 192, 203) inset;
+}
+
+/*Hay component (inc animation)
+================================================*/
+.hay {
+  -webkit-animation: chew-hay 2s ease-in-out infinite;
+  -moz-animation: chew-hay 2s ease-in-out infinite;
+  animation: chew-hay 2s ease-in-out infinite;
+  position: relative;
+  top: -72px;
+  left: 90px;
+  width: 160px;
+  height: 5px;
+  background: rgb(203, 133, 70);
+  box-shadow: 0px 4px 0px 0px rgb(253, 164, 40),
+    0px 8px 0px 0px rgb(203, 133, 70), 0px 12px 0px 0px rgb(253, 164, 40);
+  -webkit-transform: rotate(-25deg);
+  -moz-transform: rotate(-25deg);
+  transform: rotate(-25deg);
+}
+
+@-webkit-keyframes chew-hay {
+  50% {
+    -webkit-transform: rotate(-15deg);
+  }
+  100% {
+    -webkit-transform: rotate(-25deg);
+  }
+}
+
+@-moz-keyframes chew-hay {
+  50% {
+    -moz-transform: rotate(-15deg);
+  }
+  100% {
+    -moz-transform: rotate(-25deg);
+  }
+}
+
+@keyframes chew-hay {
+  50% {
+    transform: rotate(-15deg);
+  }
+  100% {
+    transform: rotate(-25deg);
   }
 }
