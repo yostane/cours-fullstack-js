@@ -153,9 +153,9 @@ Dans le dossier `src`, créer le dossier `components` et y ajouter un fichier `H
 1. Dans `src/main.jsx` Créer une table de routage en ajoutant le contenu suivant:
     ```jsx
     import { RouterProvider, createBrowserRouter } from "react-router-dom";
-    import { Home } from "./components/Home.jsx";
-    import { Contact } from "./components/Contact.jsx";
-    import { About } from "./components/About.jsx";
+    import Home from "./components/Home.jsx";
+    import Contact from "./components/Contact.jsx";
+    import About from "./components/About.jsx";
     // Table de routage
     const router = createBrowserRouter([
     {
@@ -188,45 +188,73 @@ Dans le dossier `src`, créer le dossier `components` et y ajouter un fichier `H
     ```
     - Il faut aussi importer `import ReactDOM from "react-dom/client";`.
     - Fichier complet:
+    ??? "src/main.jsx"
+        ```jsx
+        import React from "react";
+        import ReactDOM from "react-dom/client";
+
+        import "./index.css";
+        import App from "./App.jsx";
+
+        import { RouterProvider, createBrowserRouter } from "react-router-dom";
+        import Home from "./components/Home.jsx";
+        import Contact from "./components/Contact.jsx";
+        import About from "./components/About.jsx";
+
+        const router = createBrowserRouter([
+        {
+            path: "/",
+            element: <App />,
+            children: [
+            {
+                path: "/home",
+                element: <Home />,
+            },
+            {
+                path: "/about",
+                element: <About />,
+            },
+            {
+                path: "/contact",
+                element: <Contact />,
+            },
+            ],
+        },
+        ]);
+
+        ReactDOM.createRoot(document.getElementById("root")).render(
+        <React.StrictMode>
+            <RouterProvider router={router} />
+        </React.StrictMode>
+        );
+        ```
+1. Dans le composant `App`, ajouter un lien vers la page d'accueil, la page "à propos" et la page de contact.
     ```jsx
-    import React from "react";
-    import ReactDOM from "react-dom/client";
-
-    import "./index.css";
-    import App from "./App.jsx";
-
-    import { RouterProvider, createBrowserRouter } from "react-router-dom";
-    import { Home } from "./components/Home.jsx";
-    import { Contact } from "./components/Contact.jsx";
-    import { About } from "./components/About.jsx";
-
-    const router = createBrowserRouter([
-    {
-        path: "/",
-        element: <App />,
-        children: [
-        {
-            path: "/home",
-            element: <Home />,
-        },
-        {
-            path: "/about",
-            element: <About />,
-        },
-        {
-            path: "/contact",
-            element: <Contact />,
-        },
-        ],
-    },
-    ]);
-
-    ReactDOM.createRoot(document.getElementById("root")).render(
-    <React.StrictMode>
-        <RouterProvider router={router} />
-    </React.StrictMode>
-    );
+    import { Link } from "react-router-dom";
+    export default function App() {
+        return (
+        <>
+            <h1>React router demo</h1>
+            <nav>
+            <ul>
+                <li>
+                <Link to="/home">Accueil</Link>
+                </li>
+                <li>
+                <Link to="/about">À propos</Link>
+                </li>
+                <li>
+                <Link to="/contact">Contact</Link>
+                </li>
+            </ul>
+            </nav>
+        </>
+        );
+    }
     ```
+1. Tester l'application en lançant `npm run dev`.
+1. Comme les composants sont des pages, il est recommandé de les déplacer dans le dossier `pages` en `Home`, `About` et `Contact`. Appliquer cette convention à l'avenir.
+
 
 ## Astuces
 

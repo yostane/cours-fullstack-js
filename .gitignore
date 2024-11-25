@@ -5,3 +5,4 @@ BIE2025-2023/demo-vuejs/vue-project/firestore.rules
 BIE2025-2023/demo-vuejs/vue-project/.firebase/hosting.ZGlzdA.cache
 venv/
 .vscode/
+.venv/
