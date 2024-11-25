@@ -136,6 +136,46 @@ Dans le dossier `src`, créer le dossier `components` et y ajouter un fichier `H
 1. Créer un composant `HomePage` qui affiche un logo, un titre et une liste de `SocialPost`. Créer un composant `AboutPage` qui affiche un logo, un titre et un texte de présentation. Dans le composant `App`, afficher les deux liens. Avec un booléen `isHomePage`, afficher soit la page d'accueil, soit la page "à propos" selon le lien sur lequel on clique.
 
 
+## Router
+
+1. Créer un projet react avec vite et le template react. `npm create vite@latest my-react-app-2 -- --template react`.
+1. Préparation
+    1. Créer un composant `Home` qui affiche "Bienvenue sur la page d'accueil".
+    1. Créer un composant `About` qui affiche "À propos de nous".
+    1. Créer un composant `Contact` qui affiche "Contactez-nous".
+1. Nettoyer le composant `App`.
+    ```jsx
+    export default function App() {
+        return <></>;
+    }
+    ```
+1. Installer `react-router-dom` avec `npm install react-router-dom`.
+1. Dans `src/index.jsx` Créer une table de routage:
+    ```jsx
+    import { RouterProvider, createBrowserRouter } from "react-router-dom";
+    import { Home } from "./components/Home.jsx";
+    import { Contact } from "./components/Contact.jsx";
+    import { About } from "./components/About.jsx";
+
+    const router = createBrowserRouter([
+    {
+        path: "/",
+        element: <Home />,
+        children: [
+        {
+            path: "/about",
+            element: <About />,
+        },
+        {
+            path: "/contact",
+            element: <Contact />,
+        },
+        ],
+    },
+    ]);
+    ```
+
+
 ## Astuces
 
 - Pour activer la colorations des parenthèses, accolades et crochets dans VSCode, activer l'option "Bracket Pair colorization" dans les paramètres.
