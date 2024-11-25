@@ -150,18 +150,22 @@ Dans le dossier `src`, créer le dossier `components` et y ajouter un fichier `H
     }
     ```
 1. Installer `react-router-dom` avec `npm install react-router-dom`.
-1. Dans `src/index.jsx` Créer une table de routage:
+1. Dans `src/main.jsx` Créer une table de routage en ajoutant le contenu suivant:
     ```jsx
     import { RouterProvider, createBrowserRouter } from "react-router-dom";
     import { Home } from "./components/Home.jsx";
     import { Contact } from "./components/Contact.jsx";
     import { About } from "./components/About.jsx";
-
+    // Table de routage
     const router = createBrowserRouter([
     {
         path: "/",
-        element: <Home />,
+        element: <App />,
         children: [
+        {
+            path: "/home",
+            element: <Home />,
+        },
         {
             path: "/about",
             element: <About />,
@@ -174,7 +178,55 @@ Dans le dossier `src`, créer le dossier `components` et y ajouter un fichier `H
     },
     ]);
     ```
+    - modifier la partie `createRoot` pour utiliser `<React.StrictMode>` et `<RouterProvider>` (c'est lui va gérer les routes de l'application).
+    ```jsx
+    ReactDOM.createRoot(document.getElementById("root")).render(
+    <React.StrictMode>
+        <RouterProvider router={router} />
+    </React.StrictMode>
+    );
+    ```
+    - Il faut aussi importer `import ReactDOM from "react-dom/client";`.
+    - Fichier complet:
+    ```jsx
+    import React from "react";
+    import ReactDOM from "react-dom/client";
 
+    import "./index.css";
+    import App from "./App.jsx";
+
+    import { RouterProvider, createBrowserRouter } from "react-router-dom";
+    import { Home } from "./components/Home.jsx";
+    import { Contact } from "./components/Contact.jsx";
+    import { About } from "./components/About.jsx";
+
+    const router = createBrowserRouter([
+    {
+        path: "/",
+        element: <App />,
+        children: [
+        {
+            path: "/home",
+            element: <Home />,
+        },
+        {
+            path: "/about",
+            element: <About />,
+        },
+        {
+            path: "/contact",
+            element: <Contact />,
+        },
+        ],
+    },
+    ]);
+
+    ReactDOM.createRoot(document.getElementById("root")).render(
+    <React.StrictMode>
+        <RouterProvider router={router} />
+    </React.StrictMode>
+    );
+    ```
 
 ## Astuces
 
