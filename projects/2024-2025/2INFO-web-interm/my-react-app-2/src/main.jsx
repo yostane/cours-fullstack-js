@@ -10,6 +10,7 @@ import Contact from "./pages/Contact.jsx";
 import About from "./pages/About.jsx";
 import Todos from "./pages/Todos.jsx";
 import { Todo } from "./pages/Todo.jsx";
+import NotFound from "./pages/NotFound.jsx";
 
 const router = createBrowserRouter([
   {
@@ -35,6 +36,11 @@ const router = createBrowserRouter([
       {
         path: "/todo/:id",
         element: <Todo />,
+      },
+      {
+        // * à la fin gères toutes les autres chemins
+        path: "/*",
+        element: <NotFound />,
       },
     ],
   },
