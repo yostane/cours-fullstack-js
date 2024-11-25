@@ -262,7 +262,7 @@ Dans le dossier `src`, créer le dossier `components` et y ajouter un fichier `H
         );
     }
     ```
-1. Comme les composants sont des pages, il est recommandé de les déplacer dans le dossier `pages` en `Home`, `About` et `Contact`. Appliquer cette convention à l'avenir.
+1. Comme les composants sont des pages, il est recommandé de les déplacer dans le dossier `src/pages`. Appliquer cette convention à l'avenir.
 
 
 ## Astuces
