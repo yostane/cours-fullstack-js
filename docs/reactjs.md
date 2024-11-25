@@ -228,7 +228,7 @@ Dans le dossier `src`, créer le dossier `components` et y ajouter un fichier `H
         </React.StrictMode>
         );
         ```
-1. Dans le composant `App`, ajouter un lien vers la page d'accueil, la page "à propos" et la page de contact.
+1. Dans le composant `App`, ajouter un lien vers la page d'accueil, la page "à propos" et la page de contact (`{" - "}` permet de forcer un espace avant et après le -).
     ```jsx
     import { Link } from "react-router-dom";
     export default function App() {
@@ -236,16 +236,9 @@ Dans le dossier `src`, créer le dossier `components` et y ajouter un fichier `H
         <>
             <h1>React router demo</h1>
             <nav>
-            <ul>
-                <li>
-                <Link to="/home">Accueil</Link>
-                </li>
-                <li>
-                <Link to="/about">À propos</Link>
-                </li>
-                <li>
+                <Link to="/home">Accueil</Link>{" - "}
+                <Link to="/about">À propos</Link>{" - "}
                 <Link to="/contact">Contact</Link>
-                </li>
             </ul>
             </nav>
         </>
