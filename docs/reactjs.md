@@ -263,7 +263,7 @@ Dans le dossier `src`, créer le dossier `components` et y ajouter un fichier `H
     }
     ```
 1. Comme les composants sont des pages, il est recommandé de les déplacer dans le dossier `src/pages`. Appliquer cette convention à l'avenir.
-
+1. On peut spécifier des paramètres dans des routes (par exemple pour afficher un item à partir d'une liste).
 
 ## Astuces
 

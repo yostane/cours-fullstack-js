@@ -12,6 +12,8 @@ export default function App() {
         <Link to="/about">À propos</Link>
         {" - "}
         <Link to="/contact">Contact</Link>
+        {" - "}
+        <Link to="/todos">todos</Link>
       </nav>
       <Outlet />
     </>
