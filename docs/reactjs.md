@@ -256,7 +256,6 @@ Dans le dossier `src`, créer le dossier `components` et y ajouter un fichier `H
                 <Link to="/home">Accueil</Link>{" - "}
                 <Link to="/about">À propos</Link>{" - "}
                 <Link to="/contact">Contact</Link>
-            </ul>
             </nav>
             <Outlet />
         </>
