@@ -245,7 +245,7 @@ Dans le dossier `src`, créer le dossier `components` et y ajouter un fichier `H
         );
     }
     ```
-1. Tester l'application en lançant `npm run dev`.
+1. Tester l'application en lançant `npm run dev`. Que constatez vous au niveau du rendu de votre app et de la barre d'adresse ?
 1. Comme les composants sont des pages, il est recommandé de les déplacer dans le dossier `pages` en `Home`, `About` et `Contact`. Appliquer cette convention à l'avenir.
 
 
