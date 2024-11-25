@@ -239,13 +239,30 @@ Dans le dossier `src`, créer le dossier `components` et y ajouter un fichier `H
                 <Link to="/home">Accueil</Link>{" - "}
                 <Link to="/about">À propos</Link>{" - "}
                 <Link to="/contact">Contact</Link>
-            </ul>
             </nav>
         </>
         );
     }
     ```
 1. Tester l'application en lançant `npm run dev`. Que constatez vous au niveau du rendu de votre app et de la barre d'adresse ?
+1. Ajouter le outlet dans le composant `App` pour afficher les pages enfants.
+    ```jsx
+    import { Outlet } from "react-router-dom";
+    export default function App() {
+        return (
+        <>
+            <h1>React router demo</h1>
+            <nav>
+                <Link to="/home">Accueil</Link>{" - "}
+                <Link to="/about">À propos</Link>{" - "}
+                <Link to="/contact">Contact</Link>
+            </ul>
+            </nav>
+            <Outlet />
+        </>
+        );
+    }
+    ```
 1. Comme les composants sont des pages, il est recommandé de les déplacer dans le dossier `pages` en `Home`, `About` et `Contact`. Appliquer cette convention à l'avenir.
 
 
