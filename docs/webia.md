@@ -3,7 +3,8 @@
 Nous allons aborder les liens entre ces deux technologies à travers ces trois axes:
 
 - Utilisation d'outils de genAI pour générer des sites web
-- Utilisation de l'IA pour générer des images (et des designs avec Figma quand ce sera dispo)
+- Utilisation de l'IA pour générer des images
+- Utilisation de l'IA pour générer des designs
 - Utilisation des API web pour faire de l'inférence sur des LLM
 - Outils divers: gradio, streamlit, etc.
 
@@ -33,4 +34,4 @@ Il vous est demandé d'utiliser les deux outils suivants pour générer des site
 
 ## Générer un design
 
-- Outils: [Figma (pas encore dispo)](https://www.figma.com/), [uizard](https://app.uizard.io/prototypes/generate)
+- Outils: [Le plugin Figma uidesign.ai](https://uidesign.ai/), [uizard](https://app.uizard.io/prototypes/generate)
