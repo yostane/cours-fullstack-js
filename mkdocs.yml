@@ -13,6 +13,7 @@ nav:
   - index.md
   - js.md
   - reactjs.md
+  - webia.md
   - projets.md
 
 plugins:
