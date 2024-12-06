@@ -1,6 +1,6 @@
 # Web et genAI
 
-Nous allons aborder les liens entre ces deux technologies à travers ces axes:
+Nous allons aborder les liens entre ces deux technologies à travers ces axes.
 
 - Utilisation d'outils de genAI pour générer:
     - Des sites web
