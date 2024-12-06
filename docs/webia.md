@@ -29,8 +29,9 @@ Il vous est demandé d'utiliser les deux outils suivants pour générer des site
         - La simplicité d'exécution en local
         - La facilité à personnaliser
         - Tout autre point que vous jugerez pertinent
+    - Ajouter dans le readme l'enchaînement des prompts utilisés
     - Proposer des améliorations
-    - Vous pouvez vous faire aider d'autres outils chatGPT, ClaudeAI ou copilotAI pour chacune des étapes
+    - Vous pouvez vous faire aider d'autres outils ChatGPT, ClaudeAI ou copilotAI pour chacune des étapes
 
 ## Génération d'images via l'IA
 
