@@ -13,7 +13,7 @@ Nous allons aborder les liens entre ces deux technologies à travers ces axes.
 
 Il vous est demandé d'utiliser les deux outils suivants pour générer des sites web.
 
-- Outils: [v0.dev](https://v0.dev/) et [bolt.new](https://bolt.new/)
+- Outils: [v0.dev](https://v0.dev/), [bolt.new](https://bolt.new/) et [marblism](https://www.marblism.com/)
 - Objectif: générer un site web à partir d'un texte généré par un LLM
 - Applications:
     - Gestionnaire de tâches (Todo list)
