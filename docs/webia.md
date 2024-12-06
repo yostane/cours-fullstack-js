@@ -6,8 +6,8 @@ Nous allons aborder les liens entre ces deux technologies à travers ces axes.
     - Des sites web
     - Des images
     - Des designs
+- Outils divers: gradio, [cursor](https://www.cursor.com/)
 - Utilisation des API web pour faire de l'inférence sur des LLM
-- Outils divers: gradio, streamlit, etc.
 
 ## Génération de sites via la genAI
 
@@ -43,3 +43,8 @@ Il vous est demandé d'utiliser les deux outils suivants pour générer des site
 ## Générer un design
 
 - Outils: [Le plugin Figma uidesign.ai](https://uidesign.ai/), [uizard](https://app.uizard.io/prototypes/generate)
+
+## Ressources
+
+- [Best Bolt.New Alternatives for Your AI App](https://medium.com/@conor_16413/best-bolt-new-alternatives-for-your-ai-app-f9c7fc50fc89)
+- [Top Bolt.new Alternatives](https://topai.tools/alternatives/bolt-new)
