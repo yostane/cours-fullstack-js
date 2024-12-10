@@ -10,7 +10,7 @@ import ShowMax from "./components/ShowMax";
 import CountConsonantsAndVowels from "./components/CountConsonantsAndVowels";
 import RandomNumberArray from "./components/RandomNumberArray";
 import TodoListManager from "./components/TodoListManager";
-import StringLengths from "./components/StringsLenghts";
+import StringLengths from "./components/StringsLengths";
 import ShowAlternating from "./components/ShowAlternating";
 
 function App() {
