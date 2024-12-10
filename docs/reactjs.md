@@ -9,8 +9,8 @@
 ## Projet reactjs avec vite
 
 ```sh
-npm create vite@latest my-vue-app -- --template react
-cd my-vue-app
+npm create vite@latest my-react-app -- --template react
+cd my-react-app
 npm install
 # Lancer un serveur de développement
 npm run dev
@@ -40,31 +40,31 @@ Dans le dossier `src`, créer le dossier `components` et y ajouter un fichier `H
 
     ```jsx title="ExoCounter.jsx"
     --8<--
-    2024-2025/2INFO-web-interm/my-vue-app/src/components/ExoCounter.jsx
+    2024-2025/2INFO-web-interm/my-react-app/src/components/ExoCounter.jsx
     --8<--
     ```
 
     ```jsx title="ExoCounter.jsx"
     --8<--
-    2024-2025/2INFO-web-interm/my-vue-app/src/components/ExoLowerCase.jsx
+    2024-2025/2INFO-web-interm/my-react-app/src/components/ExoLowerCase.jsx
     --8<--
     ```
 
     ```jsx title="EuroToYen.jsx"
     --8<--
-    2024-2025/2INFO-web-interm/my-vue-app/src/components/EuroToYen.jsx
+    2024-2025/2INFO-web-interm/my-react-app/src/components/EuroToYen.jsx
     --8<--
     ```
 
     ```jsx title="ShowMax.jsx"
     --8<--
-    2024-2025/2INFO-web-interm/my-vue-app/src/components/ShowMax.jsx
+    2024-2025/2INFO-web-interm/my-react-app/src/components/ShowMax.jsx
     --8<--
     ```
 
     ```jsx title="CountConsonantsAndVowels.jsx"
     --8<--
-    2024-2025/2INFO-web-interm/my-vue-app/src/components/CountConsonantsAndVowels.jsx
+    2024-2025/2INFO-web-interm/my-react-app/src/components/CountConsonantsAndVowels.jsx
     --8<--
     ```
 
@@ -112,13 +112,13 @@ Dans le dossier `src`, créer le dossier `components` et y ajouter un fichier `H
 
     ```jsx title="StringsLengths.jsx"
     --8<--
-    2024-2025/2INFO-web-interm/my-vue-app/src/components/StringsLengths.jsx
+    2024-2025/2INFO-web-interm/my-react-app/src/components/StringsLengths.jsx
     --8<--
     ```
 
     ```jsx title="ShowAlternating.jsx"
     --8<--
-    2024-2025/2INFO-web-interm/my-vue-app/src/components/ShowAlternating.jsx
+    2024-2025/2INFO-web-interm/my-react-app/src/components/ShowAlternating.jsx
     --8<--
     ```
 
