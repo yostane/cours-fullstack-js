@@ -2,8 +2,7 @@
 
 ## Description
 
-Réaliser une application react de type CRUD (Create, Read, Update, Delete).
-
+Réaliser une application react de type $${\color{red}CRUD}$$ ($${\color{orange}Create,} \space {\color{lightblue}Read,} \space  {\color{lightpurple}Update, } {\color{lightgreen}Delete}$$).
 ## Objectifs
 
 - Utiliser React et le routeur de React.
