@@ -6,10 +6,12 @@ Nous allons aborder les liens entre ces deux technologies à travers ces axes.
     - Des sites web
     - Des images
     - Des designs
-- Outils divers: gradio, [cursor](https://www.cursor.com/)
 - Utilisation des API web pour faire de l'inférence sur des LLM
+- Outils divers: gradio, [cursor](https://www.cursor.com/)
 
-## Génération de sites via la genAI
+## Génération via la genAI
+
+### Génération de sites
 
 Il vous est demandé d'utiliser les deux outils suivants pour générer des sites web.
 
@@ -33,16 +35,20 @@ Il vous est demandé d'utiliser les deux outils suivants pour générer des site
     - Proposer des améliorations
     - Vous pouvez vous faire aider d'autres outils ChatGPT, ClaudeAI ou copilotAI pour chacune des étapes
 
-## Génération d'images via l'IA
+### Génération d'images
 
 - Outils: [DALL-E](https://openai.com/dall-e/), [Adobe Firefly](https://firefly.adobe.com/), [Canva AI](https://www.canva.com/fr_fr/generateur-image-ia/)
 - Travail demandé: 
     - Générer un logo pour votre site
     - Générer des images pour les différents sites générés plus haut
 
-## Générer un design
+### Générer un design
 
 - Outils: [Le plugin Figma uidesign.ai](https://uidesign.ai/), [uizard](https://app.uizard.io/prototypes/generate)
+
+## API Web et LLM
+
+
 
 ## Ressources
 
