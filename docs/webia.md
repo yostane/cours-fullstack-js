@@ -48,24 +48,89 @@ Il vous est demandé d'utiliser les deux outils suivants pour générer des site
 
 ## Web et LLM
 
-Dans cette partie, nous allons utiliser [langchain.js](https://js.langchain.com/) pour faire de l'inférence sur des LLM.
+Dans cette partie, nous allons aborder les possibilités offertes par les LLM pour le web.
 
-### Langchain.js sur navigateur
+Il y a deux possibilités; soit héberger le LLM sur un serveur et l'appeler via une API REST, soit utiliser un modèle embarqué dans le navigateur.
 
-Il est recommandé de passer par un bundler pour simplifier l'importation des libraires.
+La première solution est plus simple et offre généralement plus de possibilités et de performance.
+La seconde est plus complexe et son temps de réponse dépend de la machine de l'utiliser.
+Il faut également souligner que la première solution n'est pas adaptée app web côté client, car elle expose votre clé API.
+Pour les serveur et les applications web générées côté serveur, la clé d'API doit être sécurisée pour n'être vue que du serveur.
+
+### Inférence sur LLM via des API REST
+
+Comme il existe plusieurs fournisseurs de LLM qui n'ont pas forcément la même API, il est recommandé d'utiliser une librairie qui abstrait ces différences.
+Pour ce faire, nous allons utiliser [langchain.js](https://js.langchain.com/) dans cette partie.
+Cette libraire supporte plusieurs fournisseurs de LLM et offre une API unifiée ainsi que des fonctionnalités supplémentaires.
+Pour compléter, nous allons prendre une API gratuite parmi celles [proposées ici](https://github.com/cheahjs/free-llm-api-resources/blob/main/README.md)
+
+-   `bun init`
+-   Installer la librairie de base `bun i @huggingface/transformers`
+-   Ensuite, installer les librairies correspondant aux fournisseurs que vous souhaitez utiliser ([liste ici](https://js.langchain.com/docs/tutorials/llm_chain#using-language-models)).
+    -   Exemple avec OpenAI: `bun i @langchain/openai`
+    -   Ajouter une variable d'environnement `OPENAI_API_KEY`. Il y a plusieurs façons de le faire.
+        -   Créer un fichier `.env` à la racine du projet et y ajouter `OPENAI_API_KEY=your_api_key`. Bun supporte nativement les fichiers `.env`.
+        -   Ajouter la variable d'environnement dans votre terminal: `export OPENAI_API_KEY=your_api_key`
+        -   Ajouter la variable dans votre système d'exploitation
+
+### LLM embarqué dans le navigateur
+
+!!! note
+
+    Au momemnt de l'écriture de ce document (janvier 2025), les navigateurs n'embarquent pas de LLM.
+    Chrome a fait une annonce [à ce sujet en 2024](https://developer.chrome.com/docs/ai/built-in).
+    Donc, pour le moement, il faut utiliser des librairies tierces pour embarquer un LLM dans le navigateur.
+
+Je propose de travailler sur ces deux librairies d'inférence de LLM dans le navigateur: [Transformers.js](https://github.com/huggingface/transformers.js) et [WebLLM](https://webllm.mlc.ai/).
+
+#### Méthode de travail conseillée
+
+Il est recommandé d'utiliser un bundler pour simplifier l'importation des libraires.
 Nous allons utiliser [vite](https://vite.dev/guide/#scaffolding-your-first-vite-project) pour ce faire.
 Nous allons également utiliser [bun](https://bun.sh/) comme gestionnaire de projet.
 
 -   Créer un projet vite de type vanilla (sans framework) en TypeScript: `bun create vite langchainjs_demo --template vanilla-ts`
     -   `cd langchainjs_demo` puis `bun install`, puis `bun dev`
 -   Ouvrir le projet avec votre IDE
--   Installer la librairie de base `bun i langchain @langchain/core`
--   Ensuite, installer les librairies correspondant aux fournisseurs que vous souhaitez utiliser ([liste ici](https://js.langchain.com/docs/tutorials/llm_chain#using-language-models)).
-    -   Exemple avec OpenAI: `bun i @langchain/openai`
-    -   Ajouter une varialbe d'environnement `OPENAI_API_KEY`. Il y a plusieurs façons de le faire.
-        -   Créer un fichier `.env` à la racine du projet et y ajouter `OPENAI_API_KEY=your_api_key`. Bun supporte nativement les fichiers `.env`.
-        -   Ajouter la variable d'environnement dans votre terminal: `export OPENAI_API_KEY=your_api_key`
-        -   Ajouter la variable dans votre système d'exploitation
+
+#### Transformers.js
+
+[Transformers.js](https://github.com/huggingface/transformers.js) est une librairie qui permet d'utiliser les modèles de Hugging Face dans le navigateur.
+Il est [recommandé d'utiliser](https://www.reddit.com/r/LocalLLaMA/comments/177ir3x/comment/k4t87uu) les modèles proposés par [Xenova](https://huggingface.co/Xenova) pour tirer parti du WebGPU.
+D'ailleurs, ce dernier propose [plusieurs démos](https://huggingface.co/collections/Xenova/transformersjs-demos-64f9c4f49c099d93dbc611df)
+
+-   Nous allons utiliser le modèle `phi3.5-webgpu`.
+-   Copier dans src le fichier [worker.js](https://github.com/huggingface/transformers.js-examples/blob/main/phi-3.5-webgpu/src/App.jsx)
+    -   Ce web worker contient le code pour charger le modèle et faire des inférences
+-   Le worker écoute les messages suivants:
+    -   `{type: "load"}`: pour charger le modèle
+    -   `{type: "check"}`: lance une exception si il y un souci côté WebGPU
+    -   `{type: "generate", data: messages}`: envoie un message pour générer du texte.
+        `messages` est un tableau de `Message` définit par la libraire transformers.js ainsi `export type Message = {role: string; content: string};`.
+        Exemple de message: `[{role: "user", content: "Hello"}]`
+-   Le worker envoie des messages différentes selon la valeur de `e.data.status`:
+    -   `"loading"`: Début du chargement
+    -   `"progress"`: Rapporte la progression du chargement
+    -   `"ready"`: Signale que le modèle est chargé
+    -   `"start"`: Signale que le texte est en début de génération
+    -   `"update"`: Signale que le texte est en cours de génération
+    -   `"complete"`: Signale que le texte a été généré
+    -   `"error"`: Signale une erreur
+-   Implémenter un formulaire pour envoyer des messages au worker.
+-   Pour avoir un échange avec mémoire, il faut mettre à jour `messages` à chaque message reçu et envoyé.
+    Par exemple, si le modèle répond "Hello", `messages` deviendrait `[...messages, {role: "assistant", content: "Hello, how can I help?"}]`.
+    Et, si par la suite, l'utilisateur demande "How are you?", l'objet `messages` à envoyer au LLM serait `messages` serait
+    ```js
+    [
+        { role: "user", content: "Hello" },
+        { role: "assistant", content: "Hello, how can I help?" },
+        { role: "user", content: "How are you?" },
+    ];
+    ```
+
+#### WebLLM
+
+A expérimenter selon le temps restant.
 
 ## Ressources
 
