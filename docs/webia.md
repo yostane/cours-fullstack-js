@@ -64,14 +64,8 @@ Pour ce faire, nous allons utiliser [langchain.js](https://js.langchain.com/) da
 Cette libraire supporte plusieurs fournisseurs de LLM et offre une API unifiée ainsi que des fonctionnalités supplémentaires.
 Pour compléter, nous allons prendre une API gratuite parmi celles [proposées ici](https://github.com/cheahjs/free-llm-api-resources/blob/main/README.md)
 
--   `bun init`
--   Installer la librairie de base `bun i @huggingface/transformers`
--   Ensuite, installer les librairies correspondant aux fournisseurs que vous souhaitez utiliser ([liste ici](https://js.langchain.com/docs/tutorials/llm_chain#using-language-models)).
-    -   Exemple avec OpenAI: `bun i @langchain/openai`
-    -   Ajouter une variable d'environnement `OPENAI_API_KEY`. Il y a plusieurs façons de le faire.
-        -   Créer un fichier `.env` à la racine du projet et y ajouter `OPENAI_API_KEY=your_api_key`. Bun supporte nativement les fichiers `.env`.
-        -   Ajouter la variable d'environnement dans votre terminal: `export OPENAI_API_KEY=your_api_key`
-        -   Ajouter la variable dans votre système d'exploitation
+-   `bun init` puis ouvrir le dossier et faire un `bun install`
+-   Suivre la doc [google AI pour langchain](https://js.langchain.com/docs/integrations/platforms/google/) (en remplaçant `npm` par votre gestionnaire de paquêts)
 
 ### LLM embarqué dans le navigateur
 

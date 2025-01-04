@@ -1,11 +1,17 @@
 {
   "name": "ai",
-  "module": "index.ts",
   "type": "module",
+  "scripts": {
+    "dev": "bun src/main.ts"
+  },
   "devDependencies": {
     "@types/bun": "latest"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "@langchain/core": "^0.3.27",
+    "@langchain/google-genai": "^0.1.6"
   }
 }
