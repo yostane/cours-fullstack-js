@@ -68,9 +68,10 @@ Pour compléter, nous allons prendre une API gratuite parmi celles [proposées i
 -   Ajouter un fichier `.env` qui contient votre clé d'API (bun lit nativement les dotenv sans rien faire de notre côté)
 -   Suivre la doc [google AI pour langchain](https://js.langchain.com/docs/integrations/platforms/google/) (en remplaçant `npm` par votre gestionnaire de paquêts)
     -   Utiliser un modèle Flash pour avoir plus de requêtes par minutes
--   Développer un équivalent de chatGPT qu'on va appeler chatGTP (chat j'ai TP) qui prend en entrée un texte et génère une réponse
+-   Développer un équivalent de chatGPT qu'on va appeler chatGTP (chat j'ai TP) qui prend en entrée un texte et génère une réponse. Soyez créatifs !.
     -   Bun support la récupération des argument de la ligne de commande. Voici [la doc](https://bun.sh/guides/process/argv).
     -   Exemple d'utilisation à la racine du projet: `bun run "Hello, how are you?"` -> `Hello, I'm fine, thank you. How can I help you?`
+    -   Astuces: utiliser `chalk` pour colorer les messages
 
 ### LLM embarqué dans le navigateur
 
