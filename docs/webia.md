@@ -65,7 +65,12 @@ Cette libraire supporte plusieurs fournisseurs de LLM et offre une API unifiée 
 Pour compléter, nous allons prendre une API gratuite parmi celles [proposées ici](https://github.com/cheahjs/free-llm-api-resources/blob/main/README.md)
 
 -   `bun init` puis ouvrir le dossier et faire un `bun install`
+-   Ajouter un fichier `.env` qui contient votre clé d'API (bun lit nativement les dotenv sans rien faire de notre côté)
 -   Suivre la doc [google AI pour langchain](https://js.langchain.com/docs/integrations/platforms/google/) (en remplaçant `npm` par votre gestionnaire de paquêts)
+    -   Utiliser un modèle Flash pour avoir plus de requêtes par minutes
+-   Développer un équivalent de chatGPT qu'on va appeler chatGTP (chat j'ai TP) qui prend en entrée un texte et génère une réponse
+    -   Bun support la récupération des argument de la ligne de commande. Voici [la doc](https://bun.sh/guides/process/argv).
+    -   Exemple d'utilisation à la racine du projet: `bun run "Hello, how are you?"` -> `Hello, I'm fine, thank you. How can I help you?`
 
 ### LLM embarqué dans le navigateur
 
