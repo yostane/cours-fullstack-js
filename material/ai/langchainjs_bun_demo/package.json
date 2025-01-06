@@ -3,7 +3,7 @@
   "type": "module",
   "scripts": {
     "dev": "bun src/main.ts",
-    "chatGTP": "bun src/main.ts"
+    "chatGTP": "bun src/chat-gtp.ts"
   },
   "devDependencies": {
     "@types/bun": "latest"
