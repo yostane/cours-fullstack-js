@@ -72,6 +72,9 @@ Pour compléter, nous allons prendre une API gratuite parmi celles [proposées i
     -   Bun support la récupération des argument de la ligne de commande. Voici [la doc](https://bun.sh/guides/process/argv).
     -   Exemple d'utilisation à la racine du projet: `bun run chatGTP "Hello, how are you?"` -> `Hello, I'm fine, thank you. How can I help you?`
     -   Astuces: [marked-terminal](https://www.npmjs.com/package/marked-terminal) permet d'écrire du markdown dans la console. [chalk](https://www.npmjs.com/package/chalk) permet de colorer le texte.
+-   Aller plus loin:
+    -   Implémenter une mémoire basique [sur disque](https://js.langchain.com/docs/integrations/memory/file)
+    -   Utiliser du [tool calling](https://js.langchain.com/docs/how_to/tool_calling/)
 
 ### LLM embarqué dans le navigateur
 

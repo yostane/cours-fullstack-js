@@ -1,10 +1,4 @@
 import { ChatGoogleGenerativeAI } from "@langchain/google-genai";
-import { marked } from "marked";
-import TerminalRenderer from "marked-terminal";
-
-marked.setOptions({
-  renderer: new TerminalRenderer(),
-});
 
 const model = new ChatGoogleGenerativeAI({
   model: "gemini-1.5-flash-8b",
@@ -19,4 +13,4 @@ const res = await model.invoke([
   ],
 ]);
 
-console.log(marked(res.content.toString()));
+console.log(res);
