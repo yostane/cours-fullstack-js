@@ -2,7 +2,8 @@
   "name": "ai",
   "type": "module",
   "scripts": {
-    "dev": "bun src/main.ts"
+    "dev": "bun src/main.ts",
+    "chatGTP": "bun src/main.ts"
   },
   "devDependencies": {
     "@types/bun": "latest"
@@ -12,6 +13,11 @@
   },
   "dependencies": {
     "@langchain/core": "^0.3.27",
-    "@langchain/google-genai": "^0.1.6"
+    "@langchain/google-genai": "^0.1.6",
+    "@types/marked-terminal": "^6.1.1",
+    "install": "^0.13.0",
+    "marked": "^15.0.5",
+    "marked-terminal": "^7.2.1",
+    "markshell": "^1.6.0"
   }
 }

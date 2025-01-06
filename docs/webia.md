@@ -70,8 +70,8 @@ Pour compléter, nous allons prendre une API gratuite parmi celles [proposées i
     -   Utiliser un modèle Flash pour avoir plus de requêtes par minutes
 -   Développer un équivalent de chatGPT qu'on va appeler chatGTP (chat j'ai TP) qui prend en entrée un texte et génère une réponse. Soyez créatifs !.
     -   Bun support la récupération des argument de la ligne de commande. Voici [la doc](https://bun.sh/guides/process/argv).
-    -   Exemple d'utilisation à la racine du projet: `bun run "Hello, how are you?"` -> `Hello, I'm fine, thank you. How can I help you?`
-    -   Astuces: utiliser `chalk` pour colorer les messages
+    -   Exemple d'utilisation à la racine du projet: `bun run chatGTP "Hello, how are you?"` -> `Hello, I'm fine, thank you. How can I help you?`
+    -   Astuces: [marked-terminal](https://www.npmjs.com/package/marked-terminal) permet d'écrire du markdown dans la console. [chalk](https://www.npmjs.com/package/chalk) permet de colorer le texte.
 
 ### LLM embarqué dans le navigateur
 
