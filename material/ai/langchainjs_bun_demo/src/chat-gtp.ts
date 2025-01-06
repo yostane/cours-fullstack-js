@@ -15,4 +15,5 @@ const prompt = Bun.argv[2];
 console.log(marked(`**Human**: ${prompt}`));
 
 const res = await model.invoke([["human", prompt]]);
-console.log(marked(`**AI**: ${res.content.toString().trim()}`));
+console.log(marked(`**AI**:`));
+console.log(marked(res.content.toString()));
