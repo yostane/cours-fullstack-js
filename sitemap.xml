@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+         <loc>https://yostane.github.io/cours-fullstack-js/</loc>
+         <lastmod>2025-01-29</lastmod>
+    </url>
+    <url>
+         <loc>https://yostane.github.io/cours-fullstack-js/js/</loc>
+         <lastmod>2025-01-29</lastmod>
+    </url>
+    <url>
+         <loc>https://yostane.github.io/cours-fullstack-js/projets/</loc>
+         <lastmod>2025-01-29</lastmod>
+    </url>
+    <url>
+         <loc>https://yostane.github.io/cours-fullstack-js/reactjs/</loc>
+         <lastmod>2025-01-29</lastmod>
+    </url>
+    <url>
+         <loc>https://yostane.github.io/cours-fullstack-js/webia/</loc>
+         <lastmod>2025-01-29</lastmod>
+    </url>
+</urlset>
